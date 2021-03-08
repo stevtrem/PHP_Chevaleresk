@@ -396,22 +396,22 @@
                </div>
                <div class="col-md-6">
                   <div class="email_btn">
-                     <form action="/action_page.php">
+                     <form action="#">
                         <div class="form-group">
-                           <input type="text" class="form-control form-control-sm" placeholder="Name" name="Name">
+                           <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName">
                         </div>
                         <div class="form-group">
-                           <input  type="text" class="form-control form-control-sm" placeholder="Email" name="Email">
+                           <input  type="text" class="form-control form-control-sm" placeholder="Nom" id="lastName" name="LastName">
                         </div>
                         <div class="form-group">
-                           <input  type="text" class="form-control form-control-sm" placeholder="Phone" name="Phone">
-                        </div>
-                        <div class="form-group">
-                           <input  type="text" class="form-control form-control-sm" placeholder="Massage" name="text3">
+                           <input  type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias">
                         </div>
                          <div class="submit_btn">
-                            <button type="submit" class="btn btn-primary" style="background: #081b30; color: #fff; padding: 11px;">Send</button>
+                            <button title="Envoyer" type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="background: #081b30; color: #fff; padding: 11px; float:left">S'inscrire</button>
                          </div>
+                         <div class="submit_btn">
+                            <input onClick="window.location.href='#'" title="Annuler" type='button' id="cancelForm" name='CancelForm' class="btn btn-primary" style="background: #081b30; color: #fff; padding: 11px; float:right" value='Annuler'>
+                        </div>
                       </form>
                   </div>
                </div>
@@ -505,6 +505,7 @@
       <!-- javascript --> 
       <script src="js/owl.carousel.js"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script src="js/form.js"></script>
       <script>
          $(document).ready(function(){
          $(".fancybox").fancybox({
