@@ -1,5 +1,21 @@
 <?php
+session_start();
 
+// Si visiteur anonyme
+// if (!isset($_SESSION['name']))
+// {
+//     header('Location:loginForm.php');
+//     $_SESSION['nameError'] = 'Accès Illégal';
+//     exit();
+// }
+
+function showError($message){
+   echo "<span style='color:red'>$message</span>";
+}
+
+$firstNameError = isset($_SESSION['firstNameError'])? $_SESSION['firstNameError'] : '';
+$lastNameError = isset($_SESSION['lastNameError'])? $_SESSION['lastNameError'] : '';
+$aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
 
 
 ?>
@@ -13,7 +29,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Chevaleresk - Panier</title>
+      <title>Chevaleresk - Signup</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -80,17 +96,21 @@
       <!-- end header -->
       <section >
         <div id="signupContainer">
-            <div class="col-md-6">
+            <div class="col-md-6" style="margin-bottom:96px">
+               <div style="color: white; font-size: 32px; margin-left: 15%; margin-top: 96px">S'inscrire</div>
                <div id="signupForm">
                   <form action="Includes/authenticate.php">
                      <div class="form-group">
                         <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName">
+                        <?php showError($firstNameError); ?>
                      </div>
                      <div class="form-group">
                         <input  type="text" class="form-control form-control-sm" placeholder="Nom" id="lastName" name="LastName">
+                        <?php showError($lastNameError); ?>
                      </div>
                      <div class="form-group">
                         <input  type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias">
+                        <?php showError($aliasError); ?>
                      </div>
                      <div class="submit_btn">
                         <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:left">S'inscrire</button>
@@ -136,3 +156,5 @@
       </script> 
    </body>
 </html>
+
+<?php unset($_SESSION['firstNameError'], $_SESSION['lastNameError'], $_SESSION['aliasError'])?>
