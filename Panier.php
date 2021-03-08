@@ -13,7 +13,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Sock</title>
+      <title>Chevaleresk - Panier</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -27,6 +27,8 @@
       <link rel="icon" href="images/fevicon.png" type="image/gif" />
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <!-- Css Specific to this page-->
+      <link rel="stylesheet" href="css/Panier.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
@@ -66,7 +68,6 @@
                                  <li><a href="clients.html">Shop</a></li>
                                  <li><a href="clients.html">Login</a></li>
                                  <li><a href="clients.html">Signup</a></li>
-                                 <li class="last"><a href="#"><img src="images/search_icon.png" alt="icon"/></a></li>
                               </ul>
                            </nav>
                         </div>
@@ -79,28 +80,13 @@
       </header>
       <!-- end header -->
       <section >
-         
+        <div id="PanierContainer">
+            <div id="Panier">
+                <a id="checkoutBtn" href="Includes/Checkout.php">Checkout</a>
+            </div>
+        </div>
+         <!-- ici -->
       </section>
-      <!-- plant -->
-      <!-- end plant -->
-      <!--about -->
-      
-
-
-
-      
-      <!-- end about -->
-      <!--Our  Clients -->
-      <!-- end Our  Clients -->
-      <!-- start Contact Us-->
-
-      <!-- footer start-->
-      <div id="plant" class="footer layout_padding">
-         <div class="container">
-            <p>© 2019 All Rights Reserved. Design by<a href="https://html.design/"> Free Html Templates</a></p>
-         </div>
-      </div>
-
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
