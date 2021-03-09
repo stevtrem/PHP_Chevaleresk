@@ -1,16 +1,23 @@
 <?php
+
 require_once 'Includes/dbh.php';
 
-$stmt = $dBConnection->prepare("INSERT INTO Joueurs (alias, nom, prenom, montantInitial) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("sssd", $alias, $lastName, $firstName, $montantInitial);
+$sql = "INSERT INTO Joueurs (alias, nom, prenom, montantInitial) VALUES (?, ?, ?, ?)";
 
-// set parameters and execute
 $alias = "boubou";
 $lastName = "Lavallee";
 $firstName = "Vincent";
 $montantInitial = 1500;
-$stmt->execute();
-$stmt->close();
-$conn->close();
+
+$stmt = sqlsrv_prepare( $conn, $sql, array( &$alias, &$lastName, &$firstName, &$montantInitial));
+if( !$stmt ) {
+    die( print_r( sqlsrv_errors(), true));
+}
+
+
+// set parameters and execute
+
+
+sqlsrv_execute( $stmt );
 echo "New records created successfully";
 ?>
