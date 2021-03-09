@@ -1587,7 +1587,7 @@ input[type="radio"] .styled:checked+label::after {
 }
 .banner-main {
      position: relative;
-     background-color: #170056;
+     background-color: #081b30;
      background-size: 100% 100%;
 
 }
