@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-// Si visiteur anonyme
-// if (!isset($_SESSION['name']))
-// {
-//     header('Location:loginForm.php');
-//     $_SESSION['nameError'] = 'Accès Illégal';
-//     exit();
-// }
+
+if (!isset($_SESSION['Id']))
+{
+    header('Location:login.php');
+    $_SESSION['loginError'] = 'Accès Illégal';
+    exit();
+}
 
 function showError($message){
    echo "<span style='color:red'>$message</span>";
@@ -102,15 +102,15 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
                   <form action="Includes/authenticate.php">
                      <div class="form-group">
                         <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName">
-                        <?php showError($firstNameError); ?>
+                        <?php showError($firstNameError); ?><br>
                      </div>
                      <div class="form-group">
                         <input  type="text" class="form-control form-control-sm" placeholder="Nom" id="lastName" name="LastName">
-                        <?php showError($lastNameError); ?>
+                        <?php showError($lastNameError); ?><br>
                      </div>
                      <div class="form-group">
                         <input  type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias">
-                        <?php showError($aliasError); ?>
+                        <?php showError($aliasError); ?><br>
                      </div>
                      <div class="submit_btn">
                         <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:left">S'inscrire</button>
