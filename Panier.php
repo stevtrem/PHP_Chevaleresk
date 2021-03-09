@@ -1,5 +1,5 @@
 <?php
-    
+    require_once 'Includes/SessionChecker.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
