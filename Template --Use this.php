@@ -1,6 +1,3 @@
-<?php
-    
-?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -11,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Chevaleresk - Panier</title>
+      <title>Chevaleresk - </title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -26,7 +23,7 @@
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <!-- Css Specific to this page-->
-      <link rel="stylesheet" href="css/Panier.css">
+      <link rel="stylesheet" href="css/.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
@@ -78,12 +75,7 @@
       </header>
       <!-- end header -->
       <section >
-        <div id="PanierContainer">
-            <div id="Panier">
-                <a id="checkoutBtn" href="Includes/Checkout.php">Checkout</a>
-            </div>
-        </div>
-         <!-- ici -->
+        Write code here 
       </section>
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
@@ -98,6 +90,7 @@
       <script src="js/owl.carousel.js"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script src="js/form.js"></script>
+      <script src=>
       <script>
          $(document).ready(function(){
          $(".fancybox").fancybox({
