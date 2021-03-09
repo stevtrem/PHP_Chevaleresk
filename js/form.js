@@ -27,4 +27,12 @@ $(document).ready(function(){
             ev.preventDefault();
         }
     });
+
+    // $("#alias").on("keydown", function()
+    // {
+    //     let size = $("#alias").val().length;
+    //     if (size < 3){
+    //         $_SESSION['aliasError'] = "L'alias doit contenir au moins 3 caractères";
+    //     }
+    // });
 });

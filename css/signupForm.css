@@ -8,6 +8,10 @@
 }
 
 #signupForm {
+    background: url("../images/torch.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     margin-top:120px;
     height: 70%;
     width: 30vw;
@@ -17,8 +21,4 @@
     padding: 41px;
 }
 
-#signupLabel {
-    color: white;
-    font-size: 50px;
-}
 

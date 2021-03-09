@@ -60,7 +60,7 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
                   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                      <div class="full">
                         <div class="center-desk">
-                           <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="#"></a> </div>
+                           <div class="logo"> <a href="index.php"><img src="images/logo.png" alt="#"></a> </div>
                         </div>
                      </div>
                   </div>
@@ -69,7 +69,7 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
-                                 <li> <a href="index.html">Home</a> </li>
+                                 <li> <a href="index.php">Home</a> </li>
                                  <li><a href="clients.html">Shop</a></li>
                                  <li><a href="clients.html">Login</a></li>
                               </ul>
@@ -86,32 +86,31 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
       <section >
         <div id="signupContainer">
             <div class="col-md-6" style="margin-bottom:96px">
-               <div style="color: white; font-size: 32px; margin-left: 15%; margin-top: 96px">S'inscrire</div>
+               <div style="color: white; font-size: 32px; text-align: center; margin-top: 96px">S'inscrire</div>
                <div id="signupForm">
                   <form action="Includes/authenticate.php">
                      <div class="form-group">
                         <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName">
-                        <?php showError($firstNameError); ?><br>
+                        <?php showError($firstNameError); html_BR() ?>
                      </div>
                      <div class="form-group">
                         <input  type="text" class="form-control form-control-sm" placeholder="Nom" id="lastName" name="LastName">
-                        <?php showError($lastNameError); ?><br>
+                        <?php showError($lastNameError); html_BR() ?>
                      </div>
                      <div class="form-group">
-                        <input  type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias">
-                        <?php showError($aliasError); ?><br>
+                        <input type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias">
+                        <?php showError($aliasError); html_BR() ?>
                      </div>
                      <div class="submit_btn">
                         <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:left">S'inscrire</button>
                      </div>
                      <div class="submit_btn">
-                        <input onClick="window.location.href='index.html'" type='button' id="cancelForm" name='CancelForm' class="btn btn-primary" style="padding: 11px; float:right; background:#136af8" value='Annuler'>
+                        <input onClick="window.location.href='index.php'" type='button' id="cancelForm" name='CancelForm' class="btn btn-primary" style="padding: 11px; float:right; background:#136af8" value='Annuler'>
                      </div>
                   </form>
                </div>
             </div>
          </div>
-         <!-- ici -->
       </section>
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
