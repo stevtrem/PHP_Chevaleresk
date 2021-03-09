@@ -86,7 +86,8 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
       <section >
         <div id="signupContainer">
             <div class="col-md-6" style="margin-bottom:96px">
-               <div style="color: white; font-size: 32px; text-align: center; margin-top: 96px">S'inscrire</div>
+               <div id="signupImage"></div>
+               <div id="signupLabel">S'inscrire</div>
                <div id="signupForm">
                   <form action="Includes/authenticate.php">
                      <div class="form-group">
