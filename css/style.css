@@ -1080,9 +1080,6 @@ ul.top_icon li a {
      padding: 22px 20px;
      text-transform: uppercase;
 }
-
-
-}
 .main-menu ul li:last-child a {
      padding-right: 0;
 }
@@ -1098,11 +1095,9 @@ ul.top_icon li a {
      position: relative;
      border-bottom: solid #eee 1px;
 }
-.main-menu ul>li .sub-down li a::before {}
 .main-menu ul>li .sub-down li a:hover {
      color: #111111;
 }
-.main-menu ul>li .sub-down li a:hover::before {}
 .main-menu ul li:first-child {
      margin-left: 0;
 }
@@ -1160,7 +1155,7 @@ ul.top_icon li a {
 .main-menu ul>li a:hover {
      color: #fff;
 }
-.main-menu ul>li:nth-child (6) {
+.main-menu ul>li:nth-child(6) {
      padding-right: 0px;
 }
 .nav>li {
@@ -1176,7 +1171,6 @@ ul.top_icon li a {
      right: 0;
      padding: 15px 0px;
 }
-.sub-full {}
 .simple-down {
      padding: 15px;
 }
@@ -1580,7 +1574,7 @@ input[type="radio"] .styled:checked+label::after {
 
 /*--------------------------------------------------------------------- layout new css ---------------------------------------------------------------------*/
 .marginii {
-     margin: 154px 0px 100px 0px;
+     margin: 250px 0px 100px 0px;
 }
 .carousel-indicators li {
      display: none;
@@ -1887,7 +1881,7 @@ img.zoom {
      margin: 0px;
 }
 form {
-     background: #081b30
+     background: #081b30;
      padding: 35px 30px;
 }
 .map_section figure img {
