@@ -92,7 +92,7 @@
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                            <div class="img-box">
-                              <figure><img src="images/boksing-gloves.png" alt="img"/></figure>
+                              <figure><img src="images/indexChest.png" alt="img"/></figure>
                            </div>
                         </div>
                      </div>
