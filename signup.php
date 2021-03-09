@@ -1,22 +1,11 @@
 <?php
 session_start();
-
-
-if (!isset($_SESSION['Id']))
-{
-    header('Location:login.php');
-    $_SESSION['loginError'] = 'Accès Illégal';
-    exit();
-}
-
-function showError($message){
-   echo "<span style='color:red'>$message</span>";
-}
+//require_once 'Includes/SessionChecker.php';
+require_once 'Includes/htmlUtilities.php';
 
 $firstNameError = isset($_SESSION['firstNameError'])? $_SESSION['firstNameError'] : '';
 $lastNameError = isset($_SESSION['lastNameError'])? $_SESSION['lastNameError'] : '';
 $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
-
 
 ?>
 <!DOCTYPE html>
