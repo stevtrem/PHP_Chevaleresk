@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once 'Includes/htmlUtilities.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -8,7 +14,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Sock</title>
+      <title>Chevaleresk - Bienvenue</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -57,9 +63,9 @@
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
-                                 <li> <a href="index.html">Home</a> </li>
+                                 <li> <a href="index.php">Home</a> </li>
                                  <li><a href="clients.html">Shop</a></li>
-                                 <li><a href="login.php">Login</a></li>
+                                 <?php echo LoginBtn() ?>
                                  <li><a href="signup.php">Signup</a></li>
                                  <li><a href="Panier.php">Logo Panier a venir</a></li>
                               </ul>
@@ -86,8 +92,8 @@
                      <div class="row marginii">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                            <div class="carousel-caption ">
-                              <h1>Welcome to <strong class="color">Our Shop</strong></h1>
-                              <a class="btn btn-lg btn-primary" href="#" role="button">Buy Now</a>
+                              <h1>Chevaleresk <br><strong class="color">La Boutique</strong></h1>
+                              <a class="btn btn-lg btn-primary" href="#" role="button">Magasiner</a>
                            </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">

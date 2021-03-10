@@ -1,7 +1,11 @@
 <?php
 session_start();
-//require_once 'Includes/SessionChecker.php';
 require_once 'Includes/htmlUtilities.php';
+
+if (isset($_SESSION["Id"])){
+   header('Location:index.php');
+   exit();
+}
 
 $firstNameError = isset($_SESSION['firstNameError'])? $_SESSION['firstNameError'] : '';
 $lastNameError = isset($_SESSION['lastNameError'])? $_SESSION['lastNameError'] : '';
@@ -92,15 +96,15 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
                   <form action="Includes/authenticate.php">
                      <div class="form-group">
                         <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName">
-                        <?php showError($firstNameError); html_BR() ?>
+                        <?php showError($firstNameError);?>
                      </div>
                      <div class="form-group">
                         <input  type="text" class="form-control form-control-sm" placeholder="Nom" id="lastName" name="LastName">
-                        <?php showError($lastNameError); html_BR() ?>
+                        <?php showError($lastNameError);?>
                      </div>
                      <div class="form-group">
                         <input type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias">
-                        <?php showError($aliasError); html_BR() ?>
+                        <?php showError($aliasError);?>
                      </div>
                      <div class="submit_btn">
                         <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:left">S'inscrire</button>

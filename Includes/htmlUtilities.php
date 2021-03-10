@@ -10,6 +10,14 @@ function html_H($title, $size){
     return "<h$size>$title</h$size>";
 }
 
+function LoginBtn(){
+    if (!isset($_SESSION["Id"])){
+       return '<li><a href="login.php">Login</a></li>';
+    }else{
+       return "<li><a href='disconnect.php'>Disconnect</a></li>";
+    }
+ }
+ 
 function showError($message){
     echo "<span style='color:red'>$message</span>";
 }
