@@ -2596,3 +2596,13 @@ text-align: center;
 
 
 .about_pape .banner-main {margin-bottom: 60px;}
+
+#LogoPanier {
+     background-image: url("../images/cart.png");
+     background-size: cover;
+     height: 30px;
+     width: 30px;
+     position: absolute;
+     top: 0;
+     color:transparent
+}
