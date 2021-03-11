@@ -63,6 +63,7 @@
                                  <li><a href="clients.html">Shop</a></li>
                                  <li><a href="clients.html">Login</a></li>
                                  <li><a href="clients.html">Signup</a></li>
+                                 <li><a href="Panier.php" id="LogoPanier">Panier</a></li>
                               </ul>
                            </nav>
                         </div>
