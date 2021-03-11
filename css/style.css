@@ -2606,3 +2606,6 @@ text-align: center;
      top: 0;
      color:transparent
 }
+#btnLogout {
+     color:red;
+}
