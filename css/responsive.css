@@ -14,6 +14,12 @@
 /*------------------------------------------------------------------- 767px x 599px ---------------------------------------------------------------------*/
 
 @media only screen and (min-width: 599px) and (max-width: 767px) {
+    #LogoPanier {
+        color: black;
+        background-image: none;
+        width: 100%;
+        height: auto;
+    }
     .logo {
         text-align: center;
     }
@@ -159,6 +165,9 @@ width: 30%;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+    
+
+
     .main-menu ul > li a {padding: 8px 10px; }
 
     .banner-main .carousel-caption h1 {

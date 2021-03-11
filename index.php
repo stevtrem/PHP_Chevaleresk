@@ -67,7 +67,7 @@ require_once 'Includes/htmlUtilities.php';
                                  <li><a href="clients.html">Shop</a></li>
                                  <?php echo LoginBtn() ?>
                                  <li><a href="signup.php">Signup</a></li>
-                                 <li><a href="Panier.php">Logo Panier a venir</a></li>
+                                 <li><a href="Panier.php" id="LogoPanier">Panier</a></li>
                               </ul>
                            </nav>
                         </div>
