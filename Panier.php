@@ -35,6 +35,7 @@
       <link rel="stylesheet" href="css/owl.carousel.min.css">
       <link rel="stylesheet" href="css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico"/>
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -66,8 +67,7 @@
                               <ul class="menu-area-main">
                                  <li> <a href="index.php">Home</a> </li>
                                  <li><a href="clients.html">Shop</a></li>
-                                 <?php echo LoginBtn() ?>
-                                 <li><a href="signup.php">Signup</a></li>
+                                 <li><a href="Includes/logout.php" id="btnLogout">Logout</a></li>
                                  <li><a href="Panier.php" id="LogoPanier">Panier</a></li>
                               </ul>
                            </nav>
@@ -113,12 +113,12 @@
                            <td>
                               {$qtItem}
                            </td>
-                           <td class="editBtnPanier">
-                              <a href="Includes/editQuantityCheckout.php">Modifier</a>
+                           <td>
+                              <a class="editBtnPanier" href="Includes/editQuantityCheckout.php">Modifier</a>
                               
                            </td>
-                           <td class="removeBtnPanier">
-                              <a href="Includes/removeItemCheckout.php">Enlevé</a>
+                           <td>
+                              <a class="removeBtnPanier" href="Includes/removeItemCheckout.php?item={$idItem}">Enlevé</a>
                            </td>
                         </tr>
 
