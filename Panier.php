@@ -84,9 +84,48 @@
         <div id="PanierContainer">
             <div id="Panier">
                 <?php 
-                  echo ;
-                
-                
+                  $params = array(1);
+
+                  $sql = "select * from Panier where idJoueur = ?";
+                  
+                  $stmt = sqlsrv_query($conn, $sql, $params);
+                  
+                  echo('<table><tr><th>Item</th><th>Quantité</th></tr>');
+
+                  while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                     $idItem = $row['idItem'];
+                     $qtItem = $row['qtItem'];
+
+                     $params = array($idItem);
+                     $sql = "select urlImageItem from Items where idItem = ?";
+
+                     $stmt2 = sqlsrv_query($conn, $sql, $params);
+                     
+                     $row2 = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC);
+
+                     $urlImage = $row2['urlImageItem'];
+                     
+                     echo <<<HTML
+                        <tr>
+                           <td>
+                              <img src="{$urlImage}" height="100px" width="100px">
+                           </td>
+                           <td>
+                              {$qtItem}
+                           </td>
+                           <td class="editBtnPanier">
+                              <a href="Includes/editQuantityCheckout.php">Modifier</a>
+                              
+                           </td>
+                           <td class="removeBtnPanier">
+                              <a href="Includes/removeItemCheckout.php">Enlevé</a>
+                           </td>
+                        </tr>
+
+                     HTML;
+                  }
+                  echo('</table>');
+                  sqlsrv_close($conn);
                 ?>
                 <a id="checkoutBtn" href="Includes/Checkout.php">Checkout</a>
             </div>
