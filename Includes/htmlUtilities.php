@@ -14,7 +14,7 @@ function LoginBtn(){
     if (!isset($_SESSION["Id"])){
        return '<li><a href="login.php">Login</a></li>';
     }else{
-       return "<li><a href='disconnect.php'>Disconnect</a></li>";
+       return "<li><a href='logout.php'>Logout</a></li>";
     }
  }
  
