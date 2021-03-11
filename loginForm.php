@@ -1,3 +1,17 @@
+<?php
+session_start();
+require_once 'Includes/htmlUtilities.php';
+
+if (isset($_SESSION["Id"])){
+   header('Location:index.php');
+   exit();
+}
+
+$firstNameError = isset($_SESSION['firstNameError'])? $_SESSION['firstNameError'] : '';
+$lastNameError = isset($_SESSION['lastNameError'])? $_SESSION['lastNameError'] : '';
+$aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -8,7 +22,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Chevaleresk - </title>
+      <title>Chevaleresk - Login</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -23,7 +37,7 @@
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <!-- Css Specific to this page-->
-      <link rel="stylesheet" href="css/.css">
+      <link rel="stylesheet" href="css/signupForm.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
@@ -50,7 +64,7 @@
                   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                      <div class="full">
                         <div class="center-desk">
-                           <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="#"></a> </div>
+                           <div class="logo"> <a href="index.php"><img src="images/logo.png" alt="#"></a> </div>
                         </div>
                      </div>
                   </div>
@@ -59,11 +73,9 @@
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
-                                 <li> <a href="index.html">Home</a> </li>
-                                 <li><a href="clients.html">Shop</a></li>
-                                 <li><a href="clients.html">Login</a></li>
-                                 <li><a href="clients.html">Signup</a></li>
-                                 <li><a href="Panier.php" id="LogoPanier">Panier</a></li>
+                                 <li><a href="index.php">Home</a> </li>
+                                 <li><a href="shop.php">Shop</a> </li>
+                                 <li><a href="signup.php">Signup</a></li>
                               </ul>
                            </nav>
                         </div>
@@ -76,7 +88,34 @@
       </header>
       <!-- end header -->
       <section >
-        Write code here 
+        <div id="signupContainer">
+            <div class="col-md-6" style="margin-bottom:96px">
+               <div id="signupImage"></div>
+               <div id="signupLabel">S'authentifier</div>
+               <div id="signupForm">
+                  <form action="Includes/login.php">
+                     <div class="form-group">
+                        <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName">
+                        <?php showError($firstNameError);?>
+                     </div>
+                     <div class="form-group">
+                        <input  type="text" class="form-control form-control-sm" placeholder="Nom" id="lastName" name="LastName">
+                        <?php showError($lastNameError);?>
+                     </div>
+                     <div class="form-group">
+                        <input type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias">
+                        <?php showError($aliasError);?>
+                     </div>
+                     <div class="submit_btn">
+                        <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:left">S'authentifier</button>
+                     </div>
+                     <div class="submit_btn">
+                        <input onClick="window.location.href='index.php'" type='button' id="cancelForm" name='CancelForm' class="btn btn-primary" style="padding: 11px; float:right; background:#136af8" value='Annuler'>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
       </section>
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
@@ -91,7 +130,6 @@
       <script src="js/owl.carousel.js"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script src="js/form.js"></script>
-      <script src=>
       <script>
          $(document).ready(function(){
          $(".fancybox").fancybox({
@@ -111,3 +149,5 @@
       </script> 
    </body>
 </html>
+
+<?php unset($_SESSION['firstNameError'], $_SESSION['lastNameError'], $_SESSION['aliasError'])?>

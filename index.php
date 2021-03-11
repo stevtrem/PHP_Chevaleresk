@@ -63,10 +63,9 @@ require_once 'Includes/htmlUtilities.php';
                            <nav class="main-menu">
                               <ul class="menu-area-main">
                                  <li> <a href="index.php">Home</a> </li>
-                                 <li><a href="clients.html">Shop</a></li>
+                                 <li><a href="shop.html">Shop</a></li>
                                  <?php echo LoginBtn() ?>
-                                 <li><a href="signup.php">Signup</a></li>
-                                 <li><a href="Panier.php" id="LogoPanier">Panier</a></li>
+                                 <?php echo SignupBtn() ?>
                               </ul>
                            </nav>
                         </div>
@@ -92,7 +91,7 @@ require_once 'Includes/htmlUtilities.php';
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                            <div class="carousel-caption ">
                               <h1>Chevaleresk <br><strong class="color">La Boutique</strong></h1>
-                              <a class="btn btn-lg btn-primary" href="#" role="button">Magasiner</a>
+                              <a class="btn btn-lg btn-primary" href="shop.php" role="button">Magasiner</a>
                            </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">

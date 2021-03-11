@@ -12,9 +12,15 @@ function html_H($title, $size){
 
 function LoginBtn(){
     if (!isset($_SESSION["Id"])){
-       return '<li><a href="login.php">Login</a></li>';
+       return '<li><a href="loginForm.php">Login</a></li>';
     }else{
-       return "<li><a href='disconnect.php'>Disconnect</a></li>";
+       return "<li><a href='logout.php'>Logout</a></li><li><a href='Panier.php' id='LogoPanier'>Panier</a></li>";
+    }
+ }
+
+ function SignupBtn(){
+    if (!isset($_SESSION["Id"])){
+       return '<li><a href="signup.php">Signup</a></li>';
     }
  }
  
