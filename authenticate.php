@@ -5,9 +5,9 @@ require_once 'Includes/dbh.php';
 require_once 'Includes/htmlUtilities.php';
 
 //Information a insérer (peux provenir d'un get ou post dans notre cas c'est hardcoder)
-$alias = sanitizeString($_POST['Alias']);
-$lastName = sanitizeString($_POST['Nom']);
-$firstName = sanitizeString($_POST['Prénom']);
+$alias = sanitizeString($_GET['Alias']);
+$lastName = sanitizeString($_GET['LastName']);
+$firstName = sanitizeString($_GET['FirstName']);
 $montantInitial = 1500;
 
 
@@ -23,4 +23,6 @@ $stmt = sqlsrv_query($conn, $sql, $params);
 
 //Ceci sert a fermer la bd TRÈS IMPORTANT
 sqlsrv_close($conn);
+
+
 ?>
