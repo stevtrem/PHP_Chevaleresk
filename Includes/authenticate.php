@@ -38,12 +38,13 @@ if(isset($_POST["SubmitForm"])){
             exit();
         }
 
-        $sql = "SELECT idJoueur FROM Joueurs WHERE alias = ? AND nom = ? AND prenom = ?";
+        $sql = "SELECT * FROM Joueurs WHERE alias = ? AND nom = ? AND prenom = ?";
         $params = array($alias, $lastName, $firstName);
         $stmt = sqlsrv_query($conn, $sql, $params);
         
         while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
             $_SESSION['Id'] = $row['idJoueur'];
+            $_SESSION['alias'] = $row['alias'];
         }
 
         //Ceci sert a fermer la bd TRÈS IMPORTANT

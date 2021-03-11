@@ -92,7 +92,7 @@ require_once 'Includes/htmlUtilities.php';
                      <div class="row marginii">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                            <div class="carousel-caption ">
-                              <h1>Chevaleresk <br><strong class="color">La Boutique</strong></h1>
+                              <?php echo WelcomeMsg() ?>
                               <a class="btn btn-lg btn-primary" href="shop.php" role="button">Magasiner</a>
                            </div>
                         </div>

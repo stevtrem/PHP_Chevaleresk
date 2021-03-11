@@ -8,12 +8,13 @@ if (isset($_POST["SubmitForm"])){
     $lastName = sanitizeString($_POST['LastName']);
     $firstName = sanitizeString($_POST['FirstName']);
 
-    $sql = "SELECT idJoueur FROM Joueurs WHERE alias = ? AND nom = ? AND prenom = ?";
+    $sql = "SELECT * FROM Joueurs WHERE alias = ? AND nom = ? AND prenom = ?";
     $params = array($alias, $lastName, $firstName);
     $stmt = sqlsrv_query($conn, $sql, $params);
 
     while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
         $_SESSION['Id'] = $row['idJoueur'];
+        $_SESSION['alias'] = $row['alias'];
     }
     
     if ($_SESSION['Id'] == 0){
