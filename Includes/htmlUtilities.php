@@ -14,7 +14,7 @@ function LoginBtn(){
     if (!isset($_SESSION["Id"])){
        return '<li><a href="loginForm.php">Login</a></li>';
     }else{
-       return "<li><a href='logout.php'>Logout</a></li><li><a href='Panier.php' id='LogoPanier'>Panier</a></li>";
+       return "<li><a href='Includes/logout.php' id='btnLogout'>Logout</a></li><li><a href='Panier.php' id='LogoPanier'>Panier</a></li>";
     }
  }
 
@@ -37,8 +37,8 @@ function sanitizeString($str) {
 }
 
 function strLengthOk($str){
-    $alias = wordwrap($str, 20);
-    return (strlen($alias) >= 3);
+    $input = wordwrap($str, 20);
+    return (strlen($input) >= 3);
 }
 
 ?>
