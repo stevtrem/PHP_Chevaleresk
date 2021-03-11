@@ -1,15 +1,14 @@
 <?php 
 session_start();
-//Connecte a la bd automatiquement et nous donne accès à la variable $conn
 require_once 'dbh.php';
 require_once 'htmlUtilities.php';
 
-if(isset($_GET["SubmitForm"])){
+if(isset($_POST["SubmitForm"])){
     //Information a insérer (peux provenir d'un get ou post dans notre cas c'est hardcoder)
     $validUser = true;
-    $alias = sanitizeString($_GET['Alias']);
-    $lastName = sanitizeString($_GET['LastName']);
-    $firstName = sanitizeString($_GET['FirstName']);
+    $alias = sanitizeString($_POST['Alias']);
+    $lastName = sanitizeString($_POST['LastName']);
+    $firstName = sanitizeString($_POST['FirstName']);
 
     if(!strLengthOk($alias)){
         $validUser = false;
@@ -39,10 +38,16 @@ if(isset($_GET["SubmitForm"])){
             exit();
         }
 
-        $id = "SELECT Id FROM Joueurs WHERE alias = $alias";
-        $_SESSION["Id"] = $id;
+        $sql = "SELECT idJoueur FROM Joueurs WHERE alias = ? AND nom = ? AND prenom = ?";
+        $params = array($alias, $lastName, $firstName);
+        $stmt = sqlsrv_query($conn, $sql, $params);
+        
+        while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+            $_SESSION['Id'] = $row['idJoueur'];
+        }
 
         //Ceci sert a fermer la bd TRÈS IMPORTANT
+        sqlsrv_free_stmt($stmt);
         sqlsrv_close($conn);
         header('Location:../shop.php');
         exit();

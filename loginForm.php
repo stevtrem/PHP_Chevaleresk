@@ -94,7 +94,7 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
                <div id="signupImage"></div>
                <div id="signupLabel">S'authentifier</div>
                <div id="signupForm">
-                  <form action="Includes/login.php">
+                  <form method="POST" action="Includes/login.php">
                      <div class="form-group">
                         <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName">
                         <?php showError($firstNameError);?>
