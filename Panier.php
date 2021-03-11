@@ -1,5 +1,7 @@
 <?php
-    require_once 'Includes/SessionChecker.php';
+    #require_once 'Includes/SessionChecker.php';
+    require_once 'Includes/htmlUtilities.php';
+    require_once 'Includes/dbh.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,10 +64,11 @@
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
-                                 <li> <a href="index.html">Home</a> </li>
+                                 <li> <a href="index.php">Home</a> </li>
                                  <li><a href="clients.html">Shop</a></li>
-                                 <li><a href="clients.html">Login</a></li>
-                                 <li><a href="clients.html">Signup</a></li>
+                                 <?php echo LoginBtn() ?>
+                                 <li><a href="signup.php">Signup</a></li>
+                                 <li><a href="Panier.php" id="LogoPanier">Panier</a></li>
                               </ul>
                            </nav>
                         </div>
@@ -80,6 +83,11 @@
       <section >
         <div id="PanierContainer">
             <div id="Panier">
+                <?php 
+                  echo ;
+                
+                
+                ?>
                 <a id="checkoutBtn" href="Includes/Checkout.php">Checkout</a>
             </div>
         </div>

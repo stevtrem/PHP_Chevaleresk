@@ -7,16 +7,22 @@
     justify-content: center;
 }
 #Panier{
+    position: relative;
+    top:60px;
+    min-height: 200px;
+    height: 70vh;
     width: 33%;
     background-color: white;
     border-radius: 20px;
-    box-shadow: 5px 5px 0 0 black;
 }
 #checkoutBtn {
+    bottom: 20px;
+    right: 20px;
+    position: absolute;
     color: white;
-    border-radius: 10px;
+    border-radius: 25px;
     background-color: #136af8;
-    padding: 10px;
+    padding: 10px 15px 10px 15px;
     border: 2px solid #136af8;
 }
 #checkoutBtn:hover {
