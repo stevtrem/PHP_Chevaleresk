@@ -18,7 +18,7 @@ if (isset($_POST["SubmitForm"])){
     }
     
     if ($_SESSION['Id'] == 0){
-        $_SESSION['aliasError'] = 'Informations invalides';
+        $_SESSION['loginError'] = 'Informations invalides';
         header('Location:../loginForm.php');
     }else{
         header('Location:../index.php');

@@ -50,7 +50,7 @@ if(isset($_POST["SubmitForm"])){
         //Ceci sert a fermer la bd TRÈS IMPORTANT
         sqlsrv_free_stmt($stmt);
         sqlsrv_close($conn);
-        header('Location:../shop.php');
+        header('Location:../index.php');
         exit();
     }else{
         header('Location:../signup.php');

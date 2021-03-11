@@ -1,18 +1,9 @@
 <?php
-session_start();
-require_once 'Includes/htmlUtilities.php';
-
-if (isset($_SESSION["Id"])){
-   header('Location:index.php');
-   exit();
-}
-
-$loginError = isset($_SESSION['loginError'])? $_SESSION['loginError'] : '';
-$firstNameError = isset($_SESSION['firstNameError'])? $_SESSION['firstNameError'] : '';
-$lastNameError = isset($_SESSION['lastNameError'])? $_SESSION['lastNameError'] : '';
-$aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
+require_once "Includes/htmlUtilities.php";
+require_once "Includes/SessionChecker.php";
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -23,7 +14,7 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Chevaleresk - Login</title>
+      <title>Chevaleresk - Shop</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -38,7 +29,7 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <!-- Css Specific to this page-->
-      <link rel="stylesheet" href="css/signupForm.css">
+      <link rel="stylesheet" href="css/Panier.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
@@ -75,9 +66,10 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
-                                 <li><a href="index.php">Home</a> </li>
-                                 <li><a href="shop.php">Shop</a> </li>
-                                 <li><a href="signup.php">Signup</a></li>
+                                 <li> <a href="index.php">Home</a> </li>
+                                 <li><a href="shop.php">Shop</a></li>
+                                 <li><a href="Includes/logout.php" id="btnLogout">Logout</a></li>
+                                 <li><a href="Panier.php" id="LogoPanier">Panier</a></li>
                               </ul>
                            </nav>
                         </div>
@@ -90,35 +82,10 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
       </header>
       <!-- end header -->
       <section >
-        <div id="signupContainer">
-            <div class="col-md-6" style="margin-bottom:96px">
-               <div id="signupImage"></div>
-               <div id="signupLabel">S'authentifier</div>
-               <div id="signupForm">
-                  <form method="POST" action="Includes/login.php">
-                     <?php showError($loginError);?>
-                     <div class="form-group">
-                        <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName">
-                        <?php showError($firstNameError);?>
-                     </div>
-                     <div class="form-group">
-                        <input  type="text" class="form-control form-control-sm" placeholder="Nom" id="lastName" name="LastName">
-                        <?php showError($lastNameError);?>
-                     </div>
-                     <div class="form-group">
-                        <input type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias">
-                        <?php showError($aliasError);?>
-                     </div>
-                     <div class="submit_btn">
-                        <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:left">S'authentifier</button>
-                     </div>
-                     <div class="submit_btn">
-                        <input onClick="window.location.href='index.php'" type='button' id="cancelForm" name='CancelForm' class="btn btn-primary" style="padding: 11px; float:right; background:#136af8" value='Annuler'>
-                     </div>
-                  </form>
-               </div>
+        <div id="PanierContainer">
+            <div id="Panier">
             </div>
-         </div>
+        </div>
       </section>
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
@@ -133,6 +100,7 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
       <script src="js/owl.carousel.js"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script src="js/form.js"></script>
+      <script src=>
       <script>
          $(document).ready(function(){
          $(".fancybox").fancybox({
@@ -152,5 +120,3 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
       </script> 
    </body>
 </html>
-
-<?php unset($_SESSION['loginError'], $_SESSION['firstNameError'], $_SESSION['lastNameError'], $_SESSION['aliasError'])?>

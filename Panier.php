@@ -56,7 +56,7 @@
                   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                      <div class="full">
                         <div class="center-desk">
-                           <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="#"></a> </div>
+                           <div class="logo"> <a href="index.php"><img src="images/logo.png" alt="#"></a> </div>
                         </div>
                      </div>
                   </div>
@@ -66,7 +66,7 @@
                            <nav class="main-menu">
                               <ul class="menu-area-main">
                                  <li> <a href="index.php">Home</a> </li>
-                                 <li><a href="clients.html">Shop</a></li>
+                                 <li><a href="shop.php">Shop</a></li>
                                  <li><a href="Includes/logout.php" id="btnLogout">Logout</a></li>
                                  <li><a href="Panier.php" id="LogoPanier">Panier</a></li>
                               </ul>
