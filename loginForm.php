@@ -77,7 +77,7 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
                               <ul class="menu-area-main">
                                  <li><a href="index.php">Accueil</a> </li>
                                  <li><a href="shop.php">Boutique</a> </li>
-                                 <li><a href="signup.php">S'inscrire'</a></li>
+                                 <li><a href="signup.php">S'inscrire</a></li>
                               </ul>
                            </nav>
                         </div>
