@@ -22,7 +22,7 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Chevaleresk - Signup</title>
+      <title>Chevaleresk - S'inscrire</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -74,9 +74,9 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
-                                 <li><a href="index.php">Home</a> </li>
-                                 <li><a href="shop.php">Shop</a></li>
-                                 <li><a href="loginForm.php">Login</a></li>
+                                 <li><a href="index.php">Accueil</a> </li>
+                                 <li><a href="shop.php">Boutique</a></li>
+                                 <li><a href="loginForm.php">S'authentifier</a></li>
                               </ul>
                            </nav>
                         </div>

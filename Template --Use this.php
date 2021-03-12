@@ -60,10 +60,10 @@
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
-                                 <li> <a href="index.html">Home</a> </li>
-                                 <li><a href="clients.html">Shop</a></li>
-                                 <li><a href="clients.html">Login</a></li>
-                                 <li><a href="clients.html">Signup</a></li>
+                                 <li> <a href="index.php">Accueil</a> </li>
+                                 <li><a href="shop.php">Boutique</a></li>
+                                 <li><a href="loginForm.php">S'authentifier</a></li>
+                                 <li><a href="signup.php">S'inscrire</a></li>
                                  <li><a href="Panier.php" id="LogoPanier">Panier</a></li>
                               </ul>
                            </nav>

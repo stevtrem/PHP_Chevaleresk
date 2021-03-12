@@ -65,9 +65,9 @@
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
-                                 <li> <a href="index.php">Home</a> </li>
-                                 <li><a href="shop.php">Shop</a></li>
-                                 <li><a href="Includes/logout.php" id="btnLogout">Logout</a></li>
+                                 <li> <a href="index.php">Accueil</a> </li>
+                                 <li><a href="shop.php">Boutique</a></li>
+                                 <li><a href="Includes/logout.php" id="btnLogout">Déconnexion</a></li>
                                  <li><a href="Panier.php" id="LogoPanier">Panier</a></li>
                               </ul>
                            </nav>
@@ -118,7 +118,7 @@
                               
                            </td>
                            <td>
-                              <a class="removeBtnPanier" href="Includes/removeItemCheckout.php?item={$idItem}">Enlevé</a>
+                              <a class="removeBtnPanier" href="Includes/removeItemCheckout.php?item={$idItem}">Enlever</a>
                            </td>
                         </tr>
 
@@ -127,7 +127,7 @@
                   echo('</table>');
                   sqlsrv_close($conn);
                 ?>
-                <a id="checkoutBtn" href="Includes/Checkout.php">Checkout</a>
+                <a id="checkoutBtn" href="Includes/Checkout.php">Paiement</a>
             </div>
         </div>
          <!-- ici -->

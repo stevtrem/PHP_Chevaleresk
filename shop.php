@@ -14,7 +14,7 @@ require_once "Includes/SessionChecker.php";
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Chevaleresk - Shop</title>
+      <title>Chevaleresk - Boutique</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -66,9 +66,9 @@ require_once "Includes/SessionChecker.php";
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
-                                 <li> <a href="index.php">Home</a> </li>
-                                 <li><a href="shop.php">Shop</a></li>
-                                 <li><a href="Includes/logout.php" id="btnLogout">Logout</a></li>
+                                 <li> <a href="index.php">Accueil</a> </li>
+                                 <li><a href="shop.php">Boutique</a></li>
+                                 <li><a href="Includes/logout.php" id="btnLogout">Déconnexion</a></li>
                                  <li><a href="Panier.php" id="LogoPanier">Panier</a></li>
                               </ul>
                            </nav>
