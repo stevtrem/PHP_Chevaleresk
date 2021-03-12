@@ -21,7 +21,7 @@ if (isset($_POST["SubmitForm"])){
         $_SESSION['loginError'] = 'Informations invalides';
         header('Location:../loginForm.php');
     }else{
-        header('Location:../index.php');
+        header('Location:../shop.php');
     }
 
     sqlsrv_free_stmt($stmt);
