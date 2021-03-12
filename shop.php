@@ -1,7 +1,7 @@
 <?php
 require_once "Includes/htmlUtilities.php";
 require_once "Includes/SessionChecker.php";
-
+require_once 'Includes/dbh.php';
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ require_once "Includes/SessionChecker.php";
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <!-- Css Specific to this page-->
-      <link rel="stylesheet" href="css/Panier.css">
+      <link rel="stylesheet" href="css/Boutique.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
@@ -66,10 +66,10 @@ require_once "Includes/SessionChecker.php";
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
-                                 <li> <a href="index.php">Accueil</a> </li>
+                                 <li><a id="checkoutBtn" href="Includes/Checkout.php">Paiement</a></li>
+                                 <li><a href="index.php">Accueil</a> </li>
                                  <li><a href="shop.php">Boutique</a></li>
-                                 <li><a href="Includes/logout.php" id="btnLogout">Déconnexion</a></li>
-                                 <li><a href="Panier.php" id="LogoPanier">Panier</a></li>
+                                 <?php echo loginBtn() ?>
                               </ul>
                            </nav>
                         </div>
@@ -82,8 +82,46 @@ require_once "Includes/SessionChecker.php";
       </header>
       <!-- end header -->
       <section >
-        <div id="PanierContainer">
-            <div id="Panier">
+        <div id="boutiqueContainer">
+            <div id="boutique">
+               <?php
+                  $sql = "SELECT * FROM items";
+                  $stmt = sqlsrv_query($conn, $sql);
+
+                  while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
+                     $idItem = $row['idItem'];
+                     $nomItem = $row['nomItem'];
+                     $qtStock = $row['qtStockItem'];
+                     $prixUnitaire = (int)$row['prixUnitaireItem'];
+                     $urlItem = $row['urlImageItem'];
+
+                     echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
+
+                     echo <<<HTML
+                        <div>
+                        <tr>
+                           <td>
+                              <img src="{$urlItem}" height="100px" width="100px">
+                           </td>
+                           <td>
+                              {$qtStock}
+                           </td>
+                           <td id="costLabel">
+                              {$prixUnitaire}
+                           </td>
+                           <td style="font-weight:bold">
+                              {$nomItem}
+                           </td>
+                           <td>
+                              <a class="addBtnBoutique" href="Includes/addItemCheckout.php?item={$idItem}">Ajouter</a>
+                           </td>
+                        </tr>
+                     HTML;
+                  }  
+                  echo('</table>');
+                  sqlsrv_close($conn);
+               ?>
+               
             </div>
         </div>
       </section>

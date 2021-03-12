@@ -1,5 +1,5 @@
 <?php
-    #require_once 'Includes/SessionChecker.php';
+    require_once 'Includes/SessionChecker.php';
     require_once 'Includes/htmlUtilities.php';
     require_once 'Includes/dbh.php';
 ?>
@@ -67,8 +67,7 @@
                               <ul class="menu-area-main">
                                  <li> <a href="index.php">Accueil</a> </li>
                                  <li><a href="shop.php">Boutique</a></li>
-                                 <li><a href="Includes/logout.php" id="btnLogout">Déconnexion</a></li>
-                                 <li><a href="Panier.php" id="LogoPanier">Panier</a></li>
+                                 <?php echo LoginBtn() ?>
                               </ul>
                            </nav>
                         </div>
@@ -121,7 +120,6 @@
                               <a class="removeBtnPanier" href="Includes/removeItemCheckout.php?item={$idItem}">Enlever</a>
                            </td>
                         </tr>
-
                      HTML;
                   }
                   echo('</table>');
