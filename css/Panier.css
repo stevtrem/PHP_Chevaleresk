@@ -15,7 +15,9 @@
     width: 33%;
     background-color: white;
     border-radius: 20px;
-    border: 2px solid #465464
+    border: 2px solid #465464;
+    display: flex;
+    justify-content: center;
 }
 #checkoutBtn {
     bottom: 20px;
@@ -41,16 +43,24 @@ th, td {
     font-size: 20px;
 }
 table {
-    margin-left: 30px;
+    padding: 20px;
 }
-.editBtnPanier {
-    color: yellow;
-    text-shadow: 1px 1px gray;
-}
-.removeBtnPanier {
-    color: red;
-    text-shadow: 1px 1px gray;
-}
-.editBtnPanier:hover, .removeBtnPanier:hover {
+.glyphicon-edit:hover, .glyphicon-remove-circle:hover {
     color: black;
+}
+h4 {
+    color:black;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 20px;
+    font-size: 20px;
+}
+.glyphicon-remove-circle {
+    color: red;
+    text-shadow: 1px gray;
+}
+.glyphicon-edit {
+    color: yellowgreen;
+    text-shadow: 1px gray;
 }
