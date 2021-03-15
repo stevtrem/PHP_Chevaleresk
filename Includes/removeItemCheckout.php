@@ -1,19 +1,22 @@
 <?php
-    require_once 'Includes/SessionChecker.php'; 
-    require_once 'Includes/dbh.php';
+    require_once 'SessionChecker.php'; 
+    require_once 'dbh.php';
 
-    if(isset($_GET['idItem']))
+    if(isset($_GET['item']))
     {
-        $params = array($_SESSION['Id'], $_GET);
+        $params = array($_SESSION['Id'], $_GET['item']);
 
-        $sql = "update Panier where idJoueur = ? and idItem = ?";
+        $sql = "delete from Panier where idJoueur = ? and idItem = ?";
 
         $stmt = sqlsrv_query($conn, $sql, $params);
-
+        
         sqlsrv_close($conn);
+
+        header('Location:../Panier.php');
+        exit();
     }
     else {
-        header('Location:Panier.php');
+        header('Location:../Panier.php');
         $_SESSION['removeCheckoutError'] = 'Impossible d\'enlever l\'item';
         exit();
     }

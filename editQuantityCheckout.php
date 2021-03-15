@@ -1,8 +1,16 @@
 <?php
-    require_once 'Includes/SessionChecker.php';
-    require_once 'Includes/htmlUtilities.php';
+    require_once 'Includes/SessionChecker.php'; 
     require_once 'Includes/dbh.php';
+    require_once 'Includes/htmlUtilities.php';
+
+    if(!isset($_GET['item']))
+    {
+        header('Location:Panier.php');
+        $_SESSION['removeCheckoutError'] = 'Impossible de changer la quantite l\'item';
+        exit();
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -82,55 +90,12 @@
         <div id="PanierContainer">
             <div id="Panier">
                 <?php
-                  $totalCart = 0; 
-                  $params = array($_SESSION['Id']);
-
-                  $sql = "select * from Panier where idJoueur = ?";
-                  
-                  $stmt = sqlsrv_query($conn, $sql, $params);
-                  
-                  echo('<table><tr><th>Item</th><th>Quantité</th><th>Prix</th></tr>');
-
-                  while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-                     $idItem = $row['idItem'];
-                     $qtItem = $row['qtItem'];
-
-                     $params = array($idItem);
-                     $sql = "select urlImageItem, prixUnitaireItem from Items where idItem = ?";
-
-                     $stmt2 = sqlsrv_query($conn, $sql, $params);
-                     
-                     $row2 = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC);
-
-                     $urlImage = $row2['urlImageItem'];
-                     $prix = $row2['prixUnitaireItem'] * $qtItem;
-                     $totalCart += $prix;
-                     echo <<<HTML
-                        <tr>
-                           <td>
-                              <img src="{$urlImage}" height="100px" width="100px">
-                           </td>
-                           <td>
-                              {$qtItem}
-                           </td>
-                           <td>{$prix}</td>
-                           <td>
-                              <a href="editQuantityCheckout.php?item={$idItem}"><span class="glyphicon glyphicon-edit"></span></a>
-                           </td>
-                           <td>
-                              <a href="Includes/removeItemCheckout.php?item={$idItem}"><span class="glyphicon glyphicon-remove-circle"></span></a>
-                           </td>
-                        </tr>
-                     HTML;
-                  }
-                  echo('</table>');
-
-                  echo <<<HTML
-                     <h4>Total : {$totalCart}</h4>
-                  HTML;
-                  sqlsrv_close($conn);
+                
+                
+                
+                
+                
                 ?>
-                <a id="checkoutBtn" href="Includes/Checkout.php">Paiement</a>
             </div>
         </div>
          <!-- ici -->
