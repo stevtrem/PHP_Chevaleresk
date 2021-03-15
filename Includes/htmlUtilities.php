@@ -11,7 +11,7 @@ function html_H($title, $size){
 }
 
 function LoginBtn(){
-    if (!isset($_SESSION["Id"])){
+    if (!isset($_SESSION['Id'])){
        return '<li><a href="loginForm.php">S\'authentifier</a></li>';
     }else{
        $alias = $_SESSION['alias'];
