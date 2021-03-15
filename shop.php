@@ -88,12 +88,14 @@ require_once 'Includes/dbh.php';
                <form method="POST" action="Includes/searchItem.php">
                   <h1 style="color:white">Filtre</h1>
                   <div class="form-group">
-                     <label><input type="checkbox" class="box" name="checkbox[]" value="all">Tous</label><br>
-                     <label><input type="checkbox" class="box" name="checkbox[]" value="armes">Armes</label><br>
-                     <label><input type="checkbox" class="box" name="checkbox[]" value="armures">Armures</label><br>
-                     <label><input type="checkbox" class="box" name="checkbox[]" value="potions">Potions</label><br>
-                     <label><input type="checkbox" class="box" name="checkbox[]" value="prix">Prix</label><br>
-                     <label><input type="checkbox" class="box" name="checkbox[]" value="a-z">A-Z</label><br>
+                     <label><input type="checkbox" class="box" name="all" value="all">Tous</label><br>
+                     <label><input type="checkbox" class="box" name="type[]" value="armes">Armes</label><br>
+                     <label><input type="checkbox" class="box" name="type[]" value="armures">Armures</label><br>
+                     <label><input type="checkbox" class="box" name="type[]" value="potions">Potions</label><br>
+                     <label><input type="radio" class="box" name="order[]" value="ASC">Prix (Asc)</label><br>
+                     <label><input type="radio" class="box" name="order[]" value="DESC">Prix (Desc)</label><br>
+                     <label><input type="radio" class="box" name="order[]" value="a-z">A-Z</label><br>
+                     <label><input type="radio" class="box" name="order[]" value="z-a">Z-A</label><br>
                   </div>
                   <div>
                      <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px">Rechercher</button>
@@ -102,7 +104,7 @@ require_once 'Includes/dbh.php';
             </div>
             <div id="boutique">
                <?php
-                  $sql = "SELECT * FROM items ORDER BY prixUnitaireItem ASC";
+                  $sql = getQuery();
                   $stmt = sqlsrv_query($conn, $sql);
 
                   while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
@@ -118,7 +120,7 @@ require_once 'Includes/dbh.php';
                         <div>
                         <tr>
                            <td>
-                              <img src="{$urlItem}" height="100px" width="100px">
+                              <img src="imagesItem/{$urlItem}" height="100px" width="100px">
                            </td>
                            <td>
                               {$qtStock}

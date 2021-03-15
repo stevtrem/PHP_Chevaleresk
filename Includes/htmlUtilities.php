@@ -40,6 +40,14 @@ function showError($message){
     echo "<span style='color:red'>$message</span>";
 }
 
+function getQuery(){
+    if (isset($_SESSION["sql"])){
+        return $_SESSION["sql"];
+    }else{
+        return "SELECT * FROM items ORDER BY prixUnitaireItem ASC";
+    }
+}
+
 function sanitizeString($str) {
     $str = trim($str) ;
     $str = stripslashes($str);
