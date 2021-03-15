@@ -8,13 +8,17 @@
     min-height: 200px;
     min-width: 600px;
     margin-top: 180px;
-    margin-bottom: 180px;
+    margin-bottom: 180px; 
     width: 50vw;
     height: 70vh;
     overflow: auto;
     background-color: white;
     border-radius: 20px;
     border: 2px solid #465464
+}
+#searchBar{
+    width: 200px;
+    margin-right: 50px;
 }
 
 table {
@@ -65,5 +69,13 @@ td{
 #costLabel {
     color:#C19E25;
     text-shadow: 1px 1px gray;
+}
+
+.box {
+    margin: 15px;
+}
+label {
+    color:white;
+    font-style: italic;
 }
 

@@ -1,6 +1,6 @@
 <?php
+session_start();
 require_once "Includes/htmlUtilities.php";
-require_once "Includes/SessionChecker.php";
 require_once 'Includes/dbh.php';
 ?>
 
@@ -9,7 +9,7 @@ require_once 'Includes/dbh.php';
    <head>
       <!-- basic -->
       <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
       <!-- mobile metas -->
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
@@ -66,10 +66,11 @@ require_once 'Includes/dbh.php';
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
-                                 <li><a id="checkoutBtn" href="Includes/Checkout.php">Paiement</a></li>
+                                 <!--<li><a id="checkoutBtn" href="Includes/Checkout.php">Paiement</a></li>-->
                                  <li><a href="index.php">Accueil</a> </li>
                                  <li><a href="shop.php">Boutique</a></li>
-                                 <?php echo loginBtn() ?>
+                                 <?php echo LoginBtn() ?>
+                                 <?php echo SignupBtn() ?>
                               </ul>
                            </nav>
                         </div>
@@ -83,9 +84,27 @@ require_once 'Includes/dbh.php';
       <!-- end header -->
       <section >
         <div id="boutiqueContainer">
+            <div id="searchBar">
+               <form method="POST" action="Includes/searchItem.php">
+                  <h1 style="color:white">Filtre</h1>
+                  <div class="form-group">
+                     <label><input type="checkbox" class="box" name="all" value="all">Tous</label><br>
+                     <label><input type="checkbox" class="box" name="type[]" value="armes">Armes</label><br>
+                     <label><input type="checkbox" class="box" name="type[]" value="armures">Armures</label><br>
+                     <label><input type="checkbox" class="box" name="type[]" value="potions">Potions</label><br>
+                     <label><input type="radio" class="box" name="order[]" value="ASC">Prix (Asc)</label><br>
+                     <label><input type="radio" class="box" name="order[]" value="DESC">Prix (Desc)</label><br>
+                     <label><input type="radio" class="box" name="order[]" value="a-z">A-Z</label><br>
+                     <label><input type="radio" class="box" name="order[]" value="z-a">Z-A</label><br>
+                  </div>
+                  <div>
+                     <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px">Rechercher</button>
+                  </div>
+               </form>
+            </div>
             <div id="boutique">
                <?php
-                  $sql = "SELECT * FROM items";
+                  $sql = getQuery();
                   $stmt = sqlsrv_query($conn, $sql);
 
                   while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
@@ -101,7 +120,7 @@ require_once 'Includes/dbh.php';
                         <div>
                         <tr>
                            <td>
-                              <img src="{$urlItem}" height="100px" width="100px">
+                              <img src="imagesItem/{$urlItem}" height="100px" width="100px">
                            </td>
                            <td>
                               {$qtStock}

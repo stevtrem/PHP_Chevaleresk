@@ -11,7 +11,7 @@ function html_H($title, $size){
 }
 
 function LoginBtn(){
-    if (!isset($_SESSION["Id"])){
+    if (!isset($_SESSION['Id'])){
        return '<li><a href="loginForm.php">S\'authentifier</a></li>';
     }else{
        $alias = $_SESSION['alias'];
@@ -38,6 +38,14 @@ function WelcomeMsg(){
  
 function showError($message){
     echo "<span style='color:red'>$message</span>";
+}
+
+function getQuery(){
+    if (isset($_SESSION["sql"])){
+        return $_SESSION["sql"];
+    }else{
+        return "SELECT * FROM items ORDER BY prixUnitaireItem ASC";
+    }
 }
 
 function sanitizeString($str) {
