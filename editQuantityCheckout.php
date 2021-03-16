@@ -90,11 +90,36 @@
         <div id="PanierContainer">
             <div id="Panier">
                 <?php
-                
-                
-                
-                
-                
+                    $idItem = $_GET['item'];
+
+                    $params = array($idItem);
+                    $sql = "select urlImageItem, prixUnitaireItem from Items where idItem = ?";
+
+                    $stmt = sqlsrv_query($conn, $sql, $params);
+                    
+                    $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+
+                    $urlImage = $row['urlImageItem'];
+                    $prixUnitaire = $row['prixUnitaireItem'];
+
+                    $params2 = array($_SESSION, $idItem);
+
+                    $sql = "select qtItem from Panier where idJoueur = ? and idItem = ?";
+
+                    $stmt = sqlsrv_query($conn, $sql, $params);
+                    
+                    $row2 = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+                    
+                    echo($row2);
+                    $qtItem = $row2['qtItem'];
+                    sqlsrv_close($conn);
+
+                    echo <<<HTML
+                        <div id="imgItemEdit" style="background: {$urlImage}"></div>
+                        <input type="number" min="1" max="100"/>
+                        
+
+                    HTML;
                 ?>
             </div>
         </div>
