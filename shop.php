@@ -89,16 +89,16 @@ require_once 'Includes/dbh.php';
                   <h1 style="color:white">Filtre</h1>
                   <div class="form-group">
                      <label><input type="checkbox" class="box" name="all" value="all">Tous</label><br>
-                     <label><input type="checkbox" class="box" name="type[]" value="armes">Armes</label><br>
-                     <label><input type="checkbox" class="box" name="type[]" value="armures">Armures</label><br>
-                     <label><input type="checkbox" class="box" name="type[]" value="potions">Potions</label><br>
-                     <label><input type="radio" class="box" name="order[]" value="ASC">Prix (Asc)</label><br>
-                     <label><input type="radio" class="box" name="order[]" value="DESC">Prix (Desc)</label><br>
-                     <label><input type="radio" class="box" name="order[]" value="a-z">A-Z</label><br>
-                     <label><input type="radio" class="box" name="order[]" value="z-a">Z-A</label><br>
+                     <label><input type="checkbox" class="box" name="type[]" value="WPN">Armes</label><br>
+                     <label><input type="checkbox" class="box" name="type[]" value="ARM">Armures</label><br>
+                     <label><input type="checkbox" class="box" name="type[]" value="POT">Potions</label><br>
+                     <label><input type="radio" class="box" name="order[]" value="prixUnitaireItem ASC">Prix (Asc)</label><br>
+                     <label><input type="radio" class="box" name="order[]" value="prixUnitaireItem DESC">Prix (Desc)</label><br>
+                     <label><input type="radio" class="box" name="order[]" value="nomItem ASC">A-Z</label><br>
+                     <label><input type="radio" class="box" name="order[]" value="nomItem DESC">Z-A</label><br>
                   </div>
                   <div>
-                     <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px">Rechercher</button>
+                     <button type="submit" id="SubmitSearch" name="SubmitSearch" class="btn btn-primary" style="padding: 11px">Rechercher</button>
                   </div>
                </form>
             </div>
@@ -172,6 +172,7 @@ require_once 'Includes/dbh.php';
          
          $(this).removeClass('transition');
          });
+         
          });
          
       </script> 
