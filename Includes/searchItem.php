@@ -10,17 +10,28 @@
 
     if (isset($_POST["SubmitSearch"])){
         $sql = "SELECT * FROM Items";
-        if (!isset($_POST['all']) && isset($_POST['type'])){
-            $sql.= " WHERE";
-            $length = count($_POST['type']);
-            for ($i = 0; $i < $length; $i++){
-                if (!empty($_POST['type'][$i])){
-                    if ($i > 0){
-                        $sql.= " OR";
-                    }
-                    $type = $_POST['type'][$i];
-                    $sql.= " typeItem = '$type'";
-                }  
+        if (!isset($_POST['all'])){
+            if (isset($_POST['type'])){
+                $sql.= " WHERE";
+                $length = count($_POST['type']);
+                for ($i = 0; $i < $length; $i++){
+                    if (!empty($_POST['type'][$i])){
+                        if ($i > 0){
+                            $sql.= " OR";
+                        }
+                        $type = $_POST['type'][$i];
+                        $sql.= " typeItem = '$type'";
+                        $_SESSION[$type] = "checked";
+                        unset($_SESSION['allCheck']);
+                    }  
+                }
+            }else{
+                unset($_SESSION['allCheck']);
+            }
+        }else{
+            $_SESSION['allCheck'] = "checked";
+            foreach ($_POST['type'] as $type){
+                unset($_SESSION[$type]);
             }
         }
         if (isset($_POST['order'])){
