@@ -25,7 +25,8 @@
     position: absolute;
     color: white;
     border-radius: 25px;
-    background-color: #136af8;
+    background-color: red;
+    /*background-color: #136af8;*/
     padding: 10px 15px 10px 15px;
     border: 2px solid #136af8;
     border:3px solid #136af8;
