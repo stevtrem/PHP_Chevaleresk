@@ -14,6 +14,7 @@ alias varchar(32) not null,
 nom varchar(32) not null,
 prenom varchar(32),
 montantInitial money not null,
+motdepasse varbinary(128)
 primary key(idJoueur)
 );
 

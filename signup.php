@@ -10,6 +10,7 @@ if (isset($_SESSION["Id"])){
 $firstNameError = isset($_SESSION['firstNameError'])? $_SESSION['firstNameError'] : '';
 $lastNameError = isset($_SESSION['lastNameError'])? $_SESSION['lastNameError'] : '';
 $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
+$passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] : '';
 
 ?>
 <!DOCTYPE html>
@@ -106,6 +107,10 @@ $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
                      <div class="form-group">
                         <input type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias">
                         <?php showError($aliasError);?>
+                     </div>
+                     <div class="form-group">
+                        <input type="text" class="form-control form-control-sm" placeholder="Mot de passe" id="password" name="Password">
+                        <?php showError($passwordError);?>
                      </div>
                      <div class="submit_btn">
                         <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:left">S'inscrire</button>
