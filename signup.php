@@ -109,7 +109,7 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
                         <?php showError($aliasError);?>
                      </div>
                      <div class="form-group">
-                        <input type="text" class="form-control form-control-sm" placeholder="Mot de passe" id="password" name="Password">
+                        <input type="password" class="form-control form-control-sm" placeholder="Mot de passe" id="password" name="Password">
                         <?php showError($passwordError);?>
                      </div>
                      <div class="submit_btn">
@@ -156,4 +156,4 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
    </body>
 </html>
 
-<?php unset($_SESSION['firstNameError'], $_SESSION['lastNameError'], $_SESSION['aliasError'])?>
+<?php unset($_SESSION['firstNameError'], $_SESSION['lastNameError'], $_SESSION['aliasError'], $_SESSION['passwordError'])?>
