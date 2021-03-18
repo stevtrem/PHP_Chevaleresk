@@ -1,5 +1,5 @@
 <?php
-    require_once 'Includes/SessionChecker.php'; 
+    //require_once 'Includes/SessionChecker.php'; 
     require_once 'Includes/dbh.php';
     require_once 'Includes/htmlUtilities.php';
 
@@ -116,7 +116,11 @@
 
                     echo <<<HTML
                         <div id="imgItemEdit" style="background: {$urlImage}"></div>
-                        <input type="number" min="1" max="100"/>
+                        <form method="POST" action="Includes/editQuantityCheckout.php">
+                           <input type="number" min="1" class="form-control form-control-sm"/>
+                           <input type="submit" value="Modifier la quantité"/>
+                        </form>
+                        
                         
 
                     HTML;
