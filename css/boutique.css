@@ -73,9 +73,13 @@ td{
 
 .box {
     margin: 15px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
 }
 label {
     color:white;
     font-style: italic;
 }
+
 

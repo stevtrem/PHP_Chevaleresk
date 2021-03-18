@@ -9,6 +9,7 @@ if(isset($_POST["SubmitForm"])){
     $alias = sanitizeString($_POST['Alias']);
     $lastName = sanitizeString($_POST['LastName']);
     $firstName = sanitizeString($_POST['FirstName']);
+    $password = sanitizeString($_POST['Password']);
 
     if(!strLengthOk($alias)){
         $validUser = false;
@@ -22,12 +23,16 @@ if(isset($_POST["SubmitForm"])){
         $validUser = false;
         $_SESSION['firstNameError']='Un prénom doit contenir au moins 3 caractères';
     }
+    if(!strLengthOk($password)){
+        $validUser = false;
+        $_SESSION['passwordError']='Un mot de passe doit contenir au moins 3 caractères';
+    }
     if($validUser){
         //On mets les paramètres sous forme d'un array
-        $params = array($alias, $lastName, $firstName);
+        $params = array($alias, $lastName, $firstName, $password);
 
         //On définit la close sql à executer, les ? définissent les variable qui vont être remplacer dans le même ordre que le array
-        $sql = "EXEC InsererJoueur @alias = ?, @nom = ?, @prenom = ?";
+        $sql = "EXEC InsererJoueur @alias = ?, @nom = ?, @prenom = ?, @password = ?";
 
         //On execute le code sql en lui donnant la connexion, le code sql incomplet et les information a completer
         $stmt = sqlsrv_query($conn, $sql, $params);

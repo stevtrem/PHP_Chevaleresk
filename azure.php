@@ -1,18 +1,3 @@
-<?php
-session_start();
-require_once 'Includes/htmlUtilities.php';
-
-if (isset($_SESSION["Id"])){
-   header('Location:index.php');
-   exit();
-}
-
-$firstNameError = isset($_SESSION['firstNameError'])? $_SESSION['firstNameError'] : '';
-$lastNameError = isset($_SESSION['lastNameError'])? $_SESSION['lastNameError'] : '';
-$aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
-$passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] : '';
-
-?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -23,7 +8,7 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Chevaleresk - S'inscrire</title>
+      <title>Chevaleresk - </title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -38,7 +23,7 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <!-- Css Specific to this page-->
-      <link rel="stylesheet" href="css/signupForm.css">
+      <link rel="stylesheet" href="css/.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
@@ -66,7 +51,7 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
                   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                      <div class="full">
                         <div class="center-desk">
-                           <div class="logo"> <a href="index.php"><img src="images/logo.png" alt="#"></a> </div>
+                           <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="#"></a> </div>
                         </div>
                      </div>
                   </div>
@@ -75,9 +60,9 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
-                                 <li><a href="index.php">Accueil</a> </li>
+                                 <li> <a href="index.php">Accueil</a> </li>
                                  <li><a href="shop.php">Boutique</a></li>
-                                 <li><a href="loginForm.php">S'authentifier</a></li>
+                                 <?php echo LoginBtn() ?>
                               </ul>
                            </nav>
                         </div>
@@ -90,38 +75,8 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
       </header>
       <!-- end header -->
       <section >
-        <div id="signupContainer">
-            <div class="col-md-6" style="margin-bottom:96px">
-               <div id="signupImage"></div>
-               <div id="signupLabel">S'inscrire</div>
-               <div id="signupForm">
-                  <form method="POST" action="Includes/authenticate.php">
-                     <div class="form-group">
-                        <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName">
-                        <?php showError($firstNameError);?>
-                     </div>
-                     <div class="form-group">
-                        <input  type="text" class="form-control form-control-sm" placeholder="Nom" id="lastName" name="LastName">
-                        <?php showError($lastNameError);?>
-                     </div>
-                     <div class="form-group">
-                        <input type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias">
-                        <?php showError($aliasError);?>
-                     </div>
-                     <div class="form-group">
-                        <input type="password" class="form-control form-control-sm" placeholder="Mot de passe" id="password" name="Password">
-                        <?php showError($passwordError);?>
-                     </div>
-                     <div class="submit_btn">
-                        <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:left">S'inscrire</button>
-                     </div>
-                     <div class="submit_btn">
-                        <input onClick="window.location.href='index.php'" type='button' id="cancelForm" name='CancelForm' class="btn btn-primary" style="padding: 11px; float:right; background:#136af8" value='Annuler'>
-                     </div>
-                  </form>
-               </div>
-            </div>
-         </div>
+         Wow vincent
+        Write code here 
       </section>
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
@@ -136,6 +91,7 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
       <script src="js/owl.carousel.js"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script src="js/form.js"></script>
+      <script src=>
       <script>
          $(document).ready(function(){
          $(".fancybox").fancybox({
@@ -155,5 +111,3 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
       </script> 
    </body>
 </html>
-
-<?php unset($_SESSION['firstNameError'], $_SESSION['lastNameError'], $_SESSION['aliasError'], $_SESSION['passwordError'])?>

@@ -2,6 +2,12 @@
 session_start();
 require_once "Includes/htmlUtilities.php";
 require_once 'Includes/dbh.php';
+
+$allCheck = isset($_SESSION["allCheck"]) ? $_SESSION["allCheck"] : "";
+$wpnCheck = isset($_SESSION['WPN']) ? $_SESSION["WPN"] : "";
+$armCheck = isset($_SESSION['ARM']) ? $_SESSION["ARM"] : "";
+$potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
+
 ?>
 
 <!DOCTYPE html>
@@ -88,10 +94,10 @@ require_once 'Includes/dbh.php';
                <form method="POST" action="Includes/searchItem.php">
                   <h1 style="color:white">Filtre</h1>
                   <div class="form-group">
-                     <label><input type="checkbox" class="box" name="all" value="all">Tous</label><br>
-                     <label><input type="checkbox" class="box" name="type[]" value="WPN">Armes</label><br>
-                     <label><input type="checkbox" class="box" name="type[]" value="ARM">Armures</label><br>
-                     <label><input type="checkbox" class="box" name="type[]" value="POT">Potions</label><br>
+                     <label><input type="checkbox" class="box" name="all" value="all" <?php echo $allCheck ?>>Tous</label><br>
+                     <label><input type="checkbox" class="box" name="type[]" value="WPN" <?php echo $wpnCheck ?>>Armes</label><br>
+                     <label><input type="checkbox" class="box" name="type[]" value="ARM" <?php echo $armCheck ?>>Armures</label><br>
+                     <label><input type="checkbox" class="box" name="type[]" value="POT" <?php echo $potCheck ?>>Potions</label><br>
                      <label><input type="radio" class="box" name="order[]" value="prixUnitaireItem ASC">Prix (Asc)</label><br>
                      <label><input type="radio" class="box" name="order[]" value="prixUnitaireItem DESC">Prix (Desc)</label><br>
                      <label><input type="radio" class="box" name="order[]" value="nomItem ASC">A-Z</label><br>
@@ -132,7 +138,7 @@ require_once 'Includes/dbh.php';
                               {$nomItem}
                            </td>
                            <td>
-                              <a class="addBtnBoutique" href="Includes/addItemCheckout.php?item={$idItem}">Ajouter</a>
+                              <a class="addBtnBoutique" href="Includes/addItemPanier.php?item={$idItem}">Ajouter</a>
                            </td>
                         </tr>
                      HTML;
