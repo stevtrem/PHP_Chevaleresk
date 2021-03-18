@@ -1,8 +1,3 @@
-<?php
-session_start();
-require_once 'Includes/htmlUtilities.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -13,7 +8,7 @@ require_once 'Includes/htmlUtilities.php';
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Chevaleresk - Bienvenue</title>
+      <title>Chevaleresk - </title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -27,6 +22,8 @@ require_once 'Includes/htmlUtilities.php';
       <link rel="icon" href="images/fevicon.png" type="image/gif" />
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <!-- Css Specific to this page-->
+      <link rel="stylesheet" href="css/.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
@@ -54,7 +51,7 @@ require_once 'Includes/htmlUtilities.php';
                   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                      <div class="full">
                         <div class="center-desk">
-                           <div class="logo"> <a href="index.php"><img src="images/logo.png" alt="#"></a> </div>
+                           <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="#"></a> </div>
                         </div>
                      </div>
                   </div>
@@ -66,7 +63,6 @@ require_once 'Includes/htmlUtilities.php';
                                  <li> <a href="index.php">Accueil</a> </li>
                                  <li><a href="shop.php">Boutique</a></li>
                                  <?php echo LoginBtn() ?>
-                                 <?php echo SignupBtn() ?>
                               </ul>
                            </nav>
                         </div>
@@ -79,35 +75,9 @@ require_once 'Includes/htmlUtilities.php';
       </header>
       <!-- end header -->
       <section >
-         <div id="main_slider" class="section banner-main">
-            <ol class="carousel-indicators">
-               <li data-target="#main_slider" data-slide-to="0" class="active"></li>
-               <li data-target="#main_slider" data-slide-to="1"></li>
-               <li data-target="#main_slider" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-               <div>
-                  <div class="container">
-                     <div class="row marginii">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                           <div class="carousel-caption ">
-                              <?php echo WelcomeMsg() ?>
-                              <a class="btn btn-lg btn-primary" href="shop.php" role="button">Magasiner</a>
-                           </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                           <div class="img-box">
-                              <figure><img src="images/indexChest.png" alt="img"/></figure>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            </a>
-         </div>
+         Wow vincent
+        Write code here 
       </section>
-      <!-- plant -->
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
@@ -121,6 +91,7 @@ require_once 'Includes/htmlUtilities.php';
       <script src="js/owl.carousel.js"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script src="js/form.js"></script>
+      <script src=>
       <script>
          $(document).ready(function(){
          $(".fancybox").fancybox({
