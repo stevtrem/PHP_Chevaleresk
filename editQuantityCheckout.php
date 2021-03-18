@@ -1,5 +1,5 @@
 <?php
-    //require_once 'Includes/SessionChecker.php'; 
+    require_once 'Includes/SessionChecker.php'; 
     require_once 'Includes/dbh.php';
     require_once 'Includes/htmlUtilities.php';
 
