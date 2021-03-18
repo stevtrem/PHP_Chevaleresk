@@ -9,4 +9,3 @@
         $_SESSION['removeCheckoutError'] = 'Impossible de changer la quantite l\'item';
         exit();
     }
-?>
