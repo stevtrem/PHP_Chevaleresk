@@ -126,7 +126,7 @@ $potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
                         <div>
                         <tr>
                            <td>
-                              <img src="imagesItem/{$urlItem}" height="100px" width="100px">
+                              <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
                            </td>
                            <td>
                               {$qtStock}

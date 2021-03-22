@@ -108,7 +108,7 @@
                      echo <<<HTML
                         <tr>
                            <td>
-                              <img src="{$urlImage}" height="100px" width="100px">
+                              <img src="./images/imagesItem/{$urlImage}" height="100px" width="100px">
                            </td>
                            <td>
                               {$qtItem}
