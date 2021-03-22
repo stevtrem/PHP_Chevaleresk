@@ -38,13 +38,14 @@ references Items(idItem)
 );
 
 create table inventaireJoueur(
-idJoueur int primary key,
+idJoueur int,
 idItem int not null,
 qtItem int not null,
 constraint fk_idJoueur foreign key (idJoueur)
 references Joueurs(idJoueur),
 constraint fk_idItem foreign key (idItem)
-references Items(idItem)
+references Items(idItem),
+primary key(idJoueur,idItem) 
 );
 
 
