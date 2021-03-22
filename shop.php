@@ -111,6 +111,7 @@ $addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
             </div>
             <div id="boutique">
                <?php
+                  echo ("<div class='addItem'>$addCheck</div>");
                   $sql = getQuery();
                   $stmt = sqlsrv_query($conn, $sql);
 
@@ -121,7 +122,6 @@ $addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
                      $prixUnitaire = (int)$row['prixUnitaireItem'];
                      $urlItem = $row['urlImageItem'];
 
-                     echo $addCheck;
                      echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
 
                      echo <<<HTML
