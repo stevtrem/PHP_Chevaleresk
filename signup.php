@@ -113,10 +113,10 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
                         <?php showError($passwordError);?>
                      </div>
                      <div class="submit_btn">
-                        <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:left">S'inscrire</button>
+                        <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:right; background:#136af8">S'inscrire</button>
                      </div>
                      <div class="submit_btn">
-                        <input onClick="window.location.href='index.php'" type='button' id="cancelForm" name='CancelForm' class="btn btn-primary" style="padding: 11px; float:right; background:#136af8" value='Annuler'>
+                        <input onClick="window.location.href='index.php'" type='button' id="cancelForm" style="padding: 11px; float:left" name='CancelForm' class="btn btn-primary" value='Annuler'>
                      </div>
                   </form>
                </div>
