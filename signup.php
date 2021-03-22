@@ -113,10 +113,10 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
                         <?php showError($passwordError);?>
                      </div>
                      <div class="submit_btn">
-                        <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:left">S'inscrire</button>
+                        <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:right; background:#136af8">S'inscrire</button>
                      </div>
                      <div class="submit_btn">
-                        <input onClick="window.location.href='index.php'" type='button' id="cancelForm" name='CancelForm' class="btn btn-primary" style="padding: 11px; float:right; background:#136af8" value='Annuler'>
+                        <input onClick="window.location.href='index.php'" type='button' id="cancelForm" style="padding: 11px; float:left" name='CancelForm' class="btn btn-primary" value='Annuler'>
                      </div>
                   </form>
                </div>
@@ -132,27 +132,7 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
-      <!-- javascript --> 
-      <script src="js/owl.carousel.js"></script>
-      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script src="js/form.js"></script>
-      <script>
-         $(document).ready(function(){
-         $(".fancybox").fancybox({
-         openEffect: "none",
-         closeEffect: "none"
-         });
-         
-         $(".zoom").hover(function(){
-         
-         $(this).addClass('transition');
-         }, function(){
-         
-         $(this).removeClass('transition');
-         });
-         });
-         
-      </script> 
    </body>
 </html>
 

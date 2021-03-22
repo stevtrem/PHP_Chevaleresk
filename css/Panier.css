@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
 }
-#Panier{
+#Panier, .editCheck{
     position: relative;
     top:60px;
     min-height: 200px;
@@ -18,23 +18,23 @@
     border: 2px solid #465464;
     display: flex;
     justify-content: center;
+    overflow: auto;
 }
-#checkoutBtn {
+#checkoutBtn, input[type="submit"] {
     bottom: 20px;
     right: 20px;
     position: absolute;
     color: white;
     border-radius: 25px;
-    background-color: red;
-    /*background-color: #136af8;*/
+    background-color: #136af8;
     padding: 10px 15px 10px 15px;
     border: 2px solid #136af8;
     border:3px solid #136af8;
 }
-#checkoutBtn:hover {
+#checkoutBtn:hover, input[type="submit"]:hover {
     color: black;
 }
-#checkoutBtn:active {
+#checkoutBtn:active, input[type="submit"]:active {
     color: white;
     border:3px solid #093781;
 }
@@ -64,4 +64,16 @@ h4 {
 .glyphicon-edit {
     color: yellowgreen;
     text-shadow: 1px gray;
+}
+input[type="number"] {
+    width: 200px;
+}
+#labelQt {
+    color: white;
+}
+#editCheck {
+    background: unset; 
+    border: unset; 
+    flex-direction: column; 
+    align-items: center;
 }

@@ -101,10 +101,10 @@ $loginError = isset($_SESSION['loginError'])? $_SESSION['loginError'] : '';
                         <input type="password" class="form-control form-control-sm" placeholder="Mot de passe" id="password" name="Password">
                      </div>
                      <div class="submit_btn">
-                        <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:left">S'authentifier</button>
+                        <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:right; background:#136af8">S'authentifier</button>
                      </div>
                      <div class="submit_btn">
-                        <input onClick="window.location.href='index.php'" type='button' id="cancelForm" name='CancelForm' class="btn btn-primary" style="padding: 11px; float:right; background:#136af8" value='Annuler'>
+                        <input onClick="window.location.href='index.php'" type='button' id="cancelForm" style="padding: 11px; float:left" name='CancelForm' class="btn btn-primary" value='Annuler'>
                      </div>
                   </form>
                </div>
@@ -120,27 +120,7 @@ $loginError = isset($_SESSION['loginError'])? $_SESSION['loginError'] : '';
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
-      <!-- javascript --> 
-      <script src="js/owl.carousel.js"></script>
-      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script src="js/form.js"></script>
-      <script>
-         $(document).ready(function(){
-         $(".fancybox").fancybox({
-         openEffect: "none",
-         closeEffect: "none"
-         });
-         
-         $(".zoom").hover(function(){
-         
-         $(this).addClass('transition');
-         }, function(){
-         
-         $(this).removeClass('transition');
-         });
-         });
-         
-      </script> 
    </body>
 </html>
 

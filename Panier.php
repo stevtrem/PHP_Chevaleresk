@@ -89,26 +89,30 @@
                   
                   $stmt = sqlsrv_query($conn, $sql, $params);
                   
-                  echo('<table><tr><th>Item</th><th>Quantité</th><th>Prix</th></tr>');
+                  echo('<table><tr><th>Item</th><th>Nom</th><th>Quantité</th><th>Prix</th></tr>');
 
                   while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
                      $idItem = $row['idItem'];
                      $qtItem = $row['qtItem'];
 
                      $params = array($idItem);
-                     $sql = "select urlImageItem, prixUnitaireItem from Items where idItem = ?";
+                     $sql = "select urlImageItem, prixUnitaireItem, nomItem from Items where idItem = ?";
 
                      $stmt2 = sqlsrv_query($conn, $sql, $params);
                      
                      $row2 = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC);
 
+                     $nomItem = $row2['nomItem'];
                      $urlImage = $row2['urlImageItem'];
                      $prix = $row2['prixUnitaireItem'] * $qtItem;
                      $totalCart += $prix;
                      echo <<<HTML
                         <tr>
                            <td>
-                              <img src="{$urlImage}" height="100px" width="100px">
+                              <img src="./images/imagesItem/{$urlImage}" height="100px" width="100px">
+                           </td>
+                           <td>
+                              {$nomItem}
                            </td>
                            <td>
                               {$qtItem}
@@ -133,7 +137,6 @@
                 <a id="checkoutBtn" href="Includes/Checkout.php">Paiement</a>
             </div>
         </div>
-         <!-- ici -->
       </section>
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
@@ -144,26 +147,6 @@
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
-      <!-- javascript --> 
-      <script src="js/owl.carousel.js"></script>
-      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script src="js/form.js"></script>
-      <script>
-         $(document).ready(function(){
-         $(".fancybox").fancybox({
-         openEffect: "none",
-         closeEffect: "none"
-         });
-         
-         $(".zoom").hover(function(){
-         
-         $(this).addClass('transition');
-         }, function(){
-         
-         $(this).removeClass('transition');
-         });
-         });
-         
-      </script> 
    </body>
 </html>

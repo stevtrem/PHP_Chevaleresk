@@ -84,3 +84,20 @@ DBCC CHECKIDENT ('Joueurs', RESEED, 0);
 delete from Joueurs;
 
 ---------------------------------
+
+
+GO
+create PROCEDURE addItem (@idJoueur INT, @idItem INT)
+AS
+BEGIN
+  if exists(select * from Panier where idJoueur = @idJoueur and idItem = @idItem)
+    update Panier set qtItem = ((select qtItem from Panier where idJoueur = @idJoueur and idItem = @idItem) + 1) where idJoueur = @idJoueur and idItem = @idItem;
+  else 
+    insert into Panier values(@idJoueur, @idItem, 1);
+END;
+
+exec addItem
+@idJoueur = 1,
+@idItem = 1;
+
+-------------------------------------------

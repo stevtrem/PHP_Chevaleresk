@@ -7,6 +7,7 @@ $allCheck = isset($_SESSION["allCheck"]) ? $_SESSION["allCheck"] : "";
 $wpnCheck = isset($_SESSION['WPN']) ? $_SESSION["WPN"] : "";
 $armCheck = isset($_SESSION['ARM']) ? $_SESSION["ARM"] : "";
 $potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
+$addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
 
 ?>
 
@@ -110,6 +111,7 @@ $potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
             </div>
             <div id="boutique">
                <?php
+                  echo ("<div class='addItem'>$addCheck</div>");
                   $sql = getQuery();
                   $stmt = sqlsrv_query($conn, $sql);
 
@@ -126,7 +128,7 @@ $potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
                         <div>
                         <tr>
                            <td>
-                              <img src="imagesItem/{$urlItem}" height="100px" width="100px">
+                              <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
                            </td>
                            <td>
                               {$qtStock}
@@ -159,28 +161,6 @@ $potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
-      <!-- javascript --> 
-      <script src="js/owl.carousel.js"></script>
-      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script src="js/form.js"></script>
-      <script src=>
-      <script>
-         $(document).ready(function(){
-         $(".fancybox").fancybox({
-         openEffect: "none",
-         closeEffect: "none"
-         });
-         
-         $(".zoom").hover(function(){
-         
-         $(this).addClass('transition');
-         }, function(){
-         
-         $(this).removeClass('transition');
-         });
-         
-         });
-         
-      </script> 
    </body>
 </html>
