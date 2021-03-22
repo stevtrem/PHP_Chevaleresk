@@ -13,7 +13,7 @@
     min-width: 600px;
     height: 70vh;
     width: 33%;
-    background-color: white;
+    background-image: linear-gradient(to right, white, rgb(175, 175, 175, 0.8));
     border-radius: 20px;
     border: 2px solid #465464;
     display: flex;
@@ -66,8 +66,15 @@ h4 {
     text-shadow: 1px gray;
 }
 input[type="number"] {
+    margin:auto;
     width: 200px;
 }
+input[type="submit"] {
+    position: sticky;
+    margin-top: 10px;
+    max-width: 300px;
+}
+
 #labelQt {
     color: white;
 }
