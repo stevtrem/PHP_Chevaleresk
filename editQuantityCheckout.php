@@ -116,7 +116,7 @@
                     echo <<<HTML
                         <img src="images/imagesItem/{$urlImage}" height="200px" width="200px">
                         <form method="POST" action="Includes/editQuantityCheckout.php">
-                           <label for="inputQt" id="labelQt">Nouvelle quantité :</label>
+                           <label for="inputQt" id="labelQt">Nouvelle quantitée :</label>
                            <input id="inputQt" name="qt" type="number" min="1" class="form-control form-control-sm" value="{$qtItem}"/>
                            <input name="id" type="hidden" value="{$idItem}"/>
                            <input type="submit" name="newQt" value="Modifier la quantité"/>
