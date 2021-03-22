@@ -86,9 +86,9 @@
          <!-- end header inner -->
       </header>
       <!-- end header -->
-      <section >
+      <section>
         <div id="PanierContainer">
-            <div id="Panier">
+            <div id="editCheck" class="editCheck">
                 <?php
                     $idItem = $_GET['item'];
 
@@ -102,62 +102,33 @@
                     $urlImage = $row['urlImageItem'];
                     $prixUnitaire = $row['prixUnitaireItem'];
 
-                    $params2 = array($_SESSION, $idItem);
+                    $params2 = array($_SESSION['Id'], $idItem);
 
-                    $sql = "select qtItem from Panier where idJoueur = ? and idItem = ?";
+                    $sql2 = "select qtItem from Panier where idJoueur = ? and idItem = ?";
 
-                    $stmt = sqlsrv_query($conn, $sql, $params);
+                    $stmt = sqlsrv_query($conn, $sql2, $params2);
                     
                     $row2 = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
                     
-                    echo($row2);
                     $qtItem = $row2['qtItem'];
                     sqlsrv_close($conn);
 
                     echo <<<HTML
-                        <div id="imgItemEdit" style="background: {$urlImage}"></div>
+                        <img src="images/imagesItem/{$urlImage}" height="200px" width="200px">
                         <form method="POST" action="Includes/editQuantityCheckout.php">
-                           <input type="number" min="1" class="form-control form-control-sm"/>
-                           <input type="submit" value="Modifier la quantité"/>
+                           <label for="inputQt" id="labelQt">Nouvelle quantité :</label>
+                           <input id="inputQt" name="qt" type="number" min="1" class="form-control form-control-sm" value="{$qtItem}"/>
+                           <input name="id" type="hidden" value="{$idItem}"/>
+                           <input type="submit" name="newQt" value="Modifier la quantité"/>
                         </form>
-                        
-                        
-
                     HTML;
                 ?>
             </div>
         </div>
-         <!-- ici -->
       </section>
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
-      <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/jquery-3.0.0.min.js"></script>
-      <script src="js/plugin.js"></script>
-      <!-- sidebar -->
-      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
-      <!-- javascript --> 
-      <script src="js/owl.carousel.js"></script>
-      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-      <script src="js/form.js"></script>
-      <script>
-         $(document).ready(function(){
-         $(".fancybox").fancybox({
-         openEffect: "none",
-         closeEffect: "none"
-         });
-         
-         $(".zoom").hover(function(){
-         
-         $(this).addClass('transition');
-         }, function(){
-         
-         $(this).removeClass('transition');
-         });
-         });
-         
-      </script> 
    </body>
 </html>
