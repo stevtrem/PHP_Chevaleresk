@@ -7,6 +7,7 @@ $allCheck = isset($_SESSION["allCheck"]) ? $_SESSION["allCheck"] : "";
 $wpnCheck = isset($_SESSION['WPN']) ? $_SESSION["WPN"] : "";
 $armCheck = isset($_SESSION['ARM']) ? $_SESSION["ARM"] : "";
 $potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
+$addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
 
 ?>
 
@@ -120,6 +121,7 @@ $potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
                      $prixUnitaire = (int)$row['prixUnitaireItem'];
                      $urlItem = $row['urlImageItem'];
 
+                     echo $addCheck;
                      echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
 
                      echo <<<HTML

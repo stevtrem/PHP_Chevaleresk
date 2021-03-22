@@ -18,6 +18,7 @@
     border: 2px solid #465464;
     display: flex;
     justify-content: center;
+    overflow: auto;
 }
 #checkoutBtn, input[type="submit"] {
     bottom: 20px;
@@ -74,5 +75,5 @@ input[type="number"] {
     background: unset; 
     border: unset; 
     flex-direction: column; 
-    align-items: center
+    align-items: center;
 }

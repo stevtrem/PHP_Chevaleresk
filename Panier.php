@@ -89,19 +89,20 @@
                   
                   $stmt = sqlsrv_query($conn, $sql, $params);
                   
-                  echo('<table><tr><th>Item</th><th>Quantité</th><th>Prix</th></tr>');
+                  echo('<table><tr><th>Item</th><th>Nom</th><th>Quantité</th><th>Prix</th></tr>');
 
                   while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
                      $idItem = $row['idItem'];
                      $qtItem = $row['qtItem'];
 
                      $params = array($idItem);
-                     $sql = "select urlImageItem, prixUnitaireItem from Items where idItem = ?";
+                     $sql = "select urlImageItem, prixUnitaireItem, nomItem from Items where idItem = ?";
 
                      $stmt2 = sqlsrv_query($conn, $sql, $params);
                      
                      $row2 = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC);
 
+                     $nomItem = $row2['nomItem'];
                      $urlImage = $row2['urlImageItem'];
                      $prix = $row2['prixUnitaireItem'] * $qtItem;
                      $totalCart += $prix;
@@ -109,6 +110,9 @@
                         <tr>
                            <td>
                               <img src="./images/imagesItem/{$urlImage}" height="100px" width="100px">
+                           </td>
+                           <td>
+                              {$nomItem}
                            </td>
                            <td>
                               {$qtItem}

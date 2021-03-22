@@ -88,17 +88,18 @@
       <!-- end header -->
       <section>
         <div id="PanierContainer">
-            <div id="editCheck" class="editCheck">
+            <div id="editCheck" class="editCheck" style="color:white; text-align:center">
                 <?php
                     $idItem = $_GET['item'];
 
                     $params = array($idItem);
-                    $sql = "select urlImageItem, prixUnitaireItem from Items where idItem = ?";
+                    $sql = "select urlImageItem, prixUnitaireItem, nomItem from Items where idItem = ?";
 
                     $stmt = sqlsrv_query($conn, $sql, $params);
                     
                     $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
 
+                    $nomItem = $row['nomItem'];
                     $urlImage = $row['urlImageItem'];
                     $prixUnitaire = $row['prixUnitaireItem'];
 
@@ -114,12 +115,13 @@
                     sqlsrv_close($conn);
 
                     echo <<<HTML
+                        <span>$nomItem</span><br><br>
                         <img src="images/imagesItem/{$urlImage}" height="200px" width="200px">
                         <form method="POST" action="Includes/editQuantityCheckout.php">
                            <label for="inputQt" id="labelQt">Nouvelle quantité :</label>
-                           <input id="inputQt" name="qt" type="number" min="1" class="form-control form-control-sm" value="{$qtItem}"/>
+                           <input id="inputQt" name="qt" type="number" min="1" class="form-control form-control-sm" value="{$qtItem}"/><br>
                            <input name="id" type="hidden" value="{$idItem}"/>
-                           <input type="submit" name="newQt" value="Modifier la quantité"/>
+                           <input type="submit" name="newQt" class="btn btn-lg btn-primary" style="max-width:300px" value="Modifier la quantité"/>
                         </form>
                     HTML;
                 ?>
