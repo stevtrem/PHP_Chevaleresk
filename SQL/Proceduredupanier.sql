@@ -120,8 +120,8 @@ begin
 	if(@isValide = 1)
 	begin
 		execute AjusterInventaire @idJoueur;
-		execute ClearPanier @idJoueur;
 		execute PayerPanier @idJoueur,@montant;
+		execute ClearPanier @idJoueur;
 		set @result = 1;
 	end;
 	else
