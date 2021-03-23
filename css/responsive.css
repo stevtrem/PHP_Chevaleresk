@@ -92,6 +92,9 @@
 /*------------------------------------------------------------------- 599px x 280px ---------------------------------------------------------------------*/
 
 @media only screen and (min-width: 280px) and (max-width: 599px) {
+    .img-box figure img {
+        display: none;
+    }
     .cart-content-right {
         padding-bottom: 5px;
     }
@@ -283,14 +286,10 @@ width: 55%;
 
 @media (max-width: 575px) {
     .last {display: none;}
-    .carousel-caption {display: none;} 
 .header {padding-top: 30px;}
 .logo {float: inherit; padding-bottom: 15px; text-align: center;}
-.btn-primary {max-width: 126px;
-margin-right: 2px;
-font-size: 14px;}
-.banner-main .carousel-caption h1 {font-size: 30px;
-line-height: 38px;}
+.banner-main .carousel-caption h1 {font-size: 50px;
+line-height: 45px;}
 .titlepage h2 {
     font-size: 27px;
 }
