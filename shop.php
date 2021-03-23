@@ -7,6 +7,7 @@ $allCheck = isset($_SESSION["allCheck"]) ? $_SESSION["allCheck"] : "";
 $wpnCheck = isset($_SESSION['WPN']) ? $_SESSION["WPN"] : "";
 $armCheck = isset($_SESSION['ARM']) ? $_SESSION["ARM"] : "";
 $potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
+$addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
 
 ?>
 
@@ -110,6 +111,7 @@ $potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
             </div>
             <div id="boutique">
                <?php
+                  echo ("<div class='addItem'>$addCheck</div>");
                   $sql = getQuery();
                   $stmt = sqlsrv_query($conn, $sql);
 

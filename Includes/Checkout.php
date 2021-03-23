@@ -1,6 +1,6 @@
 <?php
-    require_once 'Includes/SessionChecker.php'; 
-    require_once 'Includes/dbh.php';
+    require_once 'SessionChecker.php'; 
+    require_once 'dbh.php';
 
     $params = array($_SESSION['Id']);
 
