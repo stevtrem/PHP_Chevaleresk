@@ -4,7 +4,11 @@
 
     $params = array($_SESSION['Id']);
 
-    $sql = "exec Checkout";
+    $sql = "exec Checkout ?";
                 
     $stmt = sqlsrv_query($conn, $sql, $params);
+
+    print_r($stmt);
+    //header('Location:../Shop.php');
+    //exit();
     
