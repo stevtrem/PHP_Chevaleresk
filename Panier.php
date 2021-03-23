@@ -2,6 +2,8 @@
     require_once 'Includes/SessionChecker.php';
     require_once 'Includes/htmlUtilities.php';
     require_once 'Includes/dbh.php';
+
+    $payCheck = isset($_SESSION["checkoutError"]) ? $_SESSION["checkoutError"] : "";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,6 +84,7 @@
         <div id="PanierContainer">
             <div id="Panier">
                 <?php
+                  echo ("<div class='checkError'>$payCheck</div>");
                   $totalCart = 0; 
                   $params = array($_SESSION['Id']);
 
