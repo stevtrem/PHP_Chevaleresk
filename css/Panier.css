@@ -5,7 +5,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 #Panier, .editCheck{
     position: relative;
@@ -18,11 +17,13 @@
     border-radius: 20px;
     border: 2px solid #465464;
     display: flex;
-    justify-content: center;
     overflow: auto;
 }
 #Panier {
+    min-width: 400px;
+    flex-direction: column;
     overflow: auto;
+    align-items: center;
 }
 #checkoutBtn, input[type="submit"] {
     bottom: 20px;
@@ -74,11 +75,8 @@ input[type="number"] {
     width: 200px;
 }
 input[type="submit"] {
-    position: sticky;
-    margin-top: 10px;
-    max-width: 300px;
+    position: unset;
 }
-
 #labelQt {
     color: white;
 }
@@ -86,5 +84,28 @@ input[type="submit"] {
     background: unset; 
     border: unset; 
     flex-direction: column; 
+    align-items: center;
+    min-height: 300px;
+    color:white; 
+    text-align:center;
+    background-color: #081b30;
+    overflow: auto;
+}
+#itemName, #labelQt, #inputQt, #imgItem {
+    margin-bottom: 20px;
+}
+#tableContainer {
+    height: 80%;
+    overflow: auto;
+}
+#imgPanierItem {
+    height: 100px;
+    width: 100px;
+    min-width: 100px;
+    min-height: 100px;
+}
+td:first-child {
+    display:flex;
+    flex-direction:column; 
     align-items: center;
 }

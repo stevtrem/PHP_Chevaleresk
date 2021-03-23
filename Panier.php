@@ -89,7 +89,7 @@
                   
                   $stmt = sqlsrv_query($conn, $sql, $params);
                   
-                  echo('<table><tr><th>Item</th><th>Nom</th><th>Quantité</th><th>Prix</th></tr>');
+                  echo('<div id="tableContainer"><table><tr><th>Item</th><th>Quantité</th><th>Prix</th></tr>');
 
                   while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
                      $idItem = $row['idItem'];
@@ -109,10 +109,8 @@
                      echo <<<HTML
                         <tr>
                            <td>
-                              <img src="./images/imagesItem/{$urlImage}" height="100px" width="100px">
-                           </td>
-                           <td>
-                              {$nomItem}
+                              {$nomItem}\n
+                              <img src="./images/imagesItem/{$urlImage}" id="imgPanierItem">
                            </td>
                            <td>
                               {$qtItem}
@@ -127,14 +125,16 @@
                         </tr>
                      HTML;
                   }
-                  echo('</table>');
+                  echo('</table></div');
 
                   echo <<<HTML
-                     <h4>Total : {$totalCart}</h4>
+                     <div style="position: sticky; display:flex; width:100%; height:100px; background-color: red">
+                        <h4>Total : {$totalCart}</h4>
+                        <a id="checkoutBtn" href="Includes/Checkout.php">Paiement</a>
+                     </div>
                   HTML;
                   sqlsrv_close($conn);
                 ?>
-                <a id="checkoutBtn" href="Includes/Checkout.php">Paiement</a>
             </div>
         </div>
       </section>

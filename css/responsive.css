@@ -99,6 +99,10 @@
 /*------------------------------------------------------------------- 599px x 280px ---------------------------------------------------------------------*/
 
 @media only screen and (min-width: 280px) and (max-width: 599px) {
+    #tableContainer table td, #tableContainer table th{
+        font-size: 14px;
+        padding: 10px;
+    }
     .img-box figure img {
         display: none;
     }
@@ -393,4 +397,5 @@ ul.link li {
 .menu_text li {float: inherit;
 
 padding-left: 0px;}
+
 }
