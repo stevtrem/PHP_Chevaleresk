@@ -85,21 +85,18 @@ begin
 	
 	if(@montantPanier > @soldeJoueur)
 	begin
-		print('false');
-		return 0;
+		set @result = 0;
 	end;
 	else
 	begin 
-		print('true');
-		return 1;
+		set @result = 1;
 	end;
 end;
 
 declare @resultat bit;
 execute QuantiteFondSuffisant
-1000,1,@result = @resultat;
-
-
+1000,1,@resultat out;
+print(@resultat);
 
 create or alter procedure ClearPanier
 (@idJoueur int)
@@ -108,3 +105,46 @@ begin
 	delete from Panier where idJoueur = @idJoueur;
 end;
 
+create or alter procedure Checkout
+(@idJoueur int, @result bit output)
+as
+begin
+	declare 
+	@montant money,
+	@isValide bit;
+	select @montant = dbo.montantPanier(@idJoueur);
+
+	execute QuantiteFondSuffisant
+	@montant,@idJoueur,@isValide out;
+
+	if(@isValide = 1)
+	begin
+		execute AjusterInventaire @idJoueur;
+		execute ClearPanier @idJoueur;
+		execute PayerPanier @idJoueur,@montant;
+		set @result = 1;
+	end;
+	else
+	begin
+		set @result = 0;
+	end;
+end;
+
+select * from Joueurs;
+select * from Panier;
+select * from Items;
+select * from inventaireJoueur;
+insert into Panier values(3,1,1);
+
+declare @resultatCheckOut bit;
+execute Checkout
+3,@resultatCheckOut out;
+print(@resultatCheckOut);
+
+
+create or alter procedure PayerPanier
+(@idJoueur int, @montant money)
+as
+begin
+	update Joueurs set montantInitial = montantInitial-@montant where idJoueur = @idJoueur;
+end;
