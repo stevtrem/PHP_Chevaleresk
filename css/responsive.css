@@ -8,6 +8,7 @@
     .header-search {
         padding: 15px 0px;
     }
+
 }
 
 
@@ -19,6 +20,12 @@
         background-image: none;
         width: 100%;
         height: auto;
+    }
+    #signupImage {
+        display: none;
+    }
+    #signupLabel {
+        margin-top: 150px;
     }
     .logo {
         text-align: center;
@@ -95,6 +102,12 @@
     .img-box figure img {
         display: none;
     }
+    #signupImage {
+        display: none;
+    }
+    #signupLabel {
+        margin-top: 150px;
+    }
     .cart-content-right {
         padding-bottom: 5px;
     }
@@ -169,7 +182,6 @@ width: 30%;
 
 @media (min-width: 768px) and (max-width: 991px) {
     
-
 
     .main-menu ul > li a {padding: 8px 10px; }
 

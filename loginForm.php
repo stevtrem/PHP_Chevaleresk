@@ -35,7 +35,7 @@ $loginError = isset($_SESSION['loginError'])? $_SESSION['loginError'] : '';
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <!-- Css Specific to this page-->
-      <link rel="stylesheet" href="css/signupForm.css">
+      <link rel="stylesheet" href="css/signupLoginForm.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
@@ -88,7 +88,7 @@ $loginError = isset($_SESSION['loginError'])? $_SESSION['loginError'] : '';
       <!-- end header -->
       <section >
         <div id="signupContainer">
-            <div class="col-md-6" style="margin-bottom:96px">
+            <div class="col-md-6" style="margin-bottom:192px">
                <div id="signupImage"></div>
                <div id="signupLabel">S'authentifier</div>
                <div id="signupForm">
@@ -101,10 +101,10 @@ $loginError = isset($_SESSION['loginError'])? $_SESSION['loginError'] : '';
                         <input type="password" class="form-control form-control-sm" placeholder="Mot de passe" id="password" name="Password">
                      </div>
                      <div class="submit_btn">
-                        <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary" style="padding: 11px; float:right; background:#136af8">S'authentifier</button>
+                        <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary">S'authentifier</button>
                      </div>
                      <div class="submit_btn">
-                        <input onClick="window.location.href='index.php'" type='button' id="cancelForm" style="padding: 11px; float:left" name='CancelForm' class="btn btn-primary" value='Annuler'>
+                        <input onClick="window.location.href='index.php'" type='button' id="cancelForm" name='CancelForm' class="btn btn-primary" value='Annuler'>
                      </div>
                   </form>
                </div>
