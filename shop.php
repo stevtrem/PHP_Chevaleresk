@@ -8,7 +8,7 @@ $wpnCheck = isset($_SESSION['WPN']) ? $_SESSION["WPN"] : "";
 $armCheck = isset($_SESSION['ARM']) ? $_SESSION["ARM"] : "";
 $potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
 $addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
-
+$accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "";
 ?>
 
 <!DOCTYPE html>
@@ -111,7 +111,7 @@ $addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
             </div>
             <div id="boutique">
                <?php
-                  echo ("<div class='addItem'>$addCheck</div>");
+                  echo ("<div class='addItem'>$addCheck $accessCheck</div>");
                   $sql = getQuery();
                   $stmt = sqlsrv_query($conn, $sql);
 
@@ -164,3 +164,6 @@ $addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
       <script src="js/form.js"></script>
    </body>
 </html>
+<?php
+unset($_SESSION["UnauthorizedAccess"]);
+?>
