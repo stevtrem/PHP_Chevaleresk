@@ -4,6 +4,8 @@
     require_once 'Includes/dbh.php';
     
     $payCheck = isset($_SESSION["checkoutError"]) ? $_SESSION["checkoutError"] : "";
+    $removeCheck = isset($_SESSION["removeCheckoutError"]) ? $_SESSION["removeCheckoutError"] : "";
+    $editCheck = isset($_SESSION['editQtError']) ? $_SESSION["editQtError"] : "";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,8 +35,6 @@
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
-      <link rel="stylesheet" href="css/owl.carousel.min.css">
-      <link rel="stylesheet" href="css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico"/>
       <!--[if lt IE 9]>
@@ -84,7 +84,7 @@
         <div id="PanierContainer">
             <div id="Panier">
                 <?php
-                  echo ("<div class='checkError'>$payCheck</div>");
+                  echo ("<div class='checkError'>$editCheck $payCheck $removeCheck</div>");
                   $totalCart = 0; 
                   $params = array($_SESSION['Id']);
 
@@ -157,6 +157,7 @@
 
 <?php
 unset($_SESSION["checkoutError"]);
-
+unset($_SESSION["removeCheckoutError"]);
+unset($_SESSION["editQtError"]);
 
 ?>

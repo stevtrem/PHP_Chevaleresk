@@ -39,8 +39,6 @@
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
-      <link rel="stylesheet" href="css/owl.carousel.min.css">
-      <link rel="stylesheet" href="css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico"/>
       <!--[if lt IE 9]>
@@ -121,7 +119,7 @@
                            <label for="inputQt" id="labelQt">Nouvelle quantitée :</label>
                            <input id="inputQt" name="qt" type="number" min="1" class="form-control form-control-sm" value="{$qtItem}"/>
                            <input name="id" type="hidden" value="{$idItem}"/>
-                           <input type="submit" name="newQt" value="Modifier la quantité"/>
+                           <input type="submit" name="newQtSubmit" value="Modifier la quantité"/>
                         </form>
                     HTML;
                 ?>

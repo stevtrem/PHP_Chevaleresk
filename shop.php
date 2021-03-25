@@ -8,7 +8,7 @@ $wpnCheck = isset($_SESSION['WPN']) ? $_SESSION["WPN"] : "";
 $armCheck = isset($_SESSION['ARM']) ? $_SESSION["ARM"] : "";
 $potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
 $addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
-
+$accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "";
 ?>
 
 <!DOCTYPE html>
@@ -40,8 +40,6 @@ $addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
-      <link rel="stylesheet" href="css/owl.carousel.min.css">
-      <link rel="stylesheet" href="css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico"/>
       <!--[if lt IE 9]>
@@ -111,7 +109,7 @@ $addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
             </div>
             <div id="boutique">
                <?php
-                  echo ("<div class='addItem'>$addCheck</div>");
+                  echo ("<div class='addItem'>$addCheck $accessCheck</div>");
                   $sql = getQuery();
                   $stmt = sqlsrv_query($conn, $sql);
 
@@ -164,3 +162,6 @@ $addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
       <script src="js/form.js"></script>
    </body>
 </html>
+<?php
+unset($_SESSION["UnauthorizedAccess"]);
+?>
