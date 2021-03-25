@@ -164,4 +164,5 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
 </html>
 <?php
 unset($_SESSION["UnauthorizedAccess"]);
+unset($_SESSION["addItemError"]);
 ?>

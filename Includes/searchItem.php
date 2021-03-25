@@ -3,11 +3,6 @@
     require_once "htmlUtilities.php";
     require_once 'dbh.php';
 
-    if (!isset($_SESSION["Id"])){
-        header('Location:../loginForm.php');
-        exit();
-    }
-
     if (isset($_POST["SubmitSearch"])){
         $sql = "SELECT * FROM Items";
         if (!isset($_POST['all'])){
@@ -33,6 +28,9 @@
             foreach ($_POST['type'] as $type){
                 unset($_SESSION[$type]);
             }
+            unset($_SESSION['WPN']);
+            unset($_SESSION['ARM']);
+            unset($_SESSION['POT']);
         }
         if (isset($_POST['order'])){
             $length = count($_POST['order']);

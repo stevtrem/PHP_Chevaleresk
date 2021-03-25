@@ -90,6 +90,7 @@ $loginError = isset($_SESSION['loginError'])? $_SESSION['loginError'] : '';
                <div id="signupImage"></div>
                <div id="signupLabel">S'authentifier</div>
                <div id="signupForm">
+                  <hr style="background:white">
                   <form method="POST" action="Includes/login.php">
                      <?php showError($loginError);?>
                      <div class="form-group">

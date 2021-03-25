@@ -93,6 +93,7 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
                <div id="signupImage"></div>
                <div id="signupLabel">S'inscrire</div>
                <div id="signupForm">
+                  <hr style="background:white">
                   <form method="POST" action="Includes/authenticate.php">
                      <div class="form-group">
                         <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName">
