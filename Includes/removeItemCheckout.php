@@ -1,13 +1,9 @@
 <?php
+    session_start();
     require_once 'dbh.php';
 
-    if (!isset($_SESSION["Id"])){
-        header('Location:../loginForm.php');
-        exit();
-    }
-
-    if(isset($_GET['item']))
-    {
+    if (isset($_SESSION["Id"])){
+        if(isset($_GET['item'])){
         $params = array($_SESSION['Id'], $_GET['item']);
 
         $sql = "delete from Panier where idJoueur = ? and idItem = ?";
@@ -18,10 +14,15 @@
 
         header('Location:../Panier.php');
         exit();
-    }
-    else {
-        header('Location:../Panier.php');
-        $_SESSION['removeCheckoutError'] = 'Impossible d\'enlever l\'item';
+        }
+        else {
+            header('Location:../Panier.php');
+            $_SESSION['removeCheckoutError'] = 'Impossible d\'enlever l\'item';
+            exit();
+        }
+    }else{
+        header('Location:../loginForm.php');
         exit();
     }
+?>
    

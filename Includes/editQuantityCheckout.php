@@ -1,13 +1,9 @@
 <?php
+    session_start();
     require_once 'dbh.php';
 
-    if (!isset($_SESSION["Id"])){
-        header('Location:../loginForm.php');
-        exit();
-    }
-
-    if(isset($_POST['newQt']) && isset($_POST['qt']))
-    {
+    if (isset($_SESSION["Id"])){
+        if(isset($_POST['newQt']) && isset($_POST['qt'])){
         $qt = $_POST['qt'];
         $idItem = $_POST['id'];
 
@@ -20,9 +16,14 @@
 
         header('Location:../Panier.php');
         exit();
-    }
-    else {
-        header('Location:../Panier.php');
-        $_SESSION['removeCheckoutError'] = 'Impossible de changer la quantite l\'item';
+        }
+        else {
+            header('Location:../Panier.php');
+            $_SESSION['removeCheckoutError'] = 'Impossible de changer la quantite l\'item';
+            exit();
+        }
+    }else{
+        header('Location:../loginForm.php');
         exit();
     }
+?>
