@@ -111,11 +111,10 @@ end;
 
 
 
-
-create or alter procedure Checkout
-(@idJoueur int, @result bit output)
+create or alter procedure Checkout (@idJoueur int)
 as
 begin
+BEGIN TRAN
 	declare 
 	@montant money,
 	@isValide bit,
@@ -132,14 +131,11 @@ begin
 		execute AjusterInventaire @idJoueur;
 		execute PayerPanier @idJoueur,@montant;
 		execute ClearPanier @idJoueur;
-		set @result = 1;
+    commit;
 	end;
 	else
-	begin
-		set @result = 0;
-		return;
-	end;
-end;
+    ROLLBACK;
+  end
 
 select * from Joueurs;
 select * from Panier;
