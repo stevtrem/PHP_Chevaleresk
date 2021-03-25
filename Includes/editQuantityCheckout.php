@@ -1,6 +1,10 @@
 <?php
-    require_once 'SessionChecker.php'; 
     require_once 'dbh.php';
+
+    if (!isset($_SESSION["Id"])){
+        header('Location:../loginForm.php');
+        exit();
+    }
 
     if(isset($_POST['newQt']) && isset($_POST['qt']))
     {
