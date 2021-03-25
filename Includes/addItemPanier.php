@@ -1,28 +1,23 @@
 <?php
-    session_start();
+    require_once 'SessionChecker.php';
     require_once 'dbh.php';
 
-    if (isset($_SESSION['Id'])){
-        if(isset($_GET['item'])){
-            $idItem = $_GET['item'];
+    if(isset($_GET['item'])){
+        $idItem = $_GET['item'];
+    
+        $params = array($_SESSION['Id'],$idItem);
+        $sql = "exec addItem @idJoueur = ?, @idItem = ?";
+
+        $stmt = sqlsrv_query($conn, $sql, $params);
         
-            $params = array($_SESSION['Id'],$idItem);
-            $sql = "exec addItem @idJoueur = ?, @idItem = ?";
+        sqlsrv_close($conn);
 
-            $stmt = sqlsrv_query($conn, $sql, $params);
-            
-            sqlsrv_close($conn);
-
-            header('Location:../shop.php');
-            exit();
-        }
-        else {
-            header('Location:../shop.php');
-            $_SESSION['addItemError'] = 'Impossible d\'ajouter l\'item au panier';
-            exit();
-        }
-    }else{
-        header('Location:../loginForm.php');
+        header('Location:../shop.php');
+        exit();
+    }
+    else {
+        header('Location:../shop.php');
+        $_SESSION['addItemError'] = 'Impossible d\'ajouter l\'item au panier';
         exit();
     }
 ?>
