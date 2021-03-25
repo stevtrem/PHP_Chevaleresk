@@ -98,6 +98,9 @@ execute QuantiteFondSuffisant
 1000,1,@resultat out;
 print(@resultat);
 
+
+
+
 create or alter procedure ClearPanier
 (@idJoueur int)
 as
@@ -105,19 +108,26 @@ begin
 	delete from Panier where idJoueur = @idJoueur;
 end;
 
+
+
+
+
 create or alter procedure Checkout
 (@idJoueur int, @result bit output)
 as
 begin
 	declare 
 	@montant money,
-	@isValide bit;
+	@isValide bit,
+	@inventaireDispo bit;
 	select @montant = dbo.montantPanier(@idJoueur);
 
 	execute QuantiteFondSuffisant
 	@montant,@idJoueur,@isValide out;
 
-	if(@isValide = 1)
+	execute InventaireValide @idJoueur, @inventaireDispo out;
+
+	if(@isValide = 1 and @inventaireDispo = 1)
 	begin
 		execute AjusterInventaire @idJoueur;
 		execute PayerPanier @idJoueur,@montant;
@@ -127,6 +137,7 @@ begin
 	else
 	begin
 		set @result = 0;
+		return;
 	end;
 end;
 
@@ -142,9 +153,75 @@ execute Checkout
 print(@resultatCheckOut);
 
 
+
+
 create or alter procedure PayerPanier
 (@idJoueur int, @montant money)
 as
 begin
 	update Joueurs set montantInitial = montantInitial-@montant where idJoueur = @idJoueur;
+end;
+
+
+create or alter procedure ItemDisponible
+(@idItem int, @quantiteAcheter int,@result bit output)
+as
+begin
+	declare @quantite int;
+	select @quantite = qtStockItem from Items where idItem = @idItem;
+
+	if(@quantiteAcheter <= @quantite)
+	begin
+		set @result = 1;
+	end;
+	else
+	begin
+		set @result = 0;
+	end;
+end;
+
+create or alter procedure InventaireValide
+(@idJoueur int,@result bit output)
+as
+begin
+	set nocount on;
+
+	declare
+	@idItem int,
+	@quantite int;
+
+	declare
+	@counter int
+	set @counter = 1;
+
+	declare quantiteItem cursor read_only
+	for
+	select idItem,qtItem from Panier where idJoueur = @idJoueur;
+
+	open quantiteItem;
+
+	fetch next from quantiteItem into 
+	@idItem,@quantite;
+
+	while @@FETCH_STATUS = 0
+	begin
+		execute ItemDisponible @idItem,@quantite,@result out;
+		if(@result = 1)
+		begin
+			set @counter = @counter+1;
+			set @result = 1;
+			fetch next from quantiteItem into 
+			@idItem,@quantite;
+		end;
+		else
+		begin
+			set @result = 0;
+			close quantiteItem;
+			deallocate quantiteItem;
+			return;
+		end;
+	end;
+
+	close quantiteItem;
+	deallocate quantiteItem;
 end;
