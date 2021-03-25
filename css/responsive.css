@@ -4,7 +4,10 @@
 /*------------------------------------------------------------------- 991px x 768px ---------------------------------------------------------------------*/
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    
+    #tableContainer table td, #tableContainer table th{
+        font-size: 14px;
+        padding: 10px;
+    }
     .header-search {
         padding: 15px 0px;
     }
@@ -15,6 +18,10 @@
 /*------------------------------------------------------------------- 767px x 599px ---------------------------------------------------------------------*/
 
 @media only screen and (min-width: 599px) and (max-width: 767px) {
+    #tableContainer table td, #tableContainer table th{
+        font-size: 14px;
+        padding: 10px;
+    }
     #LogoPanier {
         color: black;
         background-image: none;
