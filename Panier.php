@@ -2,7 +2,7 @@
     require_once 'Includes/SessionChecker.php';
     require_once 'Includes/htmlUtilities.php';
     require_once 'Includes/dbh.php';
-
+    
     $payCheck = isset($_SESSION["checkoutError"]) ? $_SESSION["checkoutError"] : "";
 ?>
 <!DOCTYPE html>
