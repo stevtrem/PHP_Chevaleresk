@@ -18,8 +18,7 @@
     }
     else {
         header('Location:../Panier.php');
-        $_SESSION['editQtError'] = 'Impossible de changer la quantite l\'item';
+        $_SESSION['editQtError'] = 'Impossible de changer la quantité de l\'item';
         exit();
     }
-}
 ?>
