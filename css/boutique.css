@@ -1,3 +1,10 @@
+@media only screen and (min-width: 280px) and (max-width: 599px) {
+    #boutique{
+        width: 100vw;
+        margin-right: 15px;
+    }
+}
+
 #boutiqueContainer{
     background-color: #081b30;
     display: flex;
@@ -5,7 +12,7 @@
 }
 #boutique{
     min-height: 200px;
-    min-width: 200px;
+    min-width: 20%;
     margin-top: 180px;
     margin-bottom: 180px; 
     width: 50vw;
@@ -15,17 +22,15 @@
     border-radius: 20px;
     border: 2px solid #465464
 }
+
 #searchBar{
     width: 200px;
-    margin-right: 50px;
     margin-top: 150px;
+    margin-right: 25px;
 }
-
 table {
-
     border-spacing: 25px;
     border-collapse: separate;
-    margin-left: 30px;
 }
 th, td {
     padding: 20px;
@@ -35,7 +40,6 @@ th, td {
 td{
     width: 167px;
 }
-
 #checkoutBtn {
     bottom: 20px;
     position: absolute;
