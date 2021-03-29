@@ -125,6 +125,12 @@
 /*------------------------------------------------------------------- 599px x 280px ---------------------------------------------------------------------*/
 
 @media only screen and (min-width: 280px) and (max-width: 599px) {
+    #LogoPanier {
+        color: black;
+        background-image: none;
+        width: 100%;
+        height: auto;
+    }
     #tableContainer table td, #tableContainer table th{
         font-size: 8px;
         padding: 1px;
