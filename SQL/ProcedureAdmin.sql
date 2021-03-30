@@ -54,3 +54,13 @@ begin
     END
   end;
 end;
+
+
+EXEC ajoutItem 
+@nomItem = 'Patate',
+@qtStock= 10,
+@type ='POT',
+@prix =100,
+@url ='test',
+@effet ='ahah',
+@duree = 99;
