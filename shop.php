@@ -7,7 +7,7 @@ $allCheck = isset($_SESSION["allCheck"]) ? $_SESSION["allCheck"] : "";
 $wpnCheck = isset($_SESSION['WPN']) ? $_SESSION["WPN"] : "";
 $armCheck = isset($_SESSION['ARM']) ? $_SESSION["ARM"] : "";
 $potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
-$rsrCheck = isset($_SESSION["RSR"]) ? $_SESSION["RSR"] : "";
+$rsrCheck = isset($_SESSION["RES"]) ? $_SESSION["RES"] : "";
 $addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
 $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "";
 ?>
@@ -97,7 +97,7 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
                      <label><input type="checkbox" class="box" name="type[]" value="WPN" <?php echo $wpnCheck ?>>Armes</label><br>
                      <label><input type="checkbox" class="box" name="type[]" value="ARM" <?php echo $armCheck ?>>Armures</label><br>
                      <label><input type="checkbox" class="box" name="type[]" value="POT" <?php echo $potCheck ?>>Potions</label><br>
-                     <label><input type="checkbox" class="box" name="type[]" value="RSR" <?php echo $rsrCheck ?>>Ressources</label><br>
+                     <label><input type="checkbox" class="box" name="type[]" value="RES" <?php echo $rsrCheck ?>>Ressources</label><br>
                      <label><input type="radio" class="box" name="order[]" value="prixUnitaireItem ASC">Prix (Asc)</label><br>
                      <label><input type="radio" class="box" name="order[]" value="prixUnitaireItem DESC">Prix (Desc)</label><br>
                      <label><input type="radio" class="box" name="order[]" value="nomItem ASC">A-Z</label><br>
