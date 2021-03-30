@@ -55,7 +55,11 @@ if(isset($_POST["SubmitForm"])){
         //Ceci sert a fermer la bd TRÈS IMPORTANT
         sqlsrv_free_stmt($stmt);
         sqlsrv_close($conn);
-        header('Location:../shop.php');
+        if ($_SESSION['alias'] == 'admin'){
+            header('Location:../admin.php');
+        }else{
+            header('Location:../shop.php');
+        }
         exit();
     }else{
         header('Location:../signup.php');

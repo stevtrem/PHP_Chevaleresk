@@ -15,11 +15,16 @@ function LoginBtn(){
        return '<li><a href="loginForm.php">S\'authentifier</a></li>';
     }else{
        $alias = $_SESSION['alias'];
-       $id = $_SESSION['Id'];
-       return "<li><a href='Inventory.php'>Inventaire</a></li>".
-              "<li><a href='Includes/logout.php' id='btnLogout'>Déconnexion</a></li>".
-              "<li><a style='color:#22a314; font-weight:bold'>$alias</a></li>".
-              "<li><a href='Panier.php' id='LogoPanier'>Panier</a></li>";
+       if ($alias == 'admin'){
+            return "<li><a href='Includes/logout.php' id='btnLogout'>Déconnexion</a></li>".
+                   "<li><a href='admin.php' style='color:#22a314; font-weight:bold'>SECTION $alias</a></li>";
+       }else{
+            return "<li><a href='Inventory.php'>Inventaire</a></li>".
+                   "<li><a href='Includes/logout.php' id='btnLogout'>Déconnexion</a></li>".
+                   "<li><a style='color:#22a314; font-weight:bold'>$alias</a></li>".
+                   "<li><a href='Panier.php' id='LogoPanier'>Panier</a></li>";
+       }
+       
     }
 }
 
@@ -47,6 +52,19 @@ function getItems(){
         return $_SESSION["sql"];
     }else{
         return "SELECT * FROM items ORDER BY prixUnitaireItem ASC";
+    }
+}
+
+function getItemsJoueur(){
+    
+    if (isset($_SESSION["sql"])){
+        return $_SESSION["sql"];
+    }else{
+        $id = $_SESSION['Id'];
+        return "SELECT i.urlImageItem, j.qtItem, i.nomItem
+                FROM   inventaireJoueur j INNER JOIN
+                       Items i ON j.idItem = i.idItem
+                WHERE  idJoueur = $id";
     }
 }
 

@@ -1,21 +1,22 @@
-<?php 
-include_once 'Includes/htmlUtilities.php';
-include_once 'Includes/SessionChecker.php';
+<?php
+require_once 'Includes/AdminChecker.php';
+require_once "Includes/htmlUtilities.php";
 require_once 'Includes/dbh.php';
 
 $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
       <!-- basic -->
       <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
       <!-- mobile metas -->
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Chevaleresk - </title>
+      <title>Chevaleresk - Administration</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -30,13 +31,12 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <!-- Css Specific to this page-->
-      <link rel="stylesheet" href="css/.css">
+      <link rel="stylesheet" href="css/admin.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico"/>
-      <link rel="stylesheet" href="css/inventaire.css">
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -57,7 +57,7 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
                   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                      <div class="full">
                         <div class="center-desk">
-                           <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="#"></a> </div>
+                           <div class="logo"> <a href="index.php"><img src="images/logo.png" alt="#"></a> </div>
                         </div>
                      </div>
                   </div>
@@ -66,9 +66,10 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
-                                 <li> <a href="index.php">Accueil</a> </li>
+                                 <li><a href="index.php">Accueil</a> </li>
                                  <li><a href="shop.php">Boutique</a></li>
                                  <?php echo LoginBtn() ?>
+                                 <?php echo SignupBtn() ?>
                               </ul>
                            </nav>
                         </div>
@@ -80,12 +81,16 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
          <!-- end header inner -->
       </header>
       <!-- end header -->
-      <section>
-        <div id="inventaireContainer">
-        <div id="inventaire">
+      <section >
+        <div id="boutiqueContainer">
+            <div id="boutique">
+                <div class="player-select">
+                    <select>
+                        <option value="0">test</option>
+                    </select>
+                </div>
                <?php
-                  
-                  $sql = getItemsJoueur($_SESSION['Id']);
+                  $sql = getItemsJoueur();
                   $stmt = sqlsrv_query($conn, $sql);
 
                   while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
@@ -113,6 +118,8 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
                   echo('</table>');
                   sqlsrv_close($conn);
                ?>
+               
+            </div>
         </div>
       </section>
       <!-- Javascript files-->
@@ -127,3 +134,8 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
       <script src="js/form.js"></script>
    </body>
 </html>
+<?php
+unset($_SESSION["UnauthorizedAccess"]);
+unset($_SESSION["addItemError"]);
+
+?>
