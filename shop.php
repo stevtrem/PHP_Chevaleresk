@@ -10,6 +10,8 @@ $potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
 $rsrCheck = isset($_SESSION["RES"]) ? $_SESSION["RES"] : "";
 $addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
 $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "";
+
+unset($_SESSION['selectedPlayerAlias']);
 ?>
 
 <!DOCTYPE html>

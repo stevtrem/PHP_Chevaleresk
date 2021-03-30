@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once 'Includes/htmlUtilities.php';
+
+unset($_SESSION['selectedPlayerAlias']);
 ?>
 
 <!DOCTYPE html>

@@ -28,12 +28,12 @@ $(document).ready(function(){
         }
     });
 
-    // $("#alias").on("keydown", function()
-    // {
-    //     let size = $("#alias").val().length;
-    //     if (size < 3){
-    //         $_SESSION['aliasError'] = "L'alias doit contenir au moins 3 caractères";
-    //     }
-    // });
+    $("select").on("change", function(){
+        let alias = $(this).val();
+        if (alias != "Choisir Joueur"){
+            $.post("Includes/backend.php", {"alias": alias});
+            location.reload();
+        }
+    });
 });
 

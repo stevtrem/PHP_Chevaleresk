@@ -23,12 +23,20 @@
         font-size: 12px;
         padding: 5px;
     }
+    #inventoryLabel{
+        position: absolute;
+        top: 120px;
+        left: 14%;
+        font-size: 18px;
+        font-weight: 800;
+        color: white;
+    }
 }
 
 
 /*------------------------------------------------------------------- 767px x 599px ---------------------------------------------------------------------*/
 
-@media only screen and (min-width: 599px) and (max-width: 767px) {
+@media only screen and (min-width: 599px) and (max-width: 768px) {
     #boutique table td, #boutique table th{
         font-size: 10px;
         padding: 3px;
@@ -52,6 +60,14 @@
     }
     #signupLabel {
         margin-top: 150px;
+    }
+    #inventoryLabel{
+        position: absolute;
+        top: 130px;
+        left: 13%;
+        font-size: 14px;
+        font-weight: 700;
+        color: white;
     }
     .logo {
         text-align: center;
@@ -148,6 +164,14 @@
     #SubmitSearch{
         font-size: 8px;
         width: 100px;
+    }
+    #inventoryLabel{
+        position: absolute;
+        top: 140px;
+        left: 8%;
+        font-size: 10px;
+        font-weight: 600;
+        color: white;
     }
     .img-box figure img {
         display: none;
