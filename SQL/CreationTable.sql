@@ -68,3 +68,10 @@ constraint fk_idItemPotion foreign key (idItem)
 references Items(idItem),
 primary key(idItem)
 );
+create table Ressource 
+(
+idItem int not null,
+description varchar(64) not null
+constraint fk_RessourceItem foreign key (idItem)
+references Items(idItem)
+);

@@ -16,7 +16,7 @@ insert into Items(nomItem,qtStockItem,typeItem,prixUnitaireItem,urlImageItem) va
 insert into Items(nomItem,qtStockItem,typeItem,prixUnitaireItem,urlImageItem) values('Arbalete',100,'WPN',300,'arbalete.png');
 insert into Items(nomItem,qtStockItem,typeItem,prixUnitaireItem,urlImageItem) values('Arbalete anti vampire',100,'WPN',800,'arbaleteVampire.png');
 
-insert into Armes values(1,10,'Longue Porte','Un arc � fleche cree par une ancienne civilisation maintenant detruite');
+insert into Armes values(1,10,'Longue Porte','Un arc � fleche cree par une ancienne civilisation maintenant detruite');
 insert into Armes values(2,11,'deux main','Une epee si chaude que vos sourcils prendront feu!');
 insert into Armes values(3,11,'Longue Porte','Un arc tirant du feu faire attention...');
 insert into Armes values(4,12,'deux main','Une epee qui transforme vos ennemis en desserts glaces!');
@@ -63,3 +63,19 @@ insert into Potions values(17,'Reduit les degats de glace  de 30%',60);
 
 insert into Items values('Potion de resistance au poison',100,'POT',70,'potionPoison.png');
 insert into Potions values(18,'Reduit les degats de poison de 40%',60);
+
+
+insert into Items values('Fer', 100, 'RES', 25, 'fer.png');
+insert into Ressource values(19, 'Un materiau dur et pas cher !')
+
+insert into Items values('Or', 100, 'RES', 200, 'or.png');
+insert into Ressource values(20, 'Une ressource rare et couteuse !')
+
+insert into Items values('Cuir', 100, 'RES', 50, 'leatherScraps.png');
+insert into Ressource values(21, 'Pas très cher et pas très utile !')
+
+insert into Items values('Bois', 100, 'RES', 10, 'bois.png')
+insert into Ressource values(22, 'Le materiau de base, achetez-en !')
+
+insert into Items values('Diamant', 100, 'RES', 500, 'Diamant.png')
+insert into Ressource values(22, 'La crême de la crême')
