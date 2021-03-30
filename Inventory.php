@@ -85,17 +85,15 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
         <div id="inventaire">
                <?php
                   
-                  $sql = getItems();
+                  $sql = getItemsJoueur($_SESSION['Id']);
                   $stmt = sqlsrv_query($conn, $sql);
 
                   while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
-                     $idItem = $row['idItem'];
                      $nomItem = $row['nomItem'];
-                     $qtStock = $row['qtStockItem'];
-                     $prixUnitaire = (int)$row['prixUnitaireItem'];
+                     $qtStock = $row['qtItem'];
                      $urlItem = $row['urlImageItem'];
 
-                     echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
+                     echo('<table><tr><th>Item</th><th>Stock</th><th>Nom</th></tr>');
 
                      echo <<<HTML
                         <div>
@@ -106,14 +104,8 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
                            <td>
                               {$qtStock}
                            </td>
-                           <td id="costLabel">
-                              {$prixUnitaire}
-                           </td>
                            <td style="font-weight:bold">
                               {$nomItem}
-                           </td>
-                           <td>
-                              <a class="addBtnBoutique" href="Includes/addItemPanier.php?item={$idItem}">Ajouter</a>
                            </td>
                         </tr>
                      HTML;

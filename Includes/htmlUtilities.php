@@ -19,7 +19,8 @@ function LoginBtn(){
             return "<li><a href='Includes/logout.php' id='btnLogout'>Déconnexion</a></li>".
                    "<li><a href='admin.php' style='color:#22a314; font-weight:bold'>SECTION $alias</a></li>";
        }else{
-            return "<li><a href='Includes/logout.php' id='btnLogout'>Déconnexion</a></li>".
+            return "<li><a href='Inventory.php'>Inventaire</a></li>".
+                   "<li><a href='Includes/logout.php' id='btnLogout'>Déconnexion</a></li>".
                    "<li><a style='color:#22a314; font-weight:bold'>$alias</a></li>".
                    "<li><a href='Panier.php' id='LogoPanier'>Panier</a></li>";
        }
@@ -55,14 +56,15 @@ function getItems(){
 }
 
 function getItemsJoueur(){
+    
     if (isset($_SESSION["sql"])){
         return $_SESSION["sql"];
     }else{
-        $idJoueur = $_SESSION['selectedPlayerId'];
+        $id = $_SESSION['Id'];
         return "SELECT i.urlImageItem, j.qtItem, i.nomItem
                 FROM   inventaireJoueur j INNER JOIN
                        Items i ON j.idItem = i.idItem
-                WHERE  idJoueur = $idJoueur";
+                WHERE  idJoueur = $id";
     }
 }
 
