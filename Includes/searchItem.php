@@ -10,6 +10,7 @@
                 unset($_SESSION['WPN']);
                 unset($_SESSION['ARM']);
                 unset($_SESSION['POT']);
+                unset($_SESSION['RSR']);
                 $sql.= " WHERE";
                 $length = count($_POST['type']);
                 for ($i = 0; $i < $length; $i++){
@@ -27,6 +28,7 @@
                 unset($_SESSION['WPN']);
                 unset($_SESSION['ARM']);
                 unset($_SESSION['POT']);
+                unset($_SESSION['RSR']);
                 unset($_SESSION['allCheck']);
             }
         }else{
@@ -34,6 +36,7 @@
             unset($_SESSION['WPN']);
             unset($_SESSION['ARM']);
             unset($_SESSION['POT']);
+            unset($_SESSION['RSR']);
         }
         if (isset($_POST['order'])){
             $length = count($_POST['order']);

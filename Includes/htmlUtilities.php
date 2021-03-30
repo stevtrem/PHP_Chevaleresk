@@ -40,7 +40,7 @@ function showError($message){
     echo "<span style='color:red'>$message</span>";
 }
 
-function getQuery(){
+function getItems(){
     if (isset($_SESSION["sql"])){
         return $_SESSION["sql"];
     }else{
