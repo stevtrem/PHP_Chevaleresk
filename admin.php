@@ -122,7 +122,7 @@ $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPl
 
                     // S'il y a au moins une insertion on affiche son contenu
                     if ($nbInsertions > 0){
-                        $sql3 = getItemsJoueur();
+                        $sql3 = getItemsJoueurAdmin();
                         $stmt3 = sqlsrv_query($conn, $sql3);
     
                         while( $row = sqlsrv_fetch_array( $stmt3, SQLSRV_FETCH_ASSOC) ){
