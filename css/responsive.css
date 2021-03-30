@@ -11,16 +11,35 @@
     .header-search {
         padding: 15px 0px;
     }
-
+    #boutique table td, #boutique table th{
+        font-size: 12px;
+        padding: 5px;
+    }
+    #tableContainer table td, #tableContainer table th{
+        font-size: 12px;
+        padding: 5px;
+    }
+    #searchBar{
+        font-size: 12px;
+        padding: 5px;
+    }
 }
 
 
 /*------------------------------------------------------------------- 767px x 599px ---------------------------------------------------------------------*/
 
 @media only screen and (min-width: 599px) and (max-width: 767px) {
+    #boutique table td, #boutique table th{
+        font-size: 10px;
+        padding: 3px;
+    }
     #tableContainer table td, #tableContainer table th{
-        font-size: 14px;
-        padding: 10px;
+        font-size: 10px;
+        padding: 3px;
+    }
+    #searchBar{
+        font-size: 10px;
+        padding: 3px;
     }
     #LogoPanier {
         color: black;
@@ -106,9 +125,29 @@
 /*------------------------------------------------------------------- 599px x 280px ---------------------------------------------------------------------*/
 
 @media only screen and (min-width: 280px) and (max-width: 599px) {
+    #LogoPanier {
+        color: black;
+        background-image: none;
+        width: 100%;
+        height: auto;
+    }
     #tableContainer table td, #tableContainer table th{
-        font-size: 14px;
-        padding: 10px;
+        font-size: 8px;
+        padding: 1px;
+    }
+    #boutique table td, #boutique table th{
+        font-size: 8px;
+        padding: 1px;
+    }
+    #searchBar{
+        font-size: 8px;
+        padding: 1px;
+        margin-right: 15px;
+        width: 100px;
+    }
+    #SubmitSearch{
+        font-size: 8px;
+        width: 100px;
     }
     .img-box figure img {
         display: none;
@@ -168,6 +207,15 @@
 
 @media (min-width: 992px) and (max-width: 1199px) {
     
+    #tableContainer table td, #tableContainer table th{
+        font-size: 16px;
+        padding: 12px;
+    }
+    #boutique table td, #boutique table th{
+        font-size: 16px;
+        padding: 12px;
+    }
+
     .titlepage h2::after {width: 58%;}
     .about-box .titlepage h2::after {
         width: 52%;

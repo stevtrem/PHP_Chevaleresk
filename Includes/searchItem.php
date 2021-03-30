@@ -7,6 +7,9 @@
         $sql = "SELECT * FROM Items";
         if (!isset($_POST['all'])){
             if (isset($_POST['type'])){
+                unset($_SESSION['WPN']);
+                unset($_SESSION['ARM']);
+                unset($_SESSION['POT']);
                 $sql.= " WHERE";
                 $length = count($_POST['type']);
                 for ($i = 0; $i < $length; $i++){
@@ -18,16 +21,16 @@
                         $sql.= " typeItem = '$type'";
                         $_SESSION[$type] = "checked";
                         unset($_SESSION['allCheck']);
-                    }  
+                    }
                 }
             }else{
+                unset($_SESSION['WPN']);
+                unset($_SESSION['ARM']);
+                unset($_SESSION['POT']);
                 unset($_SESSION['allCheck']);
             }
         }else{
             $_SESSION['allCheck'] = "checked";
-            foreach ($_POST['type'] as $type){
-                unset($_SESSION[$type]);
-            }
             unset($_SESSION['WPN']);
             unset($_SESSION['ARM']);
             unset($_SESSION['POT']);
