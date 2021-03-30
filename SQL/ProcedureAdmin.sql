@@ -1,4 +1,5 @@
-create procedure ajoutItem
+
+create or alter procedure ajoutItem
 (@nomItem varchar(32),
 @qtStock int,
 @type char(3),
@@ -15,5 +16,41 @@ create procedure ajoutItem
 @descriptionRes VARCHAR(64) = NULL)
 as
 begin
-	delete from Panier where idJoueur = @idJoueur;
+  DECLARE @id int;
+	if(@type = 'WPN')
+  BEGIN
+    if(@efficacite is not null and @genre is not null and @descriptionArme is not null)
+    BEGIN
+      insert into Items values(@nomItem, @qtStock, @type, @prix, @url);
+      set @id = @@IDENTITY
+      insert into Armes values(@id, @efficacite, @genre, @descriptionArme);
+    END
+  END
+  ELSE if(@type = 'POT')
+  BEGIN
+    if(@effet is not null and @duree is not null)
+    BEGIN
+      insert into Items values(@nomItem, @qtStock, @type, @prix, @url);
+      set @id = @@IDENTITY
+      insert into Potions values(@id, @effet, @duree);
+    END
+  end;
+  ELSE if(@type = 'ARM')
+  BEGIN
+    if(@matiere is not null and @poids is not null and @taille is not null)
+    BEGIN
+      insert into Items values(@nomItem, @qtStock, @type, @prix, @url)
+      set @id = @@IDENTITY
+      insert into Armures values(@id, @matiere, @poids, @taille)
+    END
+  end;
+  ELSE if(@type = 'RES')
+  BEGIN
+    if(@descriptionRes is not null)
+    BEGIN
+      insert into Items values(@nomItem, @qtStock, @type, @prix, @url)
+      set @id = @@IDENTITY
+      insert into Ressource values(@id, @descriptionRes) 
+    END
+  end;
 end;
