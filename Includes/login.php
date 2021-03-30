@@ -25,6 +25,8 @@ if (isset($_POST["SubmitForm"])){
     if ($_SESSION['Id'] == 0){
         $_SESSION['loginError'] = 'Informations invalides';
         header('Location:../loginForm.php');
+    }else if ($_SESSION['alias'] == 'admin'){
+        header('Location:../admin.php');
     }else{
         header('Location:../shop.php');
     }
