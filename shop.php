@@ -138,9 +138,6 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
                            <td style="font-weight:bold">
                               {$nomItem}
                            </td>
-                           <td>
-                              <a class="addBtnBoutique" href="Includes/addItemPanier.php?item={$idItem}">Ajouter</a>
-                           </td>
                         </tr>
                      HTML;
                   }  

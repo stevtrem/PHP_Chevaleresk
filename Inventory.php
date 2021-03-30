@@ -2,6 +2,8 @@
 include_once 'Includes/htmlUtilities.php';
 include_once 'Includes/SessionChecker.php';
 require_once 'Includes/dbh.php';
+
+$accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +36,7 @@ require_once 'Includes/dbh.php';
       <!-- owl stylesheets --> 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico"/>
+      <link rel="stylesheet" href="css/inventaire.css">
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -77,8 +80,48 @@ require_once 'Includes/dbh.php';
          <!-- end header inner -->
       </header>
       <!-- end header -->
-      <section style="background:blue">
-        Write code here 
+      <section>
+        <div id="inventaireContainer">
+        <div id="inventaire">
+               <?php
+                  
+                  $sql = getItems();
+                  $stmt = sqlsrv_query($conn, $sql);
+
+                  while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
+                     $idItem = $row['idItem'];
+                     $nomItem = $row['nomItem'];
+                     $qtStock = $row['qtStockItem'];
+                     $prixUnitaire = (int)$row['prixUnitaireItem'];
+                     $urlItem = $row['urlImageItem'];
+
+                     echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
+
+                     echo <<<HTML
+                        <div>
+                        <tr>
+                           <td>
+                              <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
+                           </td>
+                           <td>
+                              {$qtStock}
+                           </td>
+                           <td id="costLabel">
+                              {$prixUnitaire}
+                           </td>
+                           <td style="font-weight:bold">
+                              {$nomItem}
+                           </td>
+                           <td>
+                              <a class="addBtnBoutique" href="Includes/addItemPanier.php?item={$idItem}">Ajouter</a>
+                           </td>
+                        </tr>
+                     HTML;
+                  }  
+                  echo('</table>');
+                  sqlsrv_close($conn);
+               ?>
+        </div>
       </section>
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>

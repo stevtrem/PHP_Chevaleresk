@@ -1,0 +1,9 @@
+#inventaireContainer{
+    background-color: #081b30;
+    width:100vw; 
+    height:100vh
+}
+#inventaire{
+    width: 100vw;
+    margin-right: 15px;
+}
