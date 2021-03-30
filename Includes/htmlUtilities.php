@@ -15,7 +15,9 @@ function LoginBtn(){
        return '<li><a href="loginForm.php">S\'authentifier</a></li>';
     }else{
        $alias = $_SESSION['alias'];
-       return "<li><a href='Includes/logout.php' id='btnLogout'>Déconnexion</a></li>".
+       $id = $_SESSION['Id'];
+       return "<li><a href='Inventory.php'>Inventaire</a></li>".
+              "<li><a href='Includes/logout.php' id='btnLogout'>Déconnexion</a></li>".
               "<li><a style='color:#22a314; font-weight:bold'>$alias</a></li>".
               "<li><a href='Panier.php' id='LogoPanier'>Panier</a></li>";
     }
