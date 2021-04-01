@@ -150,7 +150,7 @@ $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPl
                             </tr>
                         HTML;
                         }  
-                        echo('</table>');
+                        echo('</table>');                     
                     }else{
                         // Sinon on affiche rien
                         echo "<div class='inventoryResult'>Le joueur ne possède aucun item</div>";
@@ -159,8 +159,13 @@ $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPl
                     // Sinon on affiche rien
                     echo "<div class='inventoryResult'>Aucun inventaire à afficher</div>";
                 }
+
                 sqlsrv_close($conn);
                ?>
+            </div>   
+            <div class='fundsPlayer'>
+               <span style="float:left">Total fonds : </span>
+               <a id="cataCross" href="increaseFunds.php" style="float:right"></a>
             </div>
         </div>
       </section>
