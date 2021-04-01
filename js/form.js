@@ -28,6 +28,33 @@ $(document).ready(function(){
         }
     });
 
+    $("#alias").on("keydown", function(ev)
+    {
+        let listeValide = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXRZ ";
+        let backspace = "Backspace";
+        let tab = "Tab";
+        
+        let touche = ev.key;
+
+        if (touche != backspace && touche != tab && listeValide.indexOf(touche) == -1)
+        {
+            ev.preventDefault();
+        }
+    });
+
+    $('#addFundsInput').on("keydown", function(ev)
+    {
+        let listeValide = "1234567890";
+        let backspace = "Backspace";
+        let tab = "Tab";
+
+        let touche = ev.key;
+
+        if (touche != backspace && touche != tab && listeValide.indexOf(touche) == -1){
+            ev.preventDefault();
+        }
+    })
+
     $("select").on("change", function(){
         let alias = $(this).val();
         if (alias != "Choisir Joueur"){

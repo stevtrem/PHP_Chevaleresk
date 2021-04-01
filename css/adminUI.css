@@ -1,0 +1,315 @@
+.sectionMain {
+    background-color: #091e30;
+    height: 100vh;
+    width: 100vw;
+}
+@media only screen and (min-width: 280px) and (max-width: 599px) {
+    #boutique{
+        width: 100vw;
+        margin-right: 15px;
+    }
+    #inventoryLabel{
+        position: absolute;
+        top: 140px;
+        left: 6%;
+        font-size: 8px;
+        font-weight: 600;
+        color: white;
+    }
+    #createItemLabel{
+        position: absolute;
+        top: 140px;
+        left: 39%;
+        font-size: 8px;
+        font-weight: 600;
+        color: white;
+    }
+    #deleteItemLabel{
+        position: absolute;
+        top: 140px;
+        left: 68%;
+        font-size: 8px;
+        font-weight: 600;
+        color: white;
+    }
+    #fundsPlayerText{
+        font-size: 8px;
+        float:left; 
+        color:#00C9ED
+    }
+    #addFundsInput{
+        position: absolute;
+        top: 95%;
+        left: 0;
+        width: 150px;
+    }
+    #cataCross{
+        position: absolute;
+        top: 95%;
+        right: 0;
+        background-image: url("../images/cross.jpg");
+        background-size: contain;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+    }
+}
+@media only screen and (min-width: 599px) and (max-width: 768px){
+    #inventoryLabel{
+        position: absolute;
+        top: 140px;
+        left: 13%;
+        font-size: 10px;
+        font-weight: 700;
+        color: white;
+    }
+    #createItemLabel{
+        position: absolute;
+        top: 140px;
+        left: 42%;
+        font-size: 10px;
+        font-weight: 700;
+        color: white;
+    }
+    #deleteItemLabel{
+        position: absolute;
+        top: 140px;
+        left: 68%;
+        font-size: 10px;
+        font-weight: 700;
+        color: white;
+    }
+    #fundsPlayerText{
+        font-size: 10px;
+        float:left; 
+        color:#00C9ED
+    }
+    #addFundsInput{
+        position: absolute;
+        top: 95%;
+        left: 0;
+        margin-top: 8px;
+        margin-left: 10px;
+    }
+    #cataCross{
+        position: absolute;
+        top: 95%;
+        right: 0;
+        background-image: url("../images/cross.jpg");
+        background-size: contain;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    #inventoryLabel{
+        position: absolute;
+        top: 130px;
+        left: 14%;
+        font-size: 14px;
+        font-weight: 800;
+        color: white;
+    }
+    #createItemLabel{
+        position: absolute;
+        top: 130px;
+        left: 42%;
+        font-size: 14px;
+        font-weight: 800;
+        color: white;
+    }
+    #deleteItemLabel{
+        position: absolute;
+        top: 130px;
+        left: 68%;
+        font-size: 14px;
+        font-weight: 800;
+        color: white;
+    }
+    #fundsPlayerText{
+        font-size: 14px;
+        float:left; 
+        color:#00C9ED
+    }
+    #addFundsInput{
+        position: absolute;
+        top: 95%;
+        left: 0;
+        margin-top: 8px;
+        margin-left: 10px;
+    }
+    #cataCross{
+        position: absolute;
+        top: 95%;
+        right: 0;
+        background-image: url("../images/cross.jpg");
+        background-size: contain;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+}
+@media only screen and (min-width: 991px) and (max-width: 1280px){
+    #inventoryLabel{
+        position: absolute;
+        top: 120px;
+        left: 14%;
+        font-size: 18px;
+        font-weight: 900;
+        color: white;
+    }
+    #createItemLabel{
+        position: absolute;
+        top: 120px;
+        left: 42%;
+        font-size: 18px;
+        font-weight: 900;
+        color: white;
+    }
+    #deleteItemLabel{
+        position: absolute;
+        top: 120px;
+        left: 68%;
+        font-size: 18px;
+        font-weight: 900;
+        color: white;
+    }
+    #fundsPlayerText{
+        font-size: 18px;
+        float:left; 
+        color:#00C9ED
+    }
+    #fundsPlayer{
+        position: absolute;
+        top: 93%;
+        margin-top: 5px;
+        width: 50%;
+        padding: 10px;
+    }
+    #addFundsInput{
+        position: absolute;
+        top: 95%;
+        left: 0;
+        margin-top: 8px;
+        margin-left: 10px;
+    }
+    #cataCross{
+        position: absolute;
+        top: 95%;
+        right: 0;
+        background-image: url("../images/cross.jpg");
+        background-size: contain;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+}
+@media only screen and (min-width: 1280px){
+    #inventoryLabel{
+        position: absolute;
+        top: 115px;
+        left: 15%;
+        font-size: 24px;
+        font-weight: 900;
+        color: white;
+    }
+    #createItemLabel{
+        position: absolute;
+        top: 115px;
+        left: 42%;
+        font-size: 24px;
+        font-weight: 900;
+        color: white;
+    }
+    #deleteItemLabel{
+        position: absolute;
+        top: 115px;
+        left: 68%;
+        font-size: 24px;
+        font-weight: 900;
+        color: white;
+    }
+    #fundsPlayerText{
+        font-size: 24px;
+        float:left; 
+        color:#00C9ED
+    } 
+    #addFundsInput{
+        position: absolute;
+        top: 95%;
+        left: 0;
+        margin-top: 8px;
+        margin-left: 10px;
+    }
+    #cataCross{
+        position: absolute;
+        top: 95%;
+        right: 0;
+        background-image: url("../images/cross.jpg");
+        background-size: contain;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+}
+
+#boutiqueContainer{
+    background-color: #081b30;
+    display: flex;
+    justify-content: center;
+}
+#boutique{
+    min-height: 200px;
+    min-width: 20%;
+    margin-top: 180px;
+    margin-bottom: 180px; 
+    width: 50vw;
+    height: 70vh;
+    overflow: auto;
+    background-image: linear-gradient(to right, white, rgb(175, 175, 175, 0.8));
+    border-radius: 20px;
+    border: 2px solid #465464
+}
+table {
+    border-spacing: 25px;
+    border-collapse: separate;
+}
+th, td {
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+td{
+    width: 300px;
+}
+
+select{
+    display: none;
+}
+.nice-select{
+    background-color: #081b30;
+    font-size: 18px;
+    font-weight: 900;
+    color: white;
+}
+
+a:link, a:visited, a:hover, a:active{
+    color:white;
+}
+
+.inventoryResult{
+    color: rgb(77, 2, 2);
+    font-size: 18px;
+    text-align: center;
+    margin:15em auto; 
+    display:table;
+}
+
+#fundsPlayer{
+    position: absolute;
+    top: 93%;
+    margin-top: 5px;
+    width: 50%;
+    padding: 10px;
+}

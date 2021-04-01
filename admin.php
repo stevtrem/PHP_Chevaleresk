@@ -32,7 +32,7 @@ $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPl
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <!-- Css Specific to this page-->
-      <link rel="stylesheet" href="css/admin.css">
+      <link rel="stylesheet" href="css/adminUI.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
@@ -85,7 +85,7 @@ $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPl
       <section >
         <div id="boutiqueContainer">
         <span id="inventoryLabel"><a href="admin.php" data-toggle="Inventaire">INVENTAIRE DES JOUEURS</a></span>
-        <span id="createItemLabel"><a href="createItem.php">CRÉATION D'UN ITEM</a></span>
+        <span id="createItemLabel"><a href="addNewItem.php">CRÉATION D'UN ITEM</a></span>
         <span id="deleteItemLabel"><a href="deleteItem.php">SUPPRIMER UN ITEM</a></span>
             <div id="boutique">            
                 <div>
@@ -108,11 +108,12 @@ $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPl
                // Si un joueur a été sélectionné dans la liste
                if (isset($_SESSION['selectedPlayerAlias'])){
                     $selectedAlias = $_SESSION['selectedPlayerAlias'];
-                    $sql = "SELECT idJoueur FROM Joueurs WHERE alias = '$selectedAlias'";
+                    $sql = "SELECT idJoueur, montantInitial FROM Joueurs WHERE alias = '$selectedAlias'";
                     $stmt = sqlsrv_query($conn, $sql);
                     
                     while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
                         $_SESSION['selectedPlayerId'] = $row['idJoueur']; // Aller chercher l'Id du joueur selon son alias
+                        $totalFunds = $row['montantInitial'];
                     }
 
                     // On compte si l'id du joueur est présent à quelque part dans la table inventaireJoueur
@@ -157,15 +158,22 @@ $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPl
                     } 
                 }else{
                     // Sinon on affiche rien
+                    $totalFunds = 0;
                     echo "<div class='inventoryResult'>Aucun inventaire à afficher</div>";
                 }
 
                 sqlsrv_close($conn);
                ?>
             </div>   
-            <div class='fundsPlayer'>
-               <span style="float:left">Total fonds : </span>
-               <a id="cataCross" href="increaseFunds.php" style="float:right"></a>
+            <div id='fundsPlayer'> <!-- Section d'affichage des fonds -->
+               <span id='fundsPlayerText'>Total fonds : <?php echo floor($totalFunds)?> Écu(s)</span>
+               <?php if (isset($_SESSION['selectedPlayerAlias'])){ // On affiche l'option d'ajouter des fonds seulement si un utilisateur à été sélectionné
+                  echo <<<HTML
+                        <input type='textbox' id='addFundsInput' placeholder='Ajouter des fonds'/>
+                        <a id="cataCross" href="ajouterFonds.php"></a>
+                        HTML; 
+                     }
+               ?> 
             </div>
         </div>
       </section>
