@@ -170,7 +170,7 @@ $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPl
                <?php if (isset($_SESSION['selectedPlayerAlias'])){ // On affiche l'option d'ajouter des fonds seulement si un utilisateur à été sélectionné
                   echo <<<HTML
                         <input type='textbox' id='addFundsInput' placeholder='Ajouter des fonds'/>
-                        <a id="cataCross" href="ajouterFonds.php"></a>
+                        <a id="cataCross" href="Includes/ajouterFonds.php"></a>
                         HTML; 
                      }
                ?> 
