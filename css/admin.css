@@ -3,58 +3,6 @@
     height: 100vh;
     width: 100vw;
 }
-@media only screen and (min-width: 1280px){
-    #inventoryLabel{
-        position: absolute;
-        top: 115px;
-        left: 15%;
-        font-size: 24px;
-        font-weight: 900;
-        color: white;
-    }
-    #createItemLabel{
-        position: absolute;
-        top: 115px;
-        left: 42%;
-        font-size: 24px;
-        font-weight: 900;
-        color: white;
-    }
-    #deleteItemLabel{
-        position: absolute;
-        top: 115px;
-        left: 68%;
-        font-size: 24px;
-        font-weight: 900;
-        color: white;
-    }
-}
-@media only screen and (min-width: 991px) and (max-width: 1280px){
-    #inventoryLabel{
-        position: absolute;
-        top: 120px;
-        left: 14%;
-        font-size: 18px;
-        font-weight: 900;
-        color: white;
-    }
-    #createItemLabel{
-        position: absolute;
-        top: 120px;
-        left: 42%;
-        font-size: 18px;
-        font-weight: 900;
-        color: white;
-    }
-    #deleteItemLabel{
-        position: absolute;
-        top: 120px;
-        left: 68%;
-        font-size: 18px;
-        font-weight: 900;
-        color: white;
-    }
-}
 @media only screen and (min-width: 280px) and (max-width: 599px) {
     #boutique{
         width: 100vw;
@@ -112,21 +60,4 @@ a:link, a:visited, a:hover, a:active{
     text-align: center;
     margin:15em auto; 
     display:table;
-}
-
-.fundsPlayer{
-    color: white;
-    position: absolute;
-    top: 93%;
-    width: 50%;
-    padding: 10px;
-    font-size: 26px;
-}
-
-#cataCross{
-    background-image: url("../images/cross.jpg");
-    background-size: contain;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
 }
