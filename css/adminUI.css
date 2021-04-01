@@ -34,23 +34,23 @@
     }
     #fundsPlayerText{
         font-size: 8px;
-        float:left; 
+        float:left;
         color:#00C9ED
     }
     #addFundsReport{
         float: right;
-        margin-top: 1px;
         font-size: 8px;
     }
     #addFundsInput{
         position: absolute;
-        top: 95%;
+        top: 93%;
         left: 0;
         width: 150px;
+        border-radius: 5px;
     }
     #cataCross{
         position: absolute;
-        top: 95%;
+        top: 94%;
         right: 0;
         background-image: url("../images/cross.jpg");
         background-size:cover;
@@ -99,6 +99,7 @@
         top: 95%;
         left: 0;
         margin-left: 10px;
+        border-radius: 5px;
     }
     #cataCross{
         position: absolute;
@@ -151,6 +152,7 @@
         top: 95%;
         left: 0;
         margin-left: 10px;
+        border-radius: 5px;
     }
     #cataCross{
         position: absolute;
@@ -209,6 +211,7 @@
         top: 95%;
         left: 0;
         margin-left: 10px;
+        border-radius: 5px;
     }
     #cataCross{
         position: absolute;
@@ -260,10 +263,11 @@
         top: 95%;
         left: 0;
         margin-left: 10px;
+        border-radius: 5px;
     }
     #cataCross{
         position: absolute;
-        top: 90%;
+        top: 88%;
         right: 0;
         background-image: url("../images/cross.jpg");
         background-size: contain;
