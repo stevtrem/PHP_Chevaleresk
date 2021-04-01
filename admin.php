@@ -4,6 +4,7 @@ require_once "Includes/htmlUtilities.php";
 require_once 'Includes/dbh.php';
 
 $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "";
+$selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPlayerAlias"] : "Choisir Joueur";
 ?>
 
 <!DOCTYPE html>
@@ -83,42 +84,83 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
       <!-- end header -->
       <section >
         <div id="boutiqueContainer">
-            <div id="boutique">
-                <div class="player-select">
-                    <select>
-                        <option value="0">test</option>
+        <span id="inventoryLabel"><a href="admin.php" data-toggle="Inventaire">INVENTAIRE DES JOUEURS</a></span>
+        <span id="createItemLabel"><a href="createItem.php">CRÉATION D'UN ITEM</a></span>
+        <span id="deleteItemLabel"><a href="deleteItem.php">SUPPRIMER UN ITEM</a></span>
+            <div id="boutique">            
+                <div>
+                    <!-- Génération du select list avec ses options -->
+                    <select class="wide">
+                        <option data-display="<?php echo $selectedAlias ?>">Choisir Joueur</option>
+                        <?php
+                            $sql = "SELECT alias FROM Joueurs";
+                            $stmt = sqlsrv_query($conn, $sql);
+
+                            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
+                                $alias = $row['alias'];
+                                if ($alias != "admin") // Ne pas afficher admin comme option
+                                 echo "<option value='$alias'>$alias</option>";
+                            }
+                        ?>
                     </select>
                 </div>
                <?php
-                  $sql = getItemsJoueur();
-                  $stmt = sqlsrv_query($conn, $sql);
+               // Si un joueur a été sélectionné dans la liste
+               if (isset($_SESSION['selectedPlayerAlias'])){
+                    $selectedAlias = $_SESSION['selectedPlayerAlias'];
+                    $sql = "SELECT idJoueur FROM Joueurs WHERE alias = '$selectedAlias'";
+                    $stmt = sqlsrv_query($conn, $sql);
+                    
+                    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
+                        $_SESSION['selectedPlayerId'] = $row['idJoueur']; // Aller chercher l'Id du joueur selon son alias
+                    }
 
-                  while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
-                     $nomItem = $row['nomItem'];
-                     $qtStock = $row['qtItem'];
-                     $urlItem = $row['urlImageItem'];
+                    // On compte si l'id du joueur est présent à quelque part dans la table inventaireJoueur
+                    $selectedId = $_SESSION['selectedPlayerId'];
+                    $sql2 = "SELECT COUNT(*) as nbInsertions FROM inventaireJoueur WHERE idJoueur = $selectedId";
+                    $stmt2 = sqlsrv_query($conn, $sql2);
+                    while( $row = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC) ){
+                        $nbInsertions = $row['nbInsertions'];
+                    }
 
-                     echo('<table><tr><th>Item</th><th>Stock</th><th>Nom</th></tr>');
-
-                     echo <<<HTML
-                        <div>
-                        <tr>
-                           <td>
-                              <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
-                           </td>
-                           <td>
-                              {$qtStock}
-                           </td>
-                           <td style="font-weight:bold">
-                              {$nomItem}
-                           </td>
-                        </tr>
-                     HTML;
-                  }  
-                  echo('</table>');
-                  sqlsrv_close($conn);
+                    // S'il y a au moins une insertion on affiche son contenu
+                    if ($nbInsertions > 0){
+                        $sql3 = getItemsJoueurAdmin();
+                        $stmt3 = sqlsrv_query($conn, $sql3);
+    
+                        while( $row = sqlsrv_fetch_array( $stmt3, SQLSRV_FETCH_ASSOC) ){
+                        $nomItem = $row['nomItem'];
+                        $qtStock = $row['qtItem'];
+                        $urlItem = $row['urlImageItem'];
+                        
+                        echo('<table><tr><th>Item</th><th>Stock</th><th>Nom</th></tr>');
+    
+                        echo <<<HTML
+                            <div>
+                            <tr>
+                                <td>
+                                    <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
+                                </td>
+                                <td>
+                                    {$qtStock}
+                                </td>
+                                <td style="font-weight:bold">
+                                    {$nomItem}
+                                </td>
+                            </tr>
+                        HTML;
+                        }  
+                        echo('</table>');
+                    }else{
+                        // Sinon on affiche rien
+                        echo "<div class='inventoryResult'>Le joueur ne possède aucun item</div>";
+                    } 
+                }else{
+                    // Sinon on affiche rien
+                    echo "<div class='inventoryResult'>Aucun inventaire à afficher</div>";
+                }
+                sqlsrv_close($conn);
                ?>
-               
             </div>
         </div>
       </section>
