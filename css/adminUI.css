@@ -37,6 +37,11 @@
         float:left; 
         color:#00C9ED
     }
+    #addFundsReport{
+        float: right;
+        margin-top: 1px;
+        font-size: 8px;
+    }
     #addFundsInput{
         position: absolute;
         top: 95%;
@@ -48,7 +53,8 @@
         top: 95%;
         right: 0;
         background-image: url("../images/cross.jpg");
-        background-size: contain;
+        background-size:cover;
+        background-repeat: no-repeat;
         width: 35px;
         height: 35px;
         cursor: pointer;
@@ -84,16 +90,19 @@
         float:left; 
         color:#00C9ED
     }
+    #addFundsReport{
+        float: right;
+        font-size: 10px;
+    }
     #addFundsInput{
         position: absolute;
         top: 95%;
         left: 0;
-        margin-top: 8px;
         margin-left: 10px;
     }
     #cataCross{
         position: absolute;
-        top: 95%;
+        top: 83%;
         right: 0;
         background-image: url("../images/cross.jpg");
         background-size: contain;
@@ -132,16 +141,20 @@
         float:left; 
         color:#00C9ED
     }
+    #addFundsReport{
+        float: right;
+        margin-top: 2px;
+        font-size: 11px;
+    }
     #addFundsInput{
         position: absolute;
         top: 95%;
         left: 0;
-        margin-top: 8px;
         margin-left: 10px;
     }
     #cataCross{
         position: absolute;
-        top: 95%;
+        top: 85%;
         right: 0;
         background-image: url("../images/cross.jpg");
         background-size: contain;
@@ -180,6 +193,10 @@
         float:left; 
         color:#00C9ED
     }
+    #addFundsReport{
+        float: right;
+        font-size: 15px;
+    }
     #fundsPlayer{
         position: absolute;
         top: 93%;
@@ -191,12 +208,11 @@
         position: absolute;
         top: 95%;
         left: 0;
-        margin-top: 8px;
         margin-left: 10px;
     }
     #cataCross{
         position: absolute;
-        top: 95%;
+        top: 87%;
         right: 0;
         background-image: url("../images/cross.jpg");
         background-size: contain;
@@ -234,17 +250,20 @@
         font-size: 24px;
         float:left; 
         color:#00C9ED
-    } 
+    }
+    #addFundsReport{
+        float: right;
+        font-size: 19px;
+    }
     #addFundsInput{
         position: absolute;
         top: 95%;
         left: 0;
-        margin-top: 8px;
         margin-left: 10px;
     }
     #cataCross{
         position: absolute;
-        top: 95%;
+        top: 90%;
         right: 0;
         background-image: url("../images/cross.jpg");
         background-size: contain;
@@ -309,7 +328,10 @@ a:link, a:visited, a:hover, a:active{
 #fundsPlayer{
     position: absolute;
     top: 93%;
-    margin-top: 5px;
     width: 50%;
     padding: 10px;
+}
+
+form{
+    padding: 0;
 }

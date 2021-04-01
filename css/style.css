@@ -1913,7 +1913,7 @@ form {
 .Nursery-img figure {
      margin: 0px;
 }
-form a {
+/* form a {
      font-size: 17px;
      padding: 15px 25px;
      background-color: #f00;
@@ -1930,7 +1930,7 @@ form a {
 form a:hover {
      color: #fff;
      background: #000;
-}
+} */
 .email_btn .form-control {
      border: none;
      border-bottom: #ddd solid 1px;

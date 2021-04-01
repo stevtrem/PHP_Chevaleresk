@@ -5,6 +5,9 @@ require_once 'Includes/dbh.php';
 
 $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "";
 $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPlayerAlias"] : "Choisir Joueur";
+$fundsMsg = isset($_SESSION['fundsMsg']) ? $_SESSION['fundsMsg'] : "";
+$msgColor = isset($_GET['report']) ? $_GET['report'] : "white";
+
 ?>
 
 <!DOCTYPE html>
@@ -161,19 +164,23 @@ $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPl
                     $totalFunds = 0;
                     echo "<div class='inventoryResult'>Aucun inventaire à afficher</div>";
                 }
-
+                
+                sqlsrv_free_stmt($stmt);
                 sqlsrv_close($conn);
                ?>
             </div>   
             <div id='fundsPlayer'> <!-- Section d'affichage des fonds -->
                <span id='fundsPlayerText'>Total fonds : <?php echo floor($totalFunds)?> Écu(s)</span>
+               <div id='addFundsReport' style='color:<?php echo $msgColor?>'><?php echo $fundsMsg ?></div>
                <?php if (isset($_SESSION['selectedPlayerAlias'])){ // On affiche l'option d'ajouter des fonds seulement si un utilisateur à été sélectionné
                   echo <<<HTML
-                        <input type='textbox' id='addFundsInput' placeholder='Ajouter des fonds'/>
-                        <a id="cataCross" href="Includes/ajouterFonds.php"></a>
+                        <form method='POST' action='Includes/ajouterFonds.php'>
+                           <input type='text' id='addFundsInput' name='AddFundsInput' placeholder='Ajouter des fonds'/>
+                           <button type='submit' id="cataCross" name='SubmitFunds'></button>
+                        </form><br>
                         HTML; 
                      }
-               ?> 
+               ?>
             </div>
         </div>
       </section>
@@ -190,7 +197,8 @@ $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPl
    </body>
 </html>
 <?php
+
 unset($_SESSION["UnauthorizedAccess"]);
 unset($_SESSION["addItemError"]);
-
+unset($_SESSION["fundsMsg"]);
 ?>
