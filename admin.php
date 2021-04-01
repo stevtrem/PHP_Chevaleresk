@@ -84,7 +84,9 @@ $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPl
       <!-- end header -->
       <section >
         <div id="boutiqueContainer">
-        <span id="inventoryLabel"><a href="admin.php">INVENTAIRE DES JOUEURS</a></span>
+        <span id="inventoryLabel"><a href="admin.php" data-toggle="Inventaire">INVENTAIRE DES JOUEURS</a></span>
+        <span id="createItemLabel"><a href="createItem.php">CRÉATION D'UN ITEM</a></span>
+        <span id="deleteItemLabel"><a href="deleteItem.php">SUPPRIMER UN ITEM</a></span>
             <div id="boutique">            
                 <div>
                     <!-- Génération du select list avec ses options -->
