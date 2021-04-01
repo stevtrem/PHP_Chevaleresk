@@ -108,3 +108,20 @@ a:link, a:visited, a:hover, a:active{
     margin:15em auto; 
     display:table;
 }
+
+.fundsPlayer{
+    color: white;
+    position: absolute;
+    top: 93%;
+    width: 50%;
+    padding: 10px;
+    font-size: 26px;
+}
+
+#cataCross{
+    background-image: url("../images/cross.jpg");
+    background-size: contain;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
