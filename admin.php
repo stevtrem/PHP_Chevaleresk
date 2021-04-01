@@ -98,7 +98,8 @@ $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPl
 
                             while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
                                 $alias = $row['alias'];
-                                echo "<option value='$alias'>$alias</option>";
+                                if ($alias != "admin") // Ne pas afficher admin comme option
+                                 echo "<option value='$alias'>$alias</option>";
                             }
                         ?>
                     </select>

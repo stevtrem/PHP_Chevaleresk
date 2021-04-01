@@ -123,9 +123,9 @@ unset($_SESSION['selectedPlayerAlias']);
                      $prixUnitaire = (int)$row['prixUnitaireItem'];
                      $urlItem = $row['urlImageItem'];
 
-                     echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
-
-                     echo <<<HTML
+                     if ($_SESSION['alias'] != 'admin'){ // Si admin, ne peut ajouter des items au panier
+                        echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
+                        echo <<<HTML
                         <div>
                         <tr>
                            <td>
@@ -144,7 +144,27 @@ unset($_SESSION['selectedPlayerAlias']);
                               <a class="addBtnBoutique" href="Includes/addItemPanier.php?item={$idItem}">Ajouter</a>
                            </td>
                         </tr>
-                     HTML;
+                        HTML;
+                     }else{
+                        echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th></tr>');
+                        echo <<<HTML
+                        <div>
+                        <tr>
+                           <td>
+                              <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
+                           </td>
+                           <td>
+                              {$qtStock}
+                           </td>
+                           <td id="costLabel">
+                              {$prixUnitaire}
+                           </td>
+                           <td style="font-weight:bold">
+                              {$nomItem}
+                           </td>
+                        </tr>
+                        HTML;
+                     } 
                   }  
                   echo('</table>');
                   sqlsrv_close($conn);
