@@ -81,38 +81,37 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
       </header>
       <!-- end header -->
       <section>
-        <div id="inventaireContainer">
-        <div id="inventaire">
-               <?php
+      <div id="inventaireContainer">
+            <div id="inventaire">
+                <?php
+                  $params = array($_SESSION['Id']);
+
+                  $sql = getItemsJoueur();
                   
-                  $sql = getItemsJoueur($_SESSION['Id']);
-                  $stmt = sqlsrv_query($conn, $sql);
+                  $stmt = sqlsrv_query($conn, $sql, $params);
+                  
+                  echo('<div id="tableContainer"><table><tr><th>Item</th><th>Quantité</th></tr>');
 
-                  while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
-                     $nomItem = $row['nomItem'];
-                     $qtStock = $row['qtItem'];
-                     $urlItem = $row['urlImageItem'];
-
-                     echo('<table><tr><th>Item</th><th>Stock</th><th>Nom</th></tr>');
-
+                  while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                     $url = $row['urlImageItem'];
+                     $qtItem = $row['qtItem'];
+                     $nomItem = $row['nomItem']; 
                      echo <<<HTML
-                        <div>
                         <tr>
                            <td>
-                              <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
+                              {$nomItem}\n
+                              <img src="./images/imagesItem/{$url}" id="imgPanierItem">
                            </td>
                            <td>
-                              {$qtStock}
-                           </td>
-                           <td style="font-weight:bold">
-                              {$nomItem}
-                           </td>
+                              {$qtItem}
+                           </td>                           
                         </tr>
                      HTML;
-                  }  
-                  echo('</table>');
+                  }
+                  echo('</table></div>');
                   sqlsrv_close($conn);
-               ?>
+                ?>
+            </div>
         </div>
       </section>
       <!-- Javascript files-->
