@@ -1,6 +1,6 @@
 <?php
-    require_once 'Includes/htmlUtilities.php'
-
+   require_once 'Includes/AdminChecker.php';
+   require_once 'Includes/htmlUtilities.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,6 +63,7 @@
                            <nav class="main-menu">
                               <ul class="menu-area-main">
                                  <?php echo LoginBtn() ?>
+                                 <?php echo SignupBtn() ?>
                               </ul>
                            </nav>
                         </div>
@@ -74,9 +75,22 @@
          <!-- end header inner -->
       </header>
       <!-- end header -->
-      <section>
-        <form action="Includes/addNewItem.php" method="POST">
-            <input />
+      <section id="sectionMain">
+         <h3>Ajouter un Item</h3>
+         <hr/>
+        <form id="addItemForm" action="Includes/addNewItem.php" method="POST">
+            <input class="inputAddItem" placeholder="Nom" id="itemName" type="text" name="itemName"/>
+            <input class="inputAddItem" placeholder="Quantité en stock" id="qtStock" type="number" min="1" name="qtStock"/>
+            <input class="inputAddItem" placeholder="prix" id="price" type="number" min="1" name="price"/>
+            <input id="fileAddItem" type="file" name="pic"/>
+            <select value=" " id="selectAddItem">
+               <option style="display:none" value=""></option>
+               <option value="Wpn">Arme</option>
+               <option value="Arm">Armure</option>
+               <option value="Pot">Potion</option>
+               <option value="Res">Ressource</option>
+            </select>
+            <input id="submitAddItem" type="submit" name="submit" value="Soumettre"/>
         </form>
       </section>
       <!-- Javascript files-->
@@ -84,11 +98,9 @@
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
       <script src="js/jquery-3.0.0.min.js"></script>
-      <script src="js/plugin.js"></script>
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
-      <script src="js/form.js"></script>
       <script src="js/addNewItem.js"></script>
    </body>
 </html>
