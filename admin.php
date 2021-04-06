@@ -85,7 +85,7 @@ $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPl
       <section >
         <div id="boutiqueContainer">
         <span id="inventoryLabel"><a href="admin.php" data-toggle="Inventaire">INVENTAIRE DES JOUEURS</a></span>
-        <span id="createItemLabel"><a href="createItem.php">CRÉATION D'UN ITEM</a></span>
+        <span id="createItemLabel"><a href="addNewItem.php">CRÉATION D'UN ITEM</a></span>
         <span id="deleteItemLabel"><a href="deleteItem.php">SUPPRIMER UN ITEM</a></span>
             <div id="boutique">            
                 <div>
