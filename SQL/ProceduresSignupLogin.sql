@@ -1,6 +1,4 @@
--- Proc�dures stock�es
-
--- Proc�dure pour ins�r� un nouveau joueur dans la table "Joueurs"
+-- Procedure pour insere un nouveau joueur dans la table "Joueurs"
 
 USE Cheveleresk;
 

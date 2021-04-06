@@ -23,30 +23,6 @@
         font-size: 12px;
         padding: 5px;
     }
-    #inventoryLabel{
-        position: absolute;
-        top: 120px;
-        left: 12%;
-        font-size: 15px;
-        font-weight: 800;
-        color: white;
-    }
-    #createItemLabel{
-        position: absolute;
-        top: 120px;
-        left: 41%;
-        font-size: 15px;
-        font-weight: 800;
-        color: white;
-    }
-    #deleteItemLabel{
-        position: absolute;
-        top: 120px;
-        left: 67%;
-        font-size: 15px;
-        font-weight: 800;
-        color: white;
-    }
 }
 
 
@@ -76,30 +52,6 @@
     }
     #signupLabel {
         margin-top: 150px;
-    }
-    #inventoryLabel{
-        position: absolute;
-        top: 130px;
-        left: 10%;
-        font-size: 12px;
-        font-weight: 700;
-        color: white;
-    }
-    #createItemLabel{
-        position: absolute;
-        top: 130px;
-        left: 40%;
-        font-size: 12px;
-        font-weight: 700;
-        color: white;
-    }
-    #deleteItemLabel{
-        position: absolute;
-        top: 130px;
-        left: 66%;
-        font-size: 12px;
-        font-weight: 700;
-        color: white;
     }
     .logo {
         text-align: center;
@@ -196,30 +148,6 @@
     #SubmitSearch{
         font-size: 8px;
         width: 100px;
-    }
-    #inventoryLabel{
-        position: absolute;
-        top: 140px;
-        left: 8%;
-        font-size: 8px;
-        font-weight: 600;
-        color: white;
-    }
-    #createItemLabel{
-        position: absolute;
-        top: 140px;
-        left: 38%;
-        font-size: 8px;
-        font-weight: 600;
-        color: white;
-    }
-    #deleteItemLabel{
-        position: absolute;
-        top: 140px;
-        left: 64%;
-        font-size: 8px;
-        font-weight: 600;
-        color: white;
     }
     .img-box figure img {
         display: none;

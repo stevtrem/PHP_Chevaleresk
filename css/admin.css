@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 @media only screen and (min-width: 1280px){
     #inventoryLabel{
@@ -50,6 +51,12 @@
         font-weight: 900;
         color: white;
     }
+=======
+.sectionMain {
+    background-color: #091e30;
+    height: 100vh;
+    width: 100vw;
+>>>>>>> c7753fe756eac1934797d4229d52ddb59d7796af
 }
 @media only screen and (min-width: 280px) and (max-width: 599px) {
     #boutique{
