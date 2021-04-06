@@ -5,6 +5,7 @@ qtStockItem int not null,
 typeItem char(3) not null,
 prixUnitaireItem money not null,
 urlImageItem varchar(256) not null,
+disponible char not null,
 primary key(idItem)
 );
 

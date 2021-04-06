@@ -85,7 +85,7 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
         <div id="boutiqueContainer">
         <span id="inventoryLabel"><a href="admin.php" data-toggle="Inventaire">INVENTAIRE DES JOUEURS</a></span>
         <span id="createItemLabel"><a href="addNewItem.php">CRÉATION D'UN ITEM</a></span>
-        <span id="deleteItemLabel"><a href="deleteItem.php">SUPPRIMER UN ITEM</a></span>
+        <span id="deleteItemLabel">SUPPRIMER UN ITEM</span>
             <div id="boutique">  
             <?php
                   echo ("<div class='deleteItem'>$accessCheck</div>");
@@ -93,35 +93,37 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
                   $stmt = sqlsrv_query($conn, $sql);
 
                   while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
-                    $idItem = $row['idItem'];
-                    $nomItem = $row['nomItem'];
-                    $qtStock = $row['qtStockItem'];
-                    $prixUnitaire = (int)$row['prixUnitaireItem'];
-                    $urlItem = $row['urlImageItem'];
-
-                    echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
-                    echo <<<HTML
-                    <div>
-                    <tr>
-                        <td>
-                            <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
-                        </td>
-                        <td>
-                            {$qtStock}
-                        </td>
-                        <td id="costLabel">
-                            {$prixUnitaire}
-                        </td>
-                        <td style="font-weight:bold">
-                            {$nomItem}
-                        </td>
-                        <td>
-                            <a class="deleteItemBtn" style="color: #22a314" ;href="Includes/deleteItem.php?item={$idItem}">Effacer ?</a>
-                        </td>
-                    </tr>
-                    HTML;
-                    } 
-                   
+                    $dispo = $row['disponible'];
+                    if ($dispo === 'O'){
+                     $idItem = $row['idItem'];
+                     $nomItem = $row['nomItem'];
+                     $qtStock = $row['qtStockItem'];
+                     $prixUnitaire = (int)$row['prixUnitaireItem'];
+                     $urlItem = $row['urlImageItem'];
+ 
+                     echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
+                     echo <<<HTML
+                     <div>
+                     <tr>
+                         <td>
+                             <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
+                         </td>
+                         <td>
+                             {$qtStock}
+                         </td>
+                         <td id="costLabel">
+                             {$prixUnitaire}
+                         </td>
+                         <td style="font-weight:bold">
+                             {$nomItem}
+                         </td>
+                         <td>
+                             <a class="deleteItemBtn" style="color: #22a314" href="Includes/deleteItem.php?item={$idItem}">Effacer ?</a>
+                         </td>
+                     </tr>
+                     HTML;
+                     } 
+                    }
                   echo('</table>');
                   sqlsrv_close($conn);
                ?>         

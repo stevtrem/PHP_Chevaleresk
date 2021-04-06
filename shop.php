@@ -117,55 +117,58 @@ unset($_SESSION['selectedPlayerAlias']);
                   $stmt = sqlsrv_query($conn, $sql);
 
                   while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
-                     $idItem = $row['idItem'];
-                     $nomItem = $row['nomItem'];
-                     $qtStock = $row['qtStockItem'];
-                     $prixUnitaire = (int)$row['prixUnitaireItem'];
-                     $urlItem = $row['urlImageItem'];
-
-                     if (isset($_SESSION['alias']) && $_SESSION['alias'] != 'admin'){ // Si admin, ne peut ajouter des items au panier
-                        echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
-                        echo <<<HTML
-                        <div>
-                        <tr>
-                           <td>
-                              <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
-                           </td>
-                           <td>
-                              {$qtStock}
-                           </td>
-                           <td id="costLabel">
-                              {$prixUnitaire}
-                           </td>
-                           <td style="font-weight:bold">
-                              {$nomItem}
-                           </td>
-                           <td>
-                              <a class="addBtnBoutique" href="Includes/addItemPanier.php?item={$idItem}">Ajouter</a>
-                           </td>
-                        </tr>
-                        HTML;
-                     }else{
-                        echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th></tr>');
-                        echo <<<HTML
-                        <div>
-                        <tr>
-                           <td>
-                              <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
-                           </td>
-                           <td>
-                              {$qtStock}
-                           </td>
-                           <td id="costLabel">
-                              {$prixUnitaire}
-                           </td>
-                           <td style="font-weight:bold">
-                              {$nomItem}
-                           </td>
-                        </tr>
-                        HTML;
-                     } 
-                  }  
+                     $dispo = $row['disponible'];
+                     if ($dispo === 'O'){
+                        $idItem = $row['idItem'];
+                        $nomItem = $row['nomItem'];
+                        $qtStock = $row['qtStockItem'];
+                        $prixUnitaire = (int)$row['prixUnitaireItem'];
+                        $urlItem = $row['urlImageItem'];
+   
+                        if (isset($_SESSION['alias']) && $_SESSION['alias'] != 'admin'){ // Si admin, ne peut ajouter des items au panier
+                           echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
+                           echo <<<HTML
+                           <div>
+                           <tr>
+                              <td>
+                                 <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
+                              </td>
+                              <td>
+                                 {$qtStock}
+                              </td>
+                              <td id="costLabel">
+                                 {$prixUnitaire}
+                              </td>
+                              <td style="font-weight:bold">
+                                 {$nomItem}
+                              </td>
+                              <td>
+                                 <a class="addBtnBoutique" href="Includes/addItemPanier.php?item={$idItem}">Ajouter</a>
+                              </td>
+                           </tr>
+                           HTML;
+                        }else{
+                           echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th></tr>');
+                           echo <<<HTML
+                           <div>
+                           <tr>
+                              <td>
+                                 <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
+                              </td>
+                              <td>
+                                 {$qtStock}
+                              </td>
+                              <td id="costLabel">
+                                 {$prixUnitaire}
+                              </td>
+                              <td style="font-weight:bold">
+                                 {$nomItem}
+                              </td>
+                           </tr>
+                           HTML;
+                        } 
+                     }
+                  } 
                   echo('</table>');
                   sqlsrv_close($conn);
                ?>
