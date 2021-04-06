@@ -62,6 +62,8 @@
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
+                                 <li><a href="index.php">Accueil</a> </li>
+                                 <li><a href="shop.php">Boutique</a></li>
                                  <?php echo LoginBtn() ?>
                                  <?php echo SignupBtn() ?>
                               </ul>
