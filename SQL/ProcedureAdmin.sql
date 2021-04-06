@@ -21,7 +21,7 @@ begin
   BEGIN
     if(@efficacite is not null and @genre is not null and @descriptionArme is not null)
     BEGIN
-      insert into Items values(@nomItem, @qtStock, @type, @prix, @url);
+      insert into Items values(@nomItem, @qtStock, @type, @prix, @url, 'o');
       set @id = @@IDENTITY
       insert into Armes values(@id, @efficacite, @genre, @descriptionArme);
     END
@@ -30,7 +30,7 @@ begin
   BEGIN
     if(@effet is not null and @duree is not null)
     BEGIN
-      insert into Items values(@nomItem, @qtStock, @type, @prix, @url);
+      insert into Items values(@nomItem, @qtStock, @type, @prix, @url, 'o');
       set @id = @@IDENTITY
       insert into Potions values(@id, @effet, @duree);
     END
@@ -39,7 +39,7 @@ begin
   BEGIN
     if(@matiere is not null and @poids is not null and @taille is not null)
     BEGIN
-      insert into Items values(@nomItem, @qtStock, @type, @prix, @url)
+      insert into Items values(@nomItem, @qtStock, @type, @prix, @url, 'o')
       set @id = @@IDENTITY
       insert into Armures values(@id, @matiere, @poids, @taille)
     END
@@ -48,7 +48,7 @@ begin
   BEGIN
     if(@descriptionRes is not null)
     BEGIN
-      insert into Items values(@nomItem, @qtStock, @type, @prix, @url)
+      insert into Items values(@nomItem, @qtStock, @type, @prix, @url, 'o')
       set @id = @@IDENTITY
       insert into Ressource values(@id, @descriptionRes) 
     END

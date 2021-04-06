@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 @media only screen and (min-width: 1280px){
     #inventoryLabel{
@@ -51,12 +50,11 @@
         font-weight: 900;
         color: white;
     }
-=======
 .sectionMain {
     background-color: #091e30;
     height: 100vh;
     width: 100vw;
->>>>>>> c7753fe756eac1934797d4229d52ddb59d7796af
+}
 }
 @media only screen and (min-width: 280px) and (max-width: 599px) {
     #boutique{
@@ -158,13 +156,13 @@ h3 {
 .inputAddItem:focus {
     border: 3px solid #136af8;
 }
-#submitAddItem {
+#submitAddItem, #backAddItem {
     background: #136af8; 
     border: unset;
     border-radius: 10px;
     padding: 10px;
 }
-#submitAddItem:hover {
+#submitAddItem:hover, #backAddItem:hover {
     color: white;
     transform: scale(1.1);
 }
@@ -187,4 +185,23 @@ h3 {
     width: 60px;
     height: 60px;
     cursor: pointer;
+}
+#fileInput {
+    display: none;
+}
+#uploadFileCustom {
+    display: flex;
+    justify-content: center;
+    padding: 6px 12px;
+    cursor: pointer
+}
+#labelImageUpload {
+    color: white;
+}
+.step2, #backAddItem {
+    display: none;
+}
+#errorAddItem {
+    display: none;
+    color: red;
 }
