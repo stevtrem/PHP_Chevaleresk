@@ -79,17 +79,34 @@
          <h3>Ajouter un Item</h3>
          <hr/>
         <form id="addItemForm" action="Includes/addNewItem.php" method="POST">
-            <input class="inputAddItem" placeholder="Nom" id="itemName" type="text" name="itemName"/>
-            <input class="inputAddItem" placeholder="Quantité en stock" id="qtStock" type="number" min="1" name="qtStock"/>
-            <input class="inputAddItem" placeholder="prix" id="price" type="number" min="1" name="price"/>
-            <input id="fileAddItem" type="file" name="pic"/>
-            <select value=" " id="selectAddItem">
+            <input class="inputAddItem step1" placeholder="Nom" id="itemName" type="text" name="itemName"/>
+            <input class="inputAddItem step1" placeholder="Quantité en stock" id="qtStock" type="number" min="1" name="qtStock"/>
+            <input class="inputAddItem step1" placeholder="prix" id="price" type="number" min="1" name="price"/>
+            <span id="labelImageUpload" class="step1">Image de l'item</span>
+            <label id="uploadFileCustom">
+               <input id="fileInput" type="file" name="pic"/>
+               <img id="imageDisplayAddItem" src="./images/MissingImageIcon.jpg" alt="Your Image :" width="100" height="100"/>
+            </label>
+            <select value=" " id="selectAddItem" class="step1" name="type">
                <option style="display:none" value=""></option>
-               <option value="Wpn">Arme</option>
-               <option value="Arm">Armure</option>
-               <option value="Pot">Potion</option>
-               <option value="Res">Ressource</option>
+               <option value="wpn">Arme</option>
+               <option value="arm">Armure</option>
+               <option value="pot">Potion</option>
+               <option value="res">Ressource</option>
             </select>
+            <input id="backAddItem" type="button" value="Retour">
+            <input class="inputAddItem step2 wpn" placeholder="Efficacité" type="number" name="efficacite" id="efficacite"/>
+            <input class="inputAddItem step2 wpn" placeholder="Genre de l'arme" type="text" name="genre" id="genre"/>
+            <input class="inputAddItem step2 wpn" placeholder="Description de l'arme" type="text" name="descriptionArme" id="descriptionArme"/>
+            <input class="inputAddItem step2 arm" placeholder="Matière" type="text" name="matiere" id="matiere"/>
+            <input class="inputAddItem step2 arm" placeholder="Poids" type="text" name="poids" id="poids"/>
+            <input class="inputAddItem step2 arm" placeholder="Taille" type="text" name="taille" id="taille"/>
+            <input class="inputAddItem step2 pot" placeholder="Effet" type="text" name="effet" id="effet"/>
+            <input class="inputAddItem step2 pot" placeholder="Durée" type="number" name="duree" id="duree"/>
+            <input class="inputAddItem step2 res" placeholder="Description Ressource" type="text" name="descriptionRes" id="descriptionRes"/>
+            <hr />
+
+            <span id="errorAddItem">Un ou plusieurs champs sont invalides</span>
             <input id="submitAddItem" type="submit" name="submit" value="Soumettre"/>
         </form>
       </section>
