@@ -16,7 +16,7 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Chevaleresk - Administration</title>
+      <title>Chevaleresk - Supprimer</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -85,7 +85,7 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
         <div id="boutiqueContainer">
         <span id="inventoryLabel"><a href="admin.php" data-toggle="Inventaire">INVENTAIRE DES JOUEURS</a></span>
         <span id="createItemLabel"><a href="addNewItem.php">CRÉATION D'UN ITEM</a></span>
-        <span id="deleteItemLabel">SUPPRIMER UN ITEM</span>
+        <span id="deleteItemLabel" style='color:#00C9ED'>SUPPRIMER UN ITEM</span>
             <div id="boutique">  
             <?php
                   echo ("<div class='deleteItem'>$accessCheck</div>");

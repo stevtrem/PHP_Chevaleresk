@@ -87,7 +87,7 @@ $msgColor = isset($_GET['report']) ? $_GET['report'] : "white";
       <!-- end header -->
       <section >
         <div id="boutiqueContainer">
-        <span id="inventoryLabel">INVENTAIRE DES JOUEURS</span>
+        <span id="inventoryLabel" style='color:#00C9ED'>INVENTAIRE DES JOUEURS</span>
         <span id="createItemLabel"><a href="addNewItem.php">CRÉATION D'UN ITEM</a></span>
         <span id="deleteItemLabel"><a href="deleteItem.php">SUPPRIMER UN ITEM</a></span>
             <div id="boutique">            
