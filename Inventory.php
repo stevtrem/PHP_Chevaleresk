@@ -4,6 +4,7 @@ include_once 'Includes/SessionChecker.php';
 require_once 'Includes/dbh.php';
 
 $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "";
+$params = array($_SESSION['Id']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,11 +85,8 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
       <div id="inventaireContainer">
             <div id="inventaire">
                 <?php
-                  $params = array($_SESSION['Id']);
-
-                  $sql = getItemsJoueur();
-                  
-                  $stmt = sqlsrv_query($conn, $sql, $params);
+                  $sqlinventaire = getInventaireJoueur();
+                  $stmt = sqlsrv_query($conn, $sqlinventaire, $params);
                   
                   echo('<div id="tableContainer"><table><tr><th>Item</th><th>Quantité</th></tr>');
 
@@ -109,6 +107,17 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
                      HTML;
                   }
                   echo('</table></div>');
+                  
+                  $sqlSolde = getSoldeJoueur();
+                  $stmtSolde = sqlsrv_query($conn, $sqlSolde, $params);
+                  $solde = sqlsrv_fetch_array( $stmtSolde, SQLSRV_FETCH_ASSOC);
+                  $montant = $solde['montantInitial'];
+                  echo <<<HTML
+                  <div style="width:50%; height:80px; text-align:center;">
+                     <h4>Solde restant : {$montant}</h4>
+                  </div>
+                  HTML;
+      
                   sqlsrv_close($conn);
                 ?>
             </div>
