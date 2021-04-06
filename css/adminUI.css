@@ -339,3 +339,22 @@ a:link, a:visited, a:hover, a:active{
 form{
     padding: 0;
 }
+
+.deleteItem{
+    color: red;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    background-image: linear-gradient(to right, white, rgb(175, 175, 175, 0.8));
+}
+
+.deleteItemBtn {
+    text-shadow: 1px 1px gray;
+}
+.deleteItemBtn:hover {
+    color: black;
+}
+#deleteItemBtn:active {
+    color: white;
+    border:3px solid #093781;
+}

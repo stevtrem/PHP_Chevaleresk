@@ -1,21 +1,22 @@
-<?php 
-include_once 'Includes/htmlUtilities.php';
-include_once 'Includes/SessionChecker.php';
+<?php
+require_once 'Includes/AdminChecker.php';
+require_once "Includes/htmlUtilities.php";
 require_once 'Includes/dbh.php';
 
-$accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "";
+$accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "EFFACER UN ITEM";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
       <!-- basic -->
       <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
       <!-- mobile metas -->
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Chevaleresk - Inventaire</title>
+      <title>Chevaleresk - Administration</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -30,13 +31,12 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <!-- Css Specific to this page-->
-      <link rel="stylesheet" href="css/.css">
+      <link rel="stylesheet" href="css/adminUI.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico"/>
-      <link rel="stylesheet" href="css/inventaire.css">
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -57,7 +57,7 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
                   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                      <div class="full">
                         <div class="center-desk">
-                           <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="#"></a> </div>
+                           <div class="logo"> <a href="index.php"><img src="images/logo.png" alt="#"></a> </div>
                         </div>
                      </div>
                   </div>
@@ -66,9 +66,10 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
                         <div class="limit-box">
                            <nav class="main-menu">
                               <ul class="menu-area-main">
-                                 <li> <a href="index.php">Accueil</a> </li>
+                                 <li><a href="index.php">Accueil</a> </li>
                                  <li><a href="shop.php">Boutique</a></li>
                                  <?php echo LoginBtn() ?>
+                                 <?php echo SignupBtn() ?>
                               </ul>
                            </nav>
                         </div>
@@ -80,38 +81,51 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
          <!-- end header inner -->
       </header>
       <!-- end header -->
-      <section>
-      <div id="inventaireContainer">
-            <div id="inventaire">
-                <?php
-                  $params = array($_SESSION['Id']);
+      <section >
+        <div id="boutiqueContainer">
+        <span id="inventoryLabel"><a href="admin.php" data-toggle="Inventaire">INVENTAIRE DES JOUEURS</a></span>
+        <span id="createItemLabel"><a href="addNewItem.php">CRÉATION D'UN ITEM</a></span>
+        <span id="deleteItemLabel"><a href="deleteItem.php">SUPPRIMER UN ITEM</a></span>
+            <div id="boutique">  
+            <?php
+                  echo ("<div class='deleteItem'>$accessCheck</div>");
+                  $sql = getItems();
+                  $stmt = sqlsrv_query($conn, $sql);
 
-                  $sql = getItemsJoueur();
-                  
-                  $stmt = sqlsrv_query($conn, $sql, $params);
-                  
-                  echo('<div id="tableContainer"><table><tr><th>Item</th><th>Quantité</th></tr>');
+                  while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
+                    $idItem = $row['idItem'];
+                    $nomItem = $row['nomItem'];
+                    $qtStock = $row['qtStockItem'];
+                    $prixUnitaire = (int)$row['prixUnitaireItem'];
+                    $urlItem = $row['urlImageItem'];
 
-                  while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-                     $url = $row['urlImageItem'];
-                     $qtItem = $row['qtItem'];
-                     $nomItem = $row['nomItem']; 
-                     echo <<<HTML
-                        <tr>
-                           <td>
-                              {$nomItem}\n
-                              <img src="./images/imagesItem/{$url}" id="imgPanierItem">
-                           </td>
-                           <td>
-                              {$qtItem}
-                           </td>                           
-                        </tr>
-                     HTML;
-                  }
-                  echo('</table></div>');
+                    echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
+                    echo <<<HTML
+                    <div>
+                    <tr>
+                        <td>
+                            <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
+                        </td>
+                        <td>
+                            {$qtStock}
+                        </td>
+                        <td id="costLabel">
+                            {$prixUnitaire}
+                        </td>
+                        <td style="font-weight:bold">
+                            {$nomItem}
+                        </td>
+                        <td>
+                            <a class="deleteItemBtn" style="color: #22a314" ;href="Includes/deleteItem.php?item={$idItem}">Effacer ?</a>
+                        </td>
+                    </tr>
+                    HTML;
+                    } 
+                   
+                  echo('</table>');
                   sqlsrv_close($conn);
-                ?>
-            </div>
+               ?>         
+            <div>
         </div>
       </section>
       <!-- Javascript files-->
@@ -126,3 +140,5 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
       <script src="js/form.js"></script>
    </body>
 </html>
+<?php
+?>
