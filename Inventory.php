@@ -113,7 +113,7 @@ $params = array($_SESSION['Id']);
                   $solde = sqlsrv_fetch_array( $stmtSolde, SQLSRV_FETCH_ASSOC);
                   $montant = $solde['montantInitial'];
                   echo <<<HTML
-                  <div style="width:50%; height:80px; text-align:center;">
+                  <div style="width:50%; height:10px; text-align:center;">
                      <h4>Solde restant : {$montant}</h4>
                   </div>
                   HTML;
