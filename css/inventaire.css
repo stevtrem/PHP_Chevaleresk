@@ -49,3 +49,8 @@ th, td {
 table {
     padding: 20px;
 }
+h4 {
+    color:black;
+    text-align: center;
+    font-size: 20px;
+}
