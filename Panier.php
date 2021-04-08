@@ -130,10 +130,17 @@
                   }
                   echo('</table></div');
 
+                  $checkout = '';
+                  if ($totalCart != 0){
+                     $checkout = "<a id='checkoutBtn' href='Includes/Checkout.php'>Paiement</a>";
+                  }else{
+                     $checkout = "<span id='emptyCart'>Le joueur n'a aucun item dans son panier</span>";
+                  }
+
                   echo <<<HTML
                      <div style="position: sticky; display:flex; width:100%; height:100px; background-color: red">
                         <h4>Total : {$totalCart}</h4>
-                        <a id="checkoutBtn" href="Includes/Checkout.php">Paiement</a>
+                        $checkout
                      </div>
                   HTML;
                   sqlsrv_close($conn);
