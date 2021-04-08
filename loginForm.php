@@ -8,6 +8,7 @@ if (isset($_SESSION["Id"])){
 }
 
 $loginError = isset($_SESSION['loginError'])? $_SESSION['loginError'] : '';
+$accesCheck = isset($_SESSION['UnauthorizedAccess']) ? $_SESSION['UnauthorizedAccess'] : '';
 
 ?>
 <!DOCTYPE html>
@@ -92,7 +93,7 @@ $loginError = isset($_SESSION['loginError'])? $_SESSION['loginError'] : '';
                <div id="signupForm">
                   <hr style="background:white">
                   <form method="POST" action="Includes/login.php">
-                     <?php showError($loginError);?>
+                     <?php showError($loginError); showError($accesCheck)?>
                      <div class="form-group">
                         <input type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias">
                      </div>
@@ -123,4 +124,5 @@ $loginError = isset($_SESSION['loginError'])? $_SESSION['loginError'] : '';
    </body>
 </html>
 
-<?php unset($_SESSION['loginError']) ?>
+<?php unset($_SESSION['loginError']);
+      unset($_SESSION['UnauthorizedAccess']);

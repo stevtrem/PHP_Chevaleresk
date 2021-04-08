@@ -1,9 +1,8 @@
 <?php
     session_start();
-    require_once 'SessionChecker';
-    require_once 'dbh.php';
-
-    $_SESSION
+    $_SESSION['sessionCheckerIncludes'] = 'true';
+    require_once './SessionChecker.php';
+    require_once './dbh.php';
 
     if(isset($_GET['item'])){
         $idItem = $_GET['item'];
