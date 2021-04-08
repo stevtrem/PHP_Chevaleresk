@@ -86,7 +86,7 @@
             <input class="inputAddItem step1" placeholder="prix" id="price" type="number" min="1" name="price"/>
             <span id="labelImageUpload" class="step1">Image de l'item</span>
             <label id="uploadFileCustom">
-               <input id="fileInput" type="file" name="pic"/>
+               <input accept="image/*" id="fileInput" type="file" name="pic"/>
                <img id="imageDisplayAddItem" src="./images/MissingImageIcon.jpg" alt="Your Image :" width="100" height="100"/>
             </label>
             <select value=" " id="selectAddItem" class="step1" name="type">
