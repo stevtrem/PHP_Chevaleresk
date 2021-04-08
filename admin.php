@@ -92,20 +92,22 @@ $msgColor = isset($_GET['report']) ? $_GET['report'] : "white";
         <span id="deleteItemLabel"><a href="deleteItem.php">SUPPRIMER UN ITEM</a></span>
             <div id="boutique">            
                 <div>
-                    <!-- Génération du select list avec ses options -->
-                    <select class="wide">
-                        <option data-display="<?php echo $selectedAlias ?>">Choisir Joueur</option>
-                        <?php
-                            $sql = "SELECT alias FROM Joueurs";
-                            $stmt = sqlsrv_query($conn, $sql);
+                  <!-- Génération du select list avec ses options -->
+                  <form method='POST' action='Includes/backend.php' id='selectPlayerForm'>
+                     <select class="wide" id='selectPlayer' name='alias'>
+                           <option data-display="<?php echo $selectedAlias ?>">Choisir Joueur</option>
+                           <?php
+                              $sql = "SELECT alias FROM Joueurs";
+                              $stmt = sqlsrv_query($conn, $sql);
 
-                            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
-                                $alias = $row['alias'];
-                                if ($alias != "admin") // Ne pas afficher admin comme option
-                                 echo "<option value='$alias'>$alias</option>";
-                            }
-                        ?>
-                    </select>
+                              while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
+                                 $alias = $row['alias'];
+                                 if ($alias != "admin") // Ne pas afficher admin comme option
+                                    echo "<option value='$alias'>$alias</option>";
+                              }
+                           ?>
+                     </select>
+                  </form>
                 </div>
                <?php
                // Si un joueur a été sélectionné dans la liste

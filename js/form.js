@@ -55,11 +55,10 @@ $(document).ready(function(){
         }
     })
 
-    $("select").on("change", function(){
+    $("#selectPlayer").on("change", function(){
         let alias = $(this).val();
         if (alias != "Choisir Joueur"){
-            $.post("Includes/backend.php", {"alias": alias});
-            location.reload();
+            $('#selectPlayerForm').submit();
         }
     });
 });
