@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <!-- basic -->
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -78,13 +79,18 @@
       </header>
       <!-- end header -->
       <section id="sectionMain">
-         <h3>Ajouter un Item</h3>
+            <a href="./admin.php">
+               <span class="glyphicon glyphicon-menu-left"><span  style="font-family: cinzel;">Retour</span></span>
+            </a>
+            <h3>
+               Ajouter un Item
+            </h3>
          <hr/>
         <form id="addItemForm" action="Includes/addNewItem.php" method="POST">
             <input class="inputAddItem step1" placeholder="Nom" id="itemName" type="text" name="itemName"/>
             <input class="inputAddItem step1" placeholder="Quantité en stock" id="qtStock" type="number" min="1" name="qtStock"/>
             <input class="inputAddItem step1" placeholder="prix" id="price" type="number" min="1" name="price"/>
-            <span id="labelImageUpload" class="step1">Image de l'item</span>
+            <span id="labelImageUpload" class="step1">Image de l'item :</span>
             <label id="uploadFileCustom">
                <input accept="image/*" id="fileInput" type="file" name="pic"/>
                <img id="imageDisplayAddItem" src="./images/MissingImageIcon.jpg" alt="Your Image :" width="100" height="100"/>
