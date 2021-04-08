@@ -18,6 +18,7 @@
             exit();
         }
         else {
+            $_SESSION['paymentSuccess'] = 'Le paiement a été effectué avec succès';
             header('Location:../Panier.php');
             exit();
         }

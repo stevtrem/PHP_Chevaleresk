@@ -8,7 +8,8 @@ $wpnCheck = isset($_SESSION['WPN']) ? $_SESSION["WPN"] : "";
 $armCheck = isset($_SESSION['ARM']) ? $_SESSION["ARM"] : "";
 $potCheck = isset($_SESSION["POT"]) ? $_SESSION["POT"] : "";
 $rsrCheck = isset($_SESSION["RES"]) ? $_SESSION["RES"] : "";
-$addCheck = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
+$addCheckError = isset($_SESSION["addItemError"]) ? $_SESSION["addItemError"] : "";
+$addCheckSuccess = isset($_SESSION["addItemSuccess"]) ? $_SESSION["addItemSuccess"] : "";
 $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "";
 
 unset($_SESSION['selectedPlayerAlias']);
@@ -112,7 +113,7 @@ unset($_SESSION['selectedPlayerAlias']);
             </div>
             <div id="boutique">
                <?php
-                  echo ("<div class='addItem'>$addCheck $accessCheck</div>");
+                  echo ("<div class='addItem'>$addCheckError $accessCheck $addCheckSuccess</div>");
                   $sql = getItems();
                   $stmt = sqlsrv_query($conn, $sql);
 
@@ -190,5 +191,6 @@ unset($_SESSION['selectedPlayerAlias']);
 </html>
 <?php
 unset($_SESSION["UnauthorizedAccess"]);
+unset($_SESSION['addItemSuccess']);
 unset($_SESSION["addItemError"]);
 ?>

@@ -283,6 +283,7 @@
     justify-content: center;
 }
 #boutique{
+    color: black;
     min-height: 200px;
     min-width: 20%;
     margin-top: 180px;

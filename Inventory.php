@@ -4,7 +4,6 @@ include_once 'Includes/SessionChecker.php';
 require_once 'Includes/dbh.php';
 
 $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "";
-$addItemSuccess = isset($_SESSION['addItemSuccess']) ? $_SESSION
 $params = array($_SESSION['Id']);
 ?>
 <!DOCTYPE html>

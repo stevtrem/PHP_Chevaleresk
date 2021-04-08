@@ -14,6 +14,7 @@
 
             sqlsrv_close($conn);
 
+            $_SESSION['editQtSuccess'] = 'La quantité de l\'item a été modifiée avec succès';
             header('Location:../Panier.php');
             exit();
             }
