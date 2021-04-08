@@ -1,14 +1,26 @@
 <?php
+    session_start();
+    $_SESSION['adminCheckerIncludes'] = 'true';
     require_once './AdminChecker.php';
     require_once './dbh.php';
 
-    if(!isset($_POST['type']) || !isset($_POST['type']))
+    if(!isset($_POST['type']) || !isset($_POST['itemName']) || !isset($_POST['qtStock']) || !isset($_POST['price']) || !isset($_POST['pic'])) {
+        $_SESSION['addNewItemError'] = "L'item n'a pas pu être ajouter";
+        header('Location:../addNewItem.php');
+        exit();
+    }
 
     $type = $_POST['type'];
 
 
     switch ($type) {
         case 'wpn':
+            if(!isset($_POST['efficacite'])) {
+                $_SESSION['addNewItemError'] = "L'item n'a pas pu être ajouter";
+                header('Location:../addNewItem.php');
+                exit();
+            }
+
             $params = array($_SESSION['Id'], $_GET['item']);
 
             $sql = "EXEC ajoutItem @nomItem = 'Patate', @qtStock= 10, @type ='POT', @prix =100, @url ='test', @effet ='ahah', @duree = 99";
