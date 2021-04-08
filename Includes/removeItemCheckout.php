@@ -4,7 +4,11 @@
 
     if (isset($_SESSION["Id"])){
         if (isset($_GET['item'])){
+<<<<<<< HEAD
             $params = [$_SESSION['Id'], $_GET['item']];
+=======
+            
+>>>>>>> 0277a44adf4a908fa2d66a3322a76b46940dd794
         
             $sql = "delete from Panier where idJoueur = ? and idItem = ?";
         
