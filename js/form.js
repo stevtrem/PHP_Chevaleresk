@@ -59,7 +59,7 @@ $(document).ready(function(){
         let alias = $(this).val();
         if (alias != "Choisir Joueur"){
             $.post("Includes/backend.php", {"alias": alias});
-            //location.reload();
+            location.reload();
         }
     });
 });

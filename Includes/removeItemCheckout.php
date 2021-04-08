@@ -3,9 +3,7 @@
     require_once 'dbh.php';
 
     if (isset($_SESSION["Id"])){
-        if (isset($_GET['item'])){
-            
-        
+        if (isset($_GET['item'])){ 
             $sql = "delete from Panier where idJoueur = ? and idItem = ?";
         
             $stmt = sqlsrv_query($conn, $sql, $params);
