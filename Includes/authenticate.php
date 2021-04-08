@@ -14,18 +14,26 @@ if(isset($_POST["SubmitForm"])){
     if(!strLengthOk($alias)){
         $validUser = false;
         $_SESSION['aliasError']='Un alias doit contenir au moins 3 caractères';
+    }else{
+        $_SESSION['signupAlias'] = $alias; 
     }
     if(!strLengthOk($lastName)){
         $validUser = false;
         $_SESSION['lastNameError']='Un nom doit contenir au moins 3 caractères';
+    }else{
+        $_SESSION['signupLastName'] = $lastName;
     }
     if(!strLengthOk($firstName)){
         $validUser = false;
         $_SESSION['firstNameError']='Un prénom doit contenir au moins 3 caractères';
+    }else{
+        $_SESSION['signupFirstName'] = $firstName;
     }
     if(!strLengthOk($password)){
         $validUser = false;
         $_SESSION['passwordError']='Un mot de passe doit contenir au moins 3 caractères';
+    }else{
+        $_SESSION['signupPass'] = $password;
     }
     if($validUser){
         //On mets les paramètres sous forme d'un array
