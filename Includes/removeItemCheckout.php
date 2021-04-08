@@ -4,7 +4,7 @@
 
     if (isset($_SESSION["Id"])){
         if (isset($_GET['item'])){
-            $idItem = $_GET['item'];
+            $params = [$_SESSION['Id'], $_GET['item']];
         
             $params = array($_SESSION['Id'],$idItem);
             $sql = "delete from Panier where idJoueur = ? and idItem = ?";
