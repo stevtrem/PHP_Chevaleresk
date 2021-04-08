@@ -13,6 +13,7 @@
             
             sqlsrv_close($conn);
     
+            $_SESSION['addItemSuccess'] = "L'Item a été ajouté au panier avec succès";
             header('Location:../shop.php');
             exit();
         }
