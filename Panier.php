@@ -4,8 +4,12 @@
     require_once 'Includes/dbh.php';
     
     $payCheck = isset($_SESSION["checkoutError"]) ? $_SESSION["checkoutError"] : "";
-    $removeCheck = isset($_SESSION["removeCheckoutError"]) ? $_SESSION["removeCheckoutError"] : "";
-    $editCheck = isset($_SESSION['editQtError']) ? $_SESSION["editQtError"] : "";
+    $editCheckError = isset($_SESSION['editQtError']) ? $_SESSION["editQtError"] : "";
+    $editCheckSuccess = isset($_SESSION['editQtSuccess']) ? $_SESSION['editQtSuccess'] : "";
+    $removeCheckError = isset($_SESSION["removeCheckoutError"]) ? $_SESSION["removeCheckoutError"] : "";
+    $removeCheckSuccess = isset($_SESSION['removeItemSuccess']) ? $_SESSION['removeItemSuccess'] : "";
+    $paymentSuccess = isset($_SESSION['paymentSuccess']) ? $_SESSION['paymentSuccess'] : "";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,7 +88,7 @@
         <div id="PanierContainer">
             <div id="Panier">
                 <?php
-                  echo ("<div class='checkError'>$editCheck $payCheck $removeCheck</div>");
+                  echo ("<div class='checkError'>$editCheckError $removeCheckError $editCheckSuccess $removeCheckSuccess $paymentSuccess $payCheck</div>");
                   $totalCart = 0; 
                   $params = array($_SESSION['Id']);
 
@@ -164,7 +168,10 @@
 
 <?php
 unset($_SESSION["checkoutError"]);
-unset($_SESSION["removeCheckoutError"]);
 unset($_SESSION["editQtError"]);
+unset($_SESSION['editQtSuccess']);
+unset($_SESSION["removeCheckoutError"]);
+unset($_SESSION["removeItemSuccess"]);
+unset($_SESSION['paymentSuccess']);
 
 ?>

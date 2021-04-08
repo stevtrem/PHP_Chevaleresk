@@ -4,7 +4,6 @@ include_once 'Includes/SessionChecker.php';
 require_once 'Includes/dbh.php';
 
 $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "";
-$addItemSuccess = isset($_SESSION['addItemSuccess']) ? $_SESSION
 $params = array($_SESSION['Id']);
 ?>
 <!DOCTYPE html>
@@ -112,7 +111,7 @@ $params = array($_SESSION['Id']);
                   $sqlSolde = getSoldeJoueur();
                   $stmtSolde = sqlsrv_query($conn, $sqlSolde, $params);
                   $solde = sqlsrv_fetch_array( $stmtSolde, SQLSRV_FETCH_ASSOC);
-                  $montant = $solde['montantInitial'];
+                  $montant = floor($solde['montantInitial']);
                   echo <<<HTML
                   <div style="width:50%; height:10px; text-align:center;">
                      <h4>Solde restant : {$montant}</h4>
