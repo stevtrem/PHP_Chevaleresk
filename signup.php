@@ -7,6 +7,11 @@ if (isset($_SESSION["Id"])){
    exit();
 }
 
+$firstName = isset($_SESSION['signupFirstName']) ? $_SESSION['signupFirstName'] : '';
+$lastName = isset($_SESSION['signupLastName']) ? $_SESSION['signupLastName'] : '';
+$alias = isset($_SESSION['signupAlias']) ? $_SESSION['signupAlias'] : '';
+$password = isset($_SESSION['signupPass']) ? $_SESSION['signupPass'] : '';
+
 $firstNameError = isset($_SESSION['firstNameError'])? $_SESSION['firstNameError'] : '';
 $lastNameError = isset($_SESSION['lastNameError'])? $_SESSION['lastNameError'] : '';
 $aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
@@ -96,19 +101,19 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
                   <hr style="background:white">
                   <form method="POST" action="Includes/authenticate.php">
                      <div class="form-group">
-                        <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName">
+                        <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName" value='<?php echo $firstName?>'>
                         <?php showError($firstNameError);?>
                      </div>
                      <div class="form-group">
-                        <input  type="text" class="form-control form-control-sm" placeholder="Nom" id="lastName" name="LastName">
+                        <input  type="text" class="form-control form-control-sm" placeholder="Nom" id="lastName" name="LastName" value='<?php echo $lastName?>'>
                         <?php showError($lastNameError);?>
                      </div>
                      <div class="form-group">
-                        <input type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias">
+                        <input type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias" value='<?php echo $alias?>'>
                         <?php showError($aliasError);?>
                      </div>
                      <div class="form-group">
-                        <input type="password" class="form-control form-control-sm" placeholder="Mot de passe" id="password" name="Password">
+                        <input type="password" class="form-control form-control-sm" placeholder="Mot de passe" id="password" name="Password" value='<?php echo $password?>'>
                         <?php showError($passwordError);?>
                      </div>
                      <div class="submit_btn">

@@ -3,7 +3,7 @@ require_once 'Includes/AdminChecker.php';
 require_once "Includes/htmlUtilities.php";
 require_once 'Includes/dbh.php';
 
-$accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "EFFACER UN ITEM";
+$accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedAccess"] : "";
 ?>
 
 <!DOCTYPE html>
@@ -88,7 +88,6 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
         <span id="deleteItemLabel" style='color:#00C9ED'>SUPPRIMER UN ITEM</span>
             <div id="boutique">  
             <?php
-                  echo ("<div class='deleteItem'>$accessCheck</div>");
                   $sql = getItems();
                   $stmt = sqlsrv_query($conn, $sql);
 
