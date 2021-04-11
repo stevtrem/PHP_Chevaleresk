@@ -88,7 +88,7 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
         <span id="deleteItemLabel" style='color:#00C9ED'>SUPPRIMER UN ITEM</span>
             <div id="boutique">  
             <?php
-                  $sql = getItems();
+                  $sql = "SELECT * FROM items ORDER BY prixUnitaireItem ASC";
                   $stmt = sqlsrv_query($conn, $sql);
 
                   while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
