@@ -209,3 +209,6 @@ h3 {
 #imageDisplayAddItem {
     min-height: 100px;
 }
+.error {
+    color: red;
+}

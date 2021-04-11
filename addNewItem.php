@@ -1,6 +1,12 @@
 <?php
    require_once 'Includes/AdminChecker.php';
-   require_once 'Includes/htmlUtilities.php'
+   require_once 'Includes/htmlUtilities.php';
+
+   $addNewItemError = isset($_SESSION['addNewItemError']) ? $_SESSION['addNewItemError'] : "";
+   $uploadError = isset($_SESSION['uploadError']) ? $_SESSION['uploadError'] : "";
+
+   unset($_SESSION['uploadError']);
+   unset($_SESSION['addNewItemError']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,6 +85,7 @@
       </header>
       <!-- end header -->
       <section id="sectionMain">
+            <span class="error"><?php echo $addNewItemError . $uploadError ?></span>
             <a href="./admin.php">
                <span class="glyphicon glyphicon-menu-left"><span  style="font-family: cinzel;">Retour</span></span>
             </a>
@@ -86,8 +93,8 @@
                Ajouter un Item
             </h3>
          <hr/>
-        <form id="addItemForm" action="Includes/addNewItem.php" method="POST">
-            <input class="inputAddItem step1" placeholder="Nom" id="itemName" type="text" name="itemName"/>
+         <form id="addItemForm" action="Includes/addNewItem.php" method="POST" enctype="multipart/form-data">
+            <input class="inputAddItem step1" placeholder="Nom" id="itemName" type="text" name="itemName" maxlength="32"/>
             <input class="inputAddItem step1" placeholder="Quantité en stock" id="qtStock" type="number" min="1" name="qtStock"/>
             <input class="inputAddItem step1" placeholder="prix" id="price" type="number" min="1" name="price"/>
             <span id="labelImageUpload" class="step1">Image de l'item :</span>
@@ -103,20 +110,20 @@
                <option value="res">Ressource</option>
             </select>
             <input id="backAddItem" type="button" value="Retour">
-            <input class="inputAddItem step2 wpn" placeholder="Efficacité" type="number" name="efficacite" id="efficacite"/>
-            <input class="inputAddItem step2 wpn" placeholder="Genre de l'arme" type="text" name="genre" id="genre"/>
-            <input class="inputAddItem step2 wpn" placeholder="Description de l'arme" type="text" name="descriptionArme" id="descriptionArme"/>
-            <input class="inputAddItem step2 arm" placeholder="Matière" type="text" name="matiere" id="matiere"/>
-            <input class="inputAddItem step2 arm" placeholder="Poids" type="text" name="poids" id="poids"/>
-            <input class="inputAddItem step2 arm" placeholder="Taille" type="text" name="taille" id="taille"/>
-            <input class="inputAddItem step2 pot" placeholder="Effet" type="text" name="effet" id="effet"/>
+            <input class="inputAddItem step2 wpn" placeholder="Efficacité" type="number" name="efficacite" id="efficacite" />
+            <input class="inputAddItem step2 wpn" placeholder="Genre de l'arme" type="text" name="genre" id="genre" maxlength="32"/>
+            <input class="inputAddItem step2 wpn" placeholder="Description de l'arme" type="text" name="descriptionArme" id="descriptionArme" maxlength="256"/>
+            <input class="inputAddItem step2 arm" placeholder="Matière" type="text" name="matiere" id="matiere" maxlength="32"/>
+            <input class="inputAddItem step2 arm" placeholder="Poids" type="text" name="poids" id="poids" maxlength="16"/>
+            <input class="inputAddItem step2 arm" placeholder="Taille" type="text" name="taille" id="taille" maxlength="32"/>
+            <input class="inputAddItem step2 pot" placeholder="Effet" type="text" name="effet" id="effet" maxlength="128"/>
             <input class="inputAddItem step2 pot" placeholder="Durée" type="number" name="duree" id="duree"/>
-            <input class="inputAddItem step2 res" placeholder="Description Ressource" type="text" name="descriptionRes" id="descriptionRes"/>
+            <input class="inputAddItem step2 res" placeholder="Description Ressource" type="text" name="descriptionRes" id="descriptionRes" maxlength="64"/>
             <hr />
 
             <span id="errorAddItem">Un ou plusieurs champs sont invalides</span>
             <input id="submitAddItem" type="submit" name="submit" value="Soumettre"/>
-        </form>
+         </form>
       </section>
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>

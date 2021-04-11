@@ -1,4 +1,5 @@
 
+
 create or alter procedure ajoutItem
 (@nomItem varchar(32),
 @qtStock int,
@@ -21,7 +22,7 @@ begin
   BEGIN
     if(@efficacite is not null and @genre is not null and @descriptionArme is not null)
     BEGIN
-      insert into Items values(@nomItem, @qtStock, @type, @prix, @url, 'o');
+      insert into Items values(@nomItem, @qtStock, @type, @prix, @url, 'O');
       set @id = @@IDENTITY
       insert into Armes values(@id, @efficacite, @genre, @descriptionArme);
     END
@@ -30,7 +31,7 @@ begin
   BEGIN
     if(@effet is not null and @duree is not null)
     BEGIN
-      insert into Items values(@nomItem, @qtStock, @type, @prix, @url, 'o');
+      insert into Items values(@nomItem, @qtStock, @type, @prix, @url, 'O');
       set @id = @@IDENTITY
       insert into Potions values(@id, @effet, @duree);
     END
@@ -39,7 +40,7 @@ begin
   BEGIN
     if(@matiere is not null and @poids is not null and @taille is not null)
     BEGIN
-      insert into Items values(@nomItem, @qtStock, @type, @prix, @url, 'o')
+      insert into Items values(@nomItem, @qtStock, @type, @prix, @url, 'O')
       set @id = @@IDENTITY
       insert into Armures values(@id, @matiere, @poids, @taille)
     END
@@ -48,13 +49,12 @@ begin
   BEGIN
     if(@descriptionRes is not null)
     BEGIN
-      insert into Items values(@nomItem, @qtStock, @type, @prix, @url, 'o')
+      insert into Items values(@nomItem, @qtStock, @type, @prix, @url, 'O')
       set @id = @@IDENTITY
       insert into Ressource values(@id, @descriptionRes) 
     END
   end;
 end;
-
 
 EXEC ajoutItem 
 @nomItem = 'Patate',
@@ -64,46 +64,3 @@ EXEC ajoutItem
 @url ='test',
 @effet ='ahah',
 @duree = 99;
-
-
-go
-create or alter procedure DeleteItemCascade
-(@idItem int)
-as
-begin
-declare
-@type char(3);
-select @type = typeItem from Items where idItem = @idItem;
-
-	if exists(select * from inventaireJoueur where idItem = @idItem)
-	begin
-		update Items set disponible = 'N' where idItem = @idItem;
-	end
-	else
-	begin
-	if exists(select * from Panier where idItem = @idItem)
-	begin
-		delete from Panier where idItem = @idItem;
-	end
-		if(@type = 'WPN')
-		begin
-			delete from Armes where idItem = @idItem;
-			delete from Items where idItem = @idItem;
-		end
-		else if(@type = 'ARM')
-		begin
-			delete from Armures where idItem = @idItem;
-			delete from Items where idItem = @idItem;
-		end
-		else if(@type = 'POT')
-		begin
-			delete from Potions where idItem = @idItem;
-			delete from Items where idItem = @idItem;
-		end
-		else if(@type = 'RES')
-		begin
-			delete from Ressource where idItem = @idItem;
-			delete from Items where idItem = @idItem;
-		end
-	end
-end;
