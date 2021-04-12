@@ -110,7 +110,10 @@ function ratingStar($starNumber) {
         else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
     }
 
-<<<<<<< HEAD
+    return "<div>".$stars."</div>";
+}
+
+
 function GetItemType($id){
     return "SELECT typeItem
                 FROM   Items 
@@ -118,16 +121,9 @@ function GetItemType($id){
 }
 
 function GetInfoPotion($id){
-    if (isset($_SESSION["sql"])){
-        return $_SESSION["sql"];
-    }else{
-        return "SELECT i.nomItem, i.qtStockItem, i.prixUnitaireItem, i.urlImageItem, p.effet, p.duree
+    return "SELECT i.nomItem, i.qtStockItem, i.prixUnitaireItem, i.urlImageItem, p.effet, p.duree
                 FROM   Items i 
                 INNER JOIN Potions p ON i.idItem = p.idItem
                 WHERE  i.idItem = $id";
-    }
-=======
-    return "<div>".$stars."</div>";
->>>>>>> caafabbdc0665d8ef56e6ea2d8b5571de6706fc1
 }
 ?>
