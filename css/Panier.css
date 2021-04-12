@@ -2,35 +2,35 @@
     #fundsPlayerText{
         font-size: 8px;
         color:#00C9ED;
-        margin-left: 41%;
+        margin-left: 40%;
     }
 }
 @media only screen and (min-width: 599px) and (max-width: 768px){
     #fundsPlayerText{
         font-size: 10px;
         color:#00C9ED;
-        margin-left: 33%;
+        margin-left: 50%;
     }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px){
     #fundsPlayerText{
         font-size: 14px;
         color:#00C9ED;
-        margin-left: 23%;
+        margin-left: 50%;
     }
 }
 @media only screen and (min-width: 991px) and (max-width: 1280px){
     #fundsPlayerText{
         font-size: 18px;
         color:#00C9ED;
-        margin-left: 19%;
+        margin-left: 50%;
     }
 }
 @media only screen and (min-width: 1280px){
     #fundsPlayerText{
         font-size: 24px;
         color:#00C9ED;
-        margin-left: 16%;
+        margin-left: 50%;
     }
 }
 
