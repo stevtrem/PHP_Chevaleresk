@@ -100,4 +100,20 @@ function strLengthOk($str){
     return (strlen($input) >= 3);
 }
 
+function GetItemType($id){
+    return "SELECT typeItem
+                FROM   Items 
+                WHERE  idItem = $id";
+}
+
+function GetInfoPotion($id){
+    if (isset($_SESSION["sql"])){
+        return $_SESSION["sql"];
+    }else{
+        return "SELECT i.nomItem, i.qtStockItem, i.prixUnitaireItem, i.urlImageItem, p.effet, p.duree
+                FROM   Items i 
+                INNER JOIN Potions p ON i.idItem = p.idItem
+                WHERE  i.idItem = $id";
+    }
+}
 ?>

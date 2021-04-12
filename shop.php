@@ -132,7 +132,9 @@ unset($_SESSION['selectedPlayerAlias']);
                            <div>
                            <tr>
                               <td>
-                                 <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
+                                 <a href="EditItem.php?item={$idItem}">
+                                    <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
+                                 </a>
                               </td>
                               <td>
                                  {$qtStock}
