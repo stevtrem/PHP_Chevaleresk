@@ -1,3 +1,39 @@
+@media only screen and (min-width: 280px) and (max-width: 599px) {
+    #fundsPlayerText{
+        font-size: 8px;
+        color:#00C9ED;
+        margin-left: 41%;
+    }
+}
+@media only screen and (min-width: 599px) and (max-width: 768px){
+    #fundsPlayerText{
+        font-size: 10px;
+        color:#00C9ED;
+        margin-left: 33%;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    #fundsPlayerText{
+        font-size: 14px;
+        color:#00C9ED;
+        margin-left: 23%;
+    }
+}
+@media only screen and (min-width: 991px) and (max-width: 1280px){
+    #fundsPlayerText{
+        font-size: 18px;
+        color:#00C9ED;
+        margin-left: 19%;
+    }
+}
+@media only screen and (min-width: 1280px){
+    #fundsPlayerText{
+        font-size: 24px;
+        color:#00C9ED;
+        margin-left: 16%;
+    }
+}
+
 #PanierContainer{
     height: 100vh;
     width: 100vw;
@@ -119,4 +155,11 @@ td:first-child {
     color:red;
     text-align: center;
     margin: 20em auto;
+}
+
+#fundsPlayer{
+    position: absolute;
+    top: 93%;
+    width: 50%;
+    padding: 10px;
 }
