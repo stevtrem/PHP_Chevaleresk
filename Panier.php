@@ -147,9 +147,28 @@
                         $checkout
                      </div>
                   HTML;
-                  sqlsrv_close($conn);
                 ?>
             </div>
+            <?php
+               if (isset($_SESSION['alias'])){
+                  $currentSessionAlias = $_SESSION['alias'];
+                  $sql = "SELECT montantInitial FROM Joueurs WHERE alias = '$currentSessionAlias'";
+                  $stmt = sqlsrv_query($conn, $sql);
+   
+                  while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
+                     $soldeJoueur = floor($row['montantInitial']);
+                  } 
+               }
+               sqlsrv_close($conn);
+            ?>
+            <?php 
+               if (isset($_SESSION['alias']) && $_SESSION['alias'] != 'admin'){
+               echo <<<HTML
+                  <div id='fundsPlayer'> <!-- Section d'affichage des fonds -->
+                     <span id='fundsPlayerText'>Total fonds : {$soldeJoueur} Écu(s)</span>
+                  </div>
+               HTML;
+            }?>
         </div>
       </section>
       <!-- Javascript files-->

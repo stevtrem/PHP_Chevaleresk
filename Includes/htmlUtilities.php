@@ -80,16 +80,11 @@ function getSoldeJoueur(){
 }
 
 function getItemsJoueurAdmin(){
-    
-    if (isset($_SESSION["sql"])){
-        return $_SESSION["sql"];
-    }else{
-        $idJoueur = $_SESSION['selectedPlayerId'];
-        return "SELECT i.urlImageItem, j.qtItem, i.nomItem
-                FROM   inventaireJoueur j INNER JOIN
-                       Items i ON j.idItem = i.idItem
-                WHERE  idJoueur = $idJoueur";
-    }
+    $idJoueur = $_SESSION['selectedPlayerId'];
+    return "SELECT i.urlImageItem, j.qtItem, i.nomItem
+            FROM   inventaireJoueur j INNER JOIN
+                    Items i ON j.idItem = i.idItem
+            WHERE  idJoueur = $idJoueur";
 }
 
 function sanitizeString($str) {
