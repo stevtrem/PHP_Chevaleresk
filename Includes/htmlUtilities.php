@@ -99,5 +99,31 @@ function strLengthOk($str){
     $input = wordwrap($str, 20);
     return (strlen($input) >= 3);
 }
+function ratingStar($starNumber) {
+    $stars = "";
+    
+    for($i = 0; $i < 5; $i++) {
+        if($starNumber > 0) {
+            $stars .= "<span class=\"glyphicon glyphicon-star\"></span>";
+            $starNumber--;
+        } 
+        else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
+    }
 
+    return "<div>".$stars."</div>";
+}
+
+
+function GetItemType($id){
+    return "SELECT typeItem
+                FROM   Items 
+                WHERE  idItem = $id";
+}
+
+function GetInfoPotion($id){
+    return "SELECT i.nomItem, i.qtStockItem, i.prixUnitaireItem, i.urlImageItem, p.effet, p.duree
+                FROM   Items i 
+                INNER JOIN Potions p ON i.idItem = p.idItem
+                WHERE  i.idItem = $id";
+}
 ?>
