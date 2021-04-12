@@ -101,5 +101,6 @@
     move_uploaded_file($fileTmpName, $uploadPath);
 
     sqlsrv_close($conn);
+    $_SESSION['addNewItem'] = "L'ajout à été effectué avec succès";
     header('Location:../admin.php');
     exit();
