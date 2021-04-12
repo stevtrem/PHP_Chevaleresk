@@ -7,7 +7,6 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
 $selectedAlias = isset($_SESSION["selectedPlayerAlias"]) ? $_SESSION["selectedPlayerAlias"] : "Choisir Joueur";
 $fundsMsg = isset($_SESSION['fundsMsg']) ? $_SESSION['fundsMsg'] : "";
 $msgColor = isset($_GET['report']) ? $_GET['report'] : "white";
-
 ?>
 
 <!DOCTYPE html>
@@ -196,6 +195,15 @@ $msgColor = isset($_GET['report']) ? $_GET['report'] : "white";
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
       <script src="js/form.js"></script>
+      <?php 
+         if(isset($_SESSION['addNewItem'])) {
+            echo <<<HTML
+               <script>
+                  alert("{$_SESSION['addNewItem']}");
+               </script>
+            HTML;
+         }
+      ?>
    </body>
 </html>
 <?php
@@ -203,4 +211,5 @@ $msgColor = isset($_GET['report']) ? $_GET['report'] : "white";
 unset($_SESSION["UnauthorizedAccess"]);
 unset($_SESSION["addItemError"]);
 unset($_SESSION["fundsMsg"]);
+UNSET($_SESSION['addNewItem']);
 ?>
