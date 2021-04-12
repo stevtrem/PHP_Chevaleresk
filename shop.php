@@ -30,6 +30,7 @@ unset($_SESSION['selectedPlayerAlias']);
       <meta name="description" content="">
       <meta name="author" content="">
       <!-- bootstrap css -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <!-- style css -->
       <link rel="stylesheet" href="css/style.css">
@@ -125,16 +126,15 @@ unset($_SESSION['selectedPlayerAlias']);
                         $qtStock = $row['qtStockItem'];
                         $prixUnitaire = (int)$row['prixUnitaireItem'];
                         $urlItem = $row['urlImageItem'];
-   
+                        $rating = ratingStar(3);
                         if (isset($_SESSION['alias']) && $_SESSION['alias'] != 'admin'){ // Si admin, ne peut ajouter des items au panier
                            echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
                            echo <<<HTML
                            <div>
                            <tr>
-                              <td>
-                                 <a href="EditItem.php?item={$idItem}">
-                                    <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
-                                 </a>
+                              <td style="font-size:15px;">
+                                 {$nomItem}
+                                 <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
                               </td>
                               <td>
                                  {$qtStock}
@@ -142,8 +142,8 @@ unset($_SESSION['selectedPlayerAlias']);
                               <td id="costLabel">
                                  {$prixUnitaire}
                               </td>
-                              <td style="font-weight:bold">
-                                 {$nomItem}
+                              <td>
+                                 rating : $rating
                               </td>
                               <td>
                                  <a class="addBtnBoutique" href="Includes/addItemPanier.php?item={$idItem}">Ajouter</a>
@@ -155,7 +155,8 @@ unset($_SESSION['selectedPlayerAlias']);
                            echo <<<HTML
                            <div>
                            <tr>
-                              <td>
+                              <td style="font-size:15px">
+                                 {$nomItem}
                                  <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
                               </td>
                               <td>
@@ -164,8 +165,8 @@ unset($_SESSION['selectedPlayerAlias']);
                               <td id="costLabel">
                                  {$prixUnitaire}
                               </td>
-                              <td style="font-weight:bold">
-                                 {$nomItem}
+                              <td>
+                                 rating :
                               </td>
                            </tr>
                            HTML;

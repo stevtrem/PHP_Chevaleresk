@@ -17,7 +17,8 @@
     $fileTmpName  = $_FILES['pic']['tmp_name'];
     $fileType = $_FILES['pic']['type'];
     $fileExtension = strtolower(end(explode('.',$fileName)));
-    $uploadPath = "../images/imagesItem/" . $fileName;
+    $idUniq = uniqid();
+    $uploadPath = "../images/imagesItem/" . $idUniq . "." . $fileExtension;
 
     $fileExtensionsAllowed = ['jpeg','jpg','png']; 
 
@@ -29,7 +30,7 @@
     }
 
 
-    $params1 = array($_POST['itemName'], $_POST['qtStock'], $_POST['price'],$fileName);
+    $params1 = array($_POST['itemName'], $_POST['qtStock'], $_POST['price'],$idUniq . "." . $fileExtension);
 
     switch ($type) {
         case 'wpn':
@@ -55,7 +56,9 @@
                 exit();
             }
 
-            $params = array($_POST['matiere'], $_POST['poids'], $_POST['taille']);
+            $params2 = array($_POST['matiere'], $_POST['poids'], $_POST['taille']);
+
+            $params = array_merge($params1, $params2);
 
             $sql = "EXEC ajoutItem @nomItem = ?, @qtStock= ?, @type ='ARM', @prix = ?, @url = ?, @matiere = ?, @poids = ?, @taille = ?";
         
@@ -69,7 +72,9 @@
                 exit();
             }
 
-            $params = array($_POST['effet'], $_POST['duree']);
+            $params2 = array($_POST['effet'], $_POST['duree']);
+
+            $params = array_merge($params1, $params2);
 
             $sql = "EXEC ajoutItem @nomItem = ?, @qtStock= ?, @type ='POT', @prix = ?, @url = ?, @effet = ?, @duree = ?";
         
@@ -83,9 +88,11 @@
                 exit();
             }
 
-            $params = array($_POST['descriptionRes']);
+            $params2 = array($_POST['descriptionRes']);
 
-            $sql = "EXEC ajoutItem @nomItem = ?, @qtStock= ?, @type ='POT', @prix = ?, @url = ?, @effet = ?, @duree = ?";
+            $params = array_merge($params1, $params2);
+
+            $sql = "EXEC ajoutItem @nomItem = ?, @qtStock= ?, @type ='RES', @prix = ?, @url = ?, @descriptionRes = ?";
         
             $stmt = sqlsrv_query($conn, $sql, $params);
 
@@ -94,5 +101,6 @@
     move_uploaded_file($fileTmpName, $uploadPath);
 
     sqlsrv_close($conn);
+    $_SESSION['addNewItem'] = "L'ajout à été effectué avec succès";
     header('Location:../admin.php');
     exit();
