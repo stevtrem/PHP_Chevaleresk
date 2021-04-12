@@ -7,6 +7,32 @@ drop table Items;
 
 select * from Items;
 select * from Armes;
+
+--insertion des évaluations
+insert into evaluations values(1, 1, 3);
+insert into evaluations values(1, 3, 3);
+insert into evaluations values(1, 4, 3);
+insert into evaluations values(1, 13, 4);
+insert into evaluations values(1, 14, 4);
+insert into evaluations values(1, 15, 4);
+insert into evaluations values(1, 16, 1);
+insert into evaluations values(1, 19, 5);
+
+insert into evaluations values(2, 6, 4);
+insert into evaluations values(2, 13, 2);
+insert into evaluations values(2, 14, 5);
+insert into evaluations values(2, 15, 4);
+insert into evaluations values(2, 16, 4);
+insert into evaluations values(2, 22, 3);
+
+insert into evaluations values(3, 1, 4);
+
+insert into evaluations values(6, 13, 3);
+insert into evaluations values(6, 14, 5);
+insert into evaluations values(6, 16, 4);
+
+insert into evaluations values(11, 20, 5);
+
 --insertion des Armes
 insert into Items(nomItem,qtStockItem,typeItem,prixUnitaireItem,urlImageItem) values('Arc celeste',100,'WPN',500,'arcCeleste.png', 'O');
 insert into Items(nomItem,qtStockItem,typeItem,prixUnitaireItem,urlImageItem) values('Epee de feu',100,'WPN',600,'epeeFeu.png', 'O');
