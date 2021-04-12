@@ -126,7 +126,13 @@ unset($_SESSION['selectedPlayerAlias']);
                         $qtStock = $row['qtStockItem'];
                         $prixUnitaire = (int)$row['prixUnitaireItem'];
                         $urlItem = $row['urlImageItem'];
-                        $rating = ratingStar(3);
+
+                        // Moyenne Évaluations
+                        $sql2 = "SELECT AVG(evaluation) as Moyenne FROM evaluations WHERE idItem = $idItem";
+                        $stmt2 = sqlsrv_query($conn, $sql2);
+                        $row = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC);
+                        $rating = ratingStar($row['Moyenne']);
+
                         if (isset($_SESSION['alias']) && $_SESSION['alias'] != 'admin'){ // Si admin, ne peut ajouter des items au panier
                            echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
                            echo <<<HTML
