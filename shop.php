@@ -174,7 +174,7 @@ unset($_SESSION['selectedPlayerAlias']);
                                  {$prixUnitaire}
                               </td>
                               <td>
-                                 rating :
+                                 rating : $rating
                               </td>
                            </tr>
                            HTML;
