@@ -28,7 +28,7 @@ require_once 'Includes/dbh.php';
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <!-- Css Specific to this page-->
-      <link rel="stylesheet" href="css/Boutique.css">
+      <link rel="stylesheet" href="css/edit.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
@@ -98,6 +98,19 @@ require_once 'Includes/dbh.php';
                         $url = $potion['urlImageItem'];
                         $effet = $potion['effet'];
                         $duree = $potion['duree'];
+
+                        echo <<<HTML
+                           <div id="containerLeft">
+                              <div id="imageContainer">
+                                 <div id="titre">Item:   $nomPotion</div>
+                                 <hr>                                 
+                                 <img src="images/imagesItem/{$url}" height="150px" width="150px" margin-top="10px">
+                              </div>
+                           </div>
+                           <div id="containerRight">
+                              droite
+                           </div>
+                        HTML;
                     }
                     else if($row['typeItem'] == 'WPN'){
                        $infoSql = GetInfoArme($_GET['item']);
