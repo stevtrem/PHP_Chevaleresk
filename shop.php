@@ -126,13 +126,13 @@ unset($_SESSION['selectedPlayerAlias']);
                         $qtStock = $row['qtStockItem'];
                         $prixUnitaire = (int)$row['prixUnitaireItem'];
                         $urlItem = $row['urlImageItem'];
-                        $rating = ratingStar(round(getRatingAvg($idItem, $conn)), $idItem, $conn);
-
+                        $ratingAvg = round(getRatingAvg($idItem, $conn));
+                        $rating = ratingStar($ratingAvg, $idItem, $conn);
                         if (isset($_SESSION['alias']) && $_SESSION['alias'] != 'admin'){ // Si admin, ne peut ajouter des items au panier
                            echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
                            echo <<<HTML
                            <div>
-                           <tr>
+                           <tr class="ratingAvg{$ratingAvg}">
                               <td style="font-size:15px;">
                                  {$nomItem}
                                  <a href="EditItem.php?item={$idItem}">
@@ -211,6 +211,7 @@ unset($_SESSION['selectedPlayerAlias']);
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
       <script src="js/form.js"></script>
+      <script src="js/ratingFilter.js"></script>
    </body>
 </html>
 <?php
