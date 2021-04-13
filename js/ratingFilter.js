@@ -6,6 +6,7 @@ $("#starFilter1").click(function() {
 
     if(currentFilter == 1) {
         HideItemsRatings(1)
+        manageCss(1);
     }
     else UnHideItems()   
 });
@@ -16,6 +17,7 @@ $("#starFilter2").click(function() {
 
     if(currentFilter == 2) {
         HideItemsRatings(2)
+        manageCss(2);
     }
     else UnHideItems() 
 });
@@ -25,6 +27,7 @@ $("#starFilter3").click(function() {
 
     if(currentFilter == 3) {
         HideItemsRatings(3)
+        manageCss(3);
     }
     else UnHideItems() 
 });
@@ -34,6 +37,7 @@ $("#starFilter4").click(function() {
 
     if(currentFilter == 4) {
         HideItemsRatings(4)
+        manageCss(4);
     }
     else UnHideItems() 
 });
@@ -43,6 +47,7 @@ $("#starFilter5").click(function() {
 
     if(currentFilter == 5) {
         HideItemsRatings(5)
+        manageCss(5);
     }
     else UnHideItems() 
 });
@@ -73,4 +78,14 @@ function UnHideItems() {
     $(".ratingAvg4").css("display", "table-row")
     $(".ratingAvg5").css("display", "table-row")
     $(".ratingAvg0").css("display", "table-row")
+    $(".glyphicon-star").css("color", 'white');
+}
+function manageCss($starRating){
+    for (let i = 1; i <= 5; i++){
+        if (i != $starRating)
+            $("#starFilter" + i + " > .glyphicon-star").css("color", 'white');
+        else{
+            $("#starFilter" + i + " > .glyphicon-star").css("color", '#FFBD03');
+        }
+    }
 }
