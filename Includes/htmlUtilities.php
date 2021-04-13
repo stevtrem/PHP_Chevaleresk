@@ -178,4 +178,25 @@ function GetInfoPotion($id){
                 INNER JOIN Potions p ON i.idItem = p.idItem
                 WHERE  i.idItem = $id";
 }
+
+function GetInfoArme($id){
+    return "SELECT i.nomItem, i.qtStockItem, i.prixUnitaireItem, i.urlImageItem, a.efficacite, a.genre, a.descriptionArme
+        FROM Items i
+        INNER JOIN Armes a ON i.idItem = a.idItem
+        WHERE i.idItem = $id";
+}
+
+function GetInfoArmure($id){
+    return "SELECT i.nomItem, i.qtStockItem, i.prixUnitaireItem, i.urlImageItem, a.matiere, a.poids, a.taille
+        FROM Items i
+        INNER JOIN Armures a ON i.idItem = a.idItem
+        WHERE i.idItem = $id";
+}
+
+function GetInfoRessource($id){
+    return "SELECT i.nomItem, i.qtStockItem, i.prixUnitaireItem, i.urlImageItem, r.description
+        FROM Items i
+        INNER JOIN Ressource r ON i.idItem = r.idItem
+        WHERE i.idItem = $id";
+}
 ?>

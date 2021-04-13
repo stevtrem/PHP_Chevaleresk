@@ -91,7 +91,50 @@ require_once 'Includes/dbh.php';
                         $infoSql = GetInfoPotion($_GET['item']);
                         $stmtPotion = sqlsrv_query($conn, $infoSql);
                         $potion = sqlsrv_fetch_array($stmtPotion, SQLSRV_FETCH_ASSOC);
-                        var_dump($potion);
+
+                        $nomPotion = $potion['nomItem'];
+                        $qtStock = $potion['qtStockItem'];
+                        $prixUnitaire = $potion['prixUnitaireItem'];
+                        $url = $potion['urlImageItem'];
+                        $effet = $potion['effet'];
+                        $duree = $potion['duree'];
+                    }
+                    else if($row['typeItem'] == 'WPN'){
+                       $infoSql = GetInfoArme($_GET['item']);
+                       $stmtArme = sqlsrv_query($conn, $infoSql);
+                       $Arme = sqlsrv_fetch_array($stmtArme, SQLSRV_FETCH_ASSOC);
+                       
+                       $nomArme = $Arme['nomItem'];
+                       $qtStockArme = $Arme['qtStockItem'];
+                       $prix = $Arme['prixUnitaireItem'];
+                       $url = $Arme['urlImageItem'];
+                       $efficacite = $Arme['efficacite'];
+                       $genre = $Arme['genre'];
+                       $description = $Arme['descriptionArme'];
+                    }
+                    else if($row['typeItem'] == 'ARM'){
+                       $infoSql = GetInfoArmure($_GET['item']);
+                       $stmtArmure = sqlsrv_query($conn, $infoSql);
+                       $Armure = sqlsrv_fetch_array($stmtArmure, SQLSRV_FETCH_ASSOC);
+
+                       $nomArmure = $Armure['nomItem'];
+                       $qtStock = $Armure['qtStockItem'];
+                       $prix = $Armure['prixUnitaireItem'];
+                       $url = $Armure['urlImageItem'];
+                       $matiere = $Armure['matiere'];
+                       $poid = $Armure['poids'];
+                       $taille = $Armure['taille'];
+                    }
+                    else if($row['typeItem'] == 'RES'){
+                       $infoSql = GetInfoRessource($_GET['item']);
+                       $stmtRes = sqlsrv_query($conn, $infoSql);
+                       $Ressource = sqlsrv_fetch_array($stmtRes, SQLSRV_FETCH_ASSOC);
+
+                       $nomRessource = $Ressource['nomItem'];
+                       $qtStockRes = $Ressource['qtStockItem'];
+                       $prix = $Ressource['prixUnitaireItem'];
+                       $url = $Ressource['urlImageItem'];
+                       $description = $Ressource['description'];
                     }
                   }
 
