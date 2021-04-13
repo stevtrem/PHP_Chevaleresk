@@ -154,7 +154,7 @@ unset($_SESSION['selectedPlayerAlias']);
                                  {$prixUnitaire}
                               </td>
                               <td>
-                                 $rating
+                                 {$rating}
                               </td>
                               <td>
                                  <a class="addBtnBoutique" href="Includes/addItemPanier.php?item={$idItem}">Ajouter</a>
@@ -177,7 +177,7 @@ unset($_SESSION['selectedPlayerAlias']);
                                  {$prixUnitaire}
                               </td>
                               <td>
-                                 $rating
+                                 {$rating}
                               </td>
                            </tr>
                            HTML;

@@ -78,7 +78,6 @@ function UnHideItems() {
     $(".ratingAvg4").css("display", "table-row")
     $(".ratingAvg5").css("display", "table-row")
     $(".ratingAvg0").css("display", "table-row")
-    $(".glyphicon-star").css("color", 'white');
 }
 function manageCss($starRating){
     for (let i = 1; i <= 5; i++){
