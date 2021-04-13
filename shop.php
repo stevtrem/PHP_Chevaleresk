@@ -132,18 +132,7 @@ unset($_SESSION['selectedPlayerAlias']);
                         $qtStock = $row['qtStockItem'];
                         $prixUnitaire = (int)$row['prixUnitaireItem'];
                         $urlItem = $row['urlImageItem'];
-
-                        // Personnes ayant voté pour le produit
-                        $sql2 = "SELECT count(*) as votes FROM evaluations WHERE idItem = $idItem";
-                        $stmt2 = sqlsrv_query($conn, $sql2);
-                        $row = sqlsrv_fetch_array($stmt2, SQLSRV_FETCH_ASSOC);
-                        $voteCount = $row['votes'];
-
-                        // Moyenne Évaluations
-                        $sql3 = "SELECT AVG(evaluation) as Moyenne FROM evaluations WHERE idItem = $idItem";
-                        $stmt3 = sqlsrv_query($conn, $sql3);
-                        $row = sqlsrv_fetch_array($stmt3, SQLSRV_FETCH_ASSOC);
-                        $rating = ratingStar($row['Moyenne'], $voteCount);
+                        $rating = ratingStar(round(getRatingAvg($idItem, $conn)), $idItem, $conn);
 
                         if (isset($_SESSION['alias']) && $_SESSION['alias'] != 'admin'){ // Si admin, ne peut ajouter des items au panier
                            echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
@@ -163,7 +152,7 @@ unset($_SESSION['selectedPlayerAlias']);
                                  {$prixUnitaire}
                               </td>
                               <td>
-                                 rating : $rating
+                                 $rating
                               </td>
                               <td>
                                  <a class="addBtnBoutique" href="Includes/addItemPanier.php?item={$idItem}">Ajouter</a>
