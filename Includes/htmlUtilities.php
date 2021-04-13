@@ -101,18 +101,6 @@ function strLengthOk($str){
 }
 
 function ratingStarFilter($starNumber, $conn) {
-
-    $sql = "SELECT count(evaluation) AS total
-            FROM evaluations e INNER JOIN
-                 items i ON e.idItem = i.idItem
-            WHERE e.evaluation = $starNumber AND i.disponible = 'O'";
-
-    $stmt = sqlsrv_query($conn, $sql);
-
-    $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
-
-    $ratingCount = $row['total'];
-
     $stars = "";
     $initialStarCount = $starNumber;
     for($i = 0; $i < 5; $i++) {

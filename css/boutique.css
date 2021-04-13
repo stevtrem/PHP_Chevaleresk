@@ -136,4 +136,8 @@ label {
 .noRatingText {
     font-size: 15px;
 }
+.ratingFilterError {
+    color: red;
+    padding: 50px;
+}
 

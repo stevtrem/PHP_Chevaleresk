@@ -1,4 +1,9 @@
 let currentFilter = 0;
+let count1 = $('.ratingAvg1').length / 2;
+let count2 = $('.ratingAvg2').length / 2;
+let count3 = $('.ratingAvg3').length / 2;
+let count4 = $('.ratingAvg4').length / 2;
+let count5 = $('.ratingAvg5').length / 2;
 
 countRating();
 
@@ -6,6 +11,10 @@ countRating();
 $("#starFilter1").click(function() {
     currentFilter = currentFilter == 1 ? 0 : 1
 
+    if(count2 < 1 && currentFilter == 1) {
+        $(".ratingFilterError").remove();
+        $("#boutique").append("<div class=\"ratingFilterError\">Il n'y aucun item avec l'évaluation selectionner pour le moment");
+    }
     if(currentFilter == 1) {
         HideItemsRatings(1)
         manageCss(1);
@@ -17,6 +26,10 @@ $("#starFilter1").click(function() {
 $("#starFilter2").click(function() {
     currentFilter = currentFilter == 2 ? 0 : 2
 
+    if(count2 < 1 && currentFilter == 2) {
+        $(".ratingFilterError").remove();
+        $("#boutique").append("<div class=\"ratingFilterError\">Il n'y aucun item avec l'évaluation selectionner pour le moment");
+    }
     if(currentFilter == 2) {
         HideItemsRatings(2)
         manageCss(2);
@@ -27,6 +40,10 @@ $("#starFilter2").click(function() {
 $("#starFilter3").click(function() {
     currentFilter = currentFilter == 3 ? 0 : 3
 
+    if(count3 < 1 && currentFilter == 3) {
+        $(".ratingFilterError").remove();
+        $("#boutique").append("<div class=\"ratingFilterError\">Il n'y aucun item avec l'évaluation selectionner pour le moment");
+    }
     if(currentFilter == 3) {
         HideItemsRatings(3)
         manageCss(3);
@@ -37,6 +54,10 @@ $("#starFilter3").click(function() {
 $("#starFilter4").click(function() {
     currentFilter = currentFilter == 4 ? 0 : 4
 
+    if(count4 < 1 && currentFilter == 4) {
+        $(".ratingFilterError").remove();
+        $("#boutique").append("<div class=\"ratingFilterError\">Il n'y aucun item avec l'évaluation selectionner pour le moment");
+    }
     if(currentFilter == 4) {
         HideItemsRatings(4)
         manageCss(4);
@@ -47,6 +68,10 @@ $("#starFilter4").click(function() {
 $("#starFilter5").click(function() {
     currentFilter = currentFilter == 5 ? 0 : 5
 
+    if(count5 < 1 && currentFilter == 5) {
+        $(".ratingFilterError").remove();
+        $("#boutique").append("<div class=\"ratingFilterError\">Il n'y aucun item avec l'évaluation selectionner pour le moment");
+    }
     if(currentFilter == 5) {
         HideItemsRatings(5)
         manageCss(5);
@@ -81,6 +106,7 @@ function UnHideItems() {
     $(".ratingAvg5").css("display", "table-row")
     $(".ratingAvg0").css("display", "table-row")
     uncheckRatings()
+    $(".ratingFilterError").remove();
 }
 function manageCss($starRating){
     for (let i = 1; i <= 5; i++){
@@ -96,9 +122,9 @@ function uncheckRatings(){
         $("#starFilter" + i + " > .glyphicon-star").css("color", 'white');
 }
 function countRating() {
-    $("#ratingCount1").text("(" + $('.ratingAvg1').length / 2 + ")");
-    $("#ratingCount2").text("(" + $('.ratingAvg2').length / 2 + ")");
-    $("#ratingCount3").text("(" + $('.ratingAvg3').length / 2 + ")");
-    $("#ratingCount4").text("(" + $('.ratingAvg4').length / 2 + ")");
-    $("#ratingCount5").text("(" + $('.ratingAvg5').length / 2 + ")");
+    $("#ratingCount1").text("(" + count1 + ")");
+    $("#ratingCount2").text("(" + count2 + ")");
+    $("#ratingCount3").text("(" + count3 + ")");
+    $("#ratingCount4").text("(" + count4 + ")");
+    $("#ratingCount5").text("(" + count5 + ")");
 }
