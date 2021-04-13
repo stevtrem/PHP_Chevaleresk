@@ -78,6 +78,7 @@ function UnHideItems() {
     $(".ratingAvg4").css("display", "table-row")
     $(".ratingAvg5").css("display", "table-row")
     $(".ratingAvg0").css("display", "table-row")
+    uncheckRatings()
 }
 function manageCss($starRating){
     for (let i = 1; i <= 5; i++){
@@ -87,4 +88,8 @@ function manageCss($starRating){
             $("#starFilter" + i + " > .glyphicon-star").css("color", '#FFBD03');
         }
     }
+}
+function uncheckRatings(){
+    for (let i = 1; i <= 5; i++)
+        $("#starFilter" + i + " > .glyphicon-star").css("color", 'white');
 }
