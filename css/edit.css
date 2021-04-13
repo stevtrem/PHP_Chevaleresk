@@ -1,0 +1,38 @@
+#boutiqueContainer{
+    background-color: #081b30;
+    display: flex;
+    justify-content: center;
+}
+#boutique{
+    min-height: 200px;
+    min-width: 20%;
+    margin-top: 180px;
+    margin-bottom: 180px; 
+    width: 50vw;
+    height: 70vh;
+    overflow: auto;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid #465464;
+    display: flex;
+}
+
+#containerLeft{
+    flex: 60%;
+    display: flex;
+}
+
+#containerRight{
+    flex: 40%;
+}
+
+#imageContainer{
+    flex: 100%;
+    font-weight: bold;
+}
+#effetContainer{
+    flex: 100%;
+}
+#titre{
+    margin-left: 5%;
+}
