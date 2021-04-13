@@ -141,10 +141,10 @@ unset($_SESSION['selectedPlayerAlias']);
                            echo <<<HTML
                            <div>
                            <tr class="ratingAvg{$ratingAvg}">
-                              <td style="font-size:15px;">
+                              <td class='imageItem'>
                                  {$nomItem}
-                                 <a href="EditItem.php?item={$idItem}">
-                                 <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
+                                 <a href="EditItem.php?item={$idItem}" title="Informations sur l'item">
+                                    <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
                                  </a>
                               </td>
                               <td>
@@ -166,9 +166,11 @@ unset($_SESSION['selectedPlayerAlias']);
                            echo <<<HTML
                            <div>
                            <tr class="ratingAvg{$ratingAvg}">
-                              <td style="font-size:15px">
+                              <td class='imageItem'>
                                  {$nomItem}
-                                 <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
+                                 <a href="EditItem.php?item={$idItem}" title="Informations sur l'item">
+                                    <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
+                                 </a>
                               </td>
                               <td>
                                  {$qtStock}

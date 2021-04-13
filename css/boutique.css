@@ -138,6 +138,13 @@ label {
 }
 .ratingFilterError {
     color: red;
-    padding: 50px;
+    font-size: 16px;
+    margin-left: 20px;
+}
+.imageItem {
+    font-size: 15px;
+}
+.imageItem:hover {
+    border: 3px solid #093781;
 }
 
