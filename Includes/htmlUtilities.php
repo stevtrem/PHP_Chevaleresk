@@ -122,7 +122,7 @@ function ratingStarFilter($starNumber, $conn) {
         } 
         else $stars .= "<span class=\"glyphicon glyphicon-star-empty\" style='color:grey'></span>";
     }
-    return "<div id=\"starFilter{$initialStarCount}\" style='color:white'>".$stars." (".$ratingCount.")"."</div>";
+    return "<div id=\"starFilter{$initialStarCount}\" style='color:white'>".$stars." <span id=\"ratingCount". $initialStarCount ."\" </span>"."</div>";
 }
 
 function getRatingAvg($itemId, $conn) {

@@ -1,5 +1,7 @@
 let currentFilter = 0;
 
+countRating();
+
 
 $("#starFilter1").click(function() {
     currentFilter = currentFilter == 1 ? 0 : 1
@@ -92,4 +94,11 @@ function manageCss($starRating){
 function uncheckRatings(){
     for (let i = 1; i <= 5; i++)
         $("#starFilter" + i + " > .glyphicon-star").css("color", 'white');
+}
+function countRating() {
+    $("#ratingCount1").text("(" + $('.ratingAvg1').length / 2 + ")");
+    $("#ratingCount2").text("(" + $('.ratingAvg2').length / 2 + ")");
+    $("#ratingCount3").text("(" + $('.ratingAvg3').length / 2 + ")");
+    $("#ratingCount4").text("(" + $('.ratingAvg4').length / 2 + ")");
+    $("#ratingCount5").text("(" + $('.ratingAvg5').length / 2 + ")");
 }
