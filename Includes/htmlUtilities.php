@@ -114,7 +114,7 @@ function ratingStar($starNumber, $idItem, $conn) {
         } 
         else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
     }
-    return "Évaluation :<div>".$stars. getRatingCount($idItem, $conn) . "</div>";
+    return "Évaluation:<div>".$stars. getRatingCount($idItem, $conn) . "</div>";
 }
 
 
