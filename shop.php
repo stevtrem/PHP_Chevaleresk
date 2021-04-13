@@ -108,15 +108,17 @@ unset($_SESSION['selectedPlayerAlias']);
                      <label><input type="radio" class="box" name="order[]" value="nomItem DESC">Z-A</label><br>
                   </div>
                   <div>
-                     <button type="submit" id="SubmitSearch" name="SubmitSearch" class="btn btn-primary" style="padding: 11px; margin-top: 30px">Rechercher</button>
+                     <button type="submit" id="SubmitSearch" name="SubmitSearch" class="btn btn-primary" style="padding: 11px">Rechercher</button>
                   </div>
                </form>
-               <h1 style="color:white">Évaluations</h1>
-                     <?php echo ratingStarFilter(1);
-                           echo ratingStarFilter(2);
-                           echo ratingStarFilter(3);
-                           echo ratingStarFilter(4);
-                           echo ratingStarFilter(5);?>
+               <h1 style="color:white; margin-left: 35px">Évaluations</h1>
+                  <div style='margin-left: 35px'>
+                     <?php echo ratingStarFilter(1, $conn);
+                           echo ratingStarFilter(2, $conn);
+                           echo ratingStarFilter(3, $conn);
+                           echo ratingStarFilter(4, $conn);
+                           echo ratingStarFilter(5, $conn);?>
+                  </div>
             </div>
             <div id="boutique">
                <?php

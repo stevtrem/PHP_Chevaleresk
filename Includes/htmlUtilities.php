@@ -100,7 +100,19 @@ function strLengthOk($str){
     return (strlen($input) >= 3);
 }
 
-function ratingStarFilter($starNumber) {
+function ratingStarFilter($starNumber, $conn) {
+
+    $sql = "SELECT count(evaluation) AS total
+            FROM evaluations e INNER JOIN
+                 items i ON e.idItem = i.idItem
+            WHERE e.evaluation = $starNumber AND i.disponible = 'O'";
+
+    $stmt = sqlsrv_query($conn, $sql);
+
+    $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+
+    $ratingCount = $row['total'];
+
     $stars = "";
     $initialStarCount = $starNumber;
     for($i = 0; $i < 5; $i++) {
@@ -108,9 +120,9 @@ function ratingStarFilter($starNumber) {
             $stars .= "<span class=\"glyphicon glyphicon-star\" style='color:white'></span>";
             $starNumber--;
         } 
-        else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
+        else $stars .= "<span class=\"glyphicon glyphicon-star-empty\" style='color:grey'></span>";
     }
-    return "<div id=\"starFilter{$initialStarCount}\">".$stars."</div>";
+    return "<div id=\"starFilter{$initialStarCount}\" style='color:white'>".$stars." (".$ratingCount.")"."</div>";
 }
 
 function getRatingAvg($itemId, $conn) {
