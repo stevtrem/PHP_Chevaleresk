@@ -133,4 +133,7 @@ label {
     width: 50%;
     padding: 10px;
 }
+.noRatingText {
+    font-size: 15px;
+}
 

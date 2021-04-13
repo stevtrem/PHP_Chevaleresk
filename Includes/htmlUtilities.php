@@ -99,9 +99,14 @@ function strLengthOk($str){
     $input = wordwrap($str, 20);
     return (strlen($input) >= 3);
 }
-function ratingStar($starNumber) {
+
+//Construct the rating stars based on the rating (starnumber)
+//If null (has no reviews from db) return an error string
+function ratingStar($starNumber, $idItem, $conn) {
     $stars = "";
     
+    if($starNumber == null) return "<span class=\"noRatingText\">Cet objet n'a pas d'évaluation pour le moment </span>";
+
     for($i = 0; $i < 5; $i++) {
         if($starNumber > 0) {
             $stars .= "<span class=\"glyphicon glyphicon-star\"></span>";
@@ -110,6 +115,30 @@ function ratingStar($starNumber) {
         else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
     }
 
-    return "<div>".$stars."</div>";
+    return "Évaluation :<div>".$stars. getRatingCount($idItem, $conn) . "</div>";
+}
+
+function getRatingAvg($itemId, $conn) {
+
+    $params = array($itemId);
+
+    $sql = "select avg(evaluation) as avg from evaluations where idItem = ?";
+
+    $stmt = sqlsrv_query($conn, $sql, $params);
+
+    $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+
+    return $row['avg'];
+}
+function getRatingCount($itemId, $conn) {
+    $params = array($itemId);
+
+    $sql = "select count(evaluation) as count from evaluations where idItem = ?";
+
+    $stmt = sqlsrv_query($conn, $sql, $params);
+
+    $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+
+    return "<span>(" . $row['count'] . ")</span>";
 }
 ?>

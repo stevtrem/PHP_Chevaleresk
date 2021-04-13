@@ -126,7 +126,7 @@ unset($_SESSION['selectedPlayerAlias']);
                         $qtStock = $row['qtStockItem'];
                         $prixUnitaire = (int)$row['prixUnitaireItem'];
                         $urlItem = $row['urlImageItem'];
-                        $rating = ratingStar(3);
+                        $rating = ratingStar(round(getRatingAvg($idItem, $conn)), $idItem, $conn);
                         if (isset($_SESSION['alias']) && $_SESSION['alias'] != 'admin'){ // Si admin, ne peut ajouter des items au panier
                            echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
                            echo <<<HTML
@@ -143,7 +143,7 @@ unset($_SESSION['selectedPlayerAlias']);
                                  {$prixUnitaire}
                               </td>
                               <td>
-                                 rating : $rating
+                                 $rating
                               </td>
                               <td>
                                  <a class="addBtnBoutique" href="Includes/addItemPanier.php?item={$idItem}">Ajouter</a>
