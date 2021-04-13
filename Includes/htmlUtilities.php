@@ -114,10 +114,15 @@ function ratingStar($starNumber, $idItem, $conn) {
         } 
         else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
     }
-
     return "Évaluation :<div>".$stars. getRatingCount($idItem, $conn) . "</div>";
 }
 
+
+function GetItemType($id){
+    return "SELECT typeItem
+                FROM   Items 
+                WHERE  idItem = $id";
+}
 function getRatingAvg($itemId, $conn) {
 
     $params = array($itemId);
@@ -140,5 +145,11 @@ function getRatingCount($itemId, $conn) {
     $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
 
     return "<span>(" . $row['count'] . ")</span>";
+}
+function GetInfoPotion($id){
+    return "SELECT i.nomItem, i.qtStockItem, i.prixUnitaireItem, i.urlImageItem, p.effet, p.duree
+                FROM   Items i 
+                INNER JOIN Potions p ON i.idItem = p.idItem
+                WHERE  i.idItem = $id";
 }
 ?>

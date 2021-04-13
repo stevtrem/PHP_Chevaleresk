@@ -19,6 +19,17 @@ motdepasse varbinary(128)
 primary key(idJoueur)
 );
 
+create table evaluations(
+idJoueur int not null,
+idItem int not null,
+evaluation int not null,
+constraint FK_idJoueurRating foreign key (idJoueur)
+references Joueurs(idJoueur),
+constraint FK_idItemRating foreign key (idItem)
+references Items(idItem),
+constraint PK_idJoueurItem primary key (idJoueur, idItem),
+constraint CK_Rating CHECK (evaluation >= 0 AND evaluation <= 5)
+);
 
 create table Armes(
 idItem int primary key,
