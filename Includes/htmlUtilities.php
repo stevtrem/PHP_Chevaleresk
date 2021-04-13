@@ -99,6 +99,20 @@ function strLengthOk($str){
     $input = wordwrap($str, 20);
     return (strlen($input) >= 3);
 }
+
+function ratingStarFilter($starNumber) {
+    $stars = "";
+    
+    for($i = 0; $i < 5; $i++) {
+        if($starNumber > 0) {
+            $stars .= "<span class=\"glyphicon glyphicon-star\" style='color:white'></span>";
+            $starNumber--;
+        } 
+        else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
+    }
+    return "<div>".$stars."</div>";
+}
+
 function ratingStar($starNumber, $voteCount) {
     $stars = "";
     
