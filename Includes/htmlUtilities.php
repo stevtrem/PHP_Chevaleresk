@@ -102,7 +102,7 @@ function strLengthOk($str){
 
 function ratingStarFilter($starNumber) {
     $stars = "";
-    
+    $initialStarCount = $starNumber;
     for($i = 0; $i < 5; $i++) {
         if($starNumber > 0) {
             $stars .= "<span class=\"glyphicon glyphicon-star\" style='color:white'></span>";
@@ -110,7 +110,7 @@ function ratingStarFilter($starNumber) {
         } 
         else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
     }
-    return "<div>".$stars."</div>";
+    return "<div id=\"starFilter{$initialStarCount}\">".$stars."</div>";
 }
 
 function getRatingAvg($itemId, $conn) {

@@ -107,16 +107,16 @@ unset($_SESSION['selectedPlayerAlias']);
                      <label><input type="radio" class="box" name="order[]" value="nomItem ASC">A-Z</label><br>
                      <label><input type="radio" class="box" name="order[]" value="nomItem DESC">Z-A</label><br>
                   </div>
-                  <h1 style="color:white">Évaluations</h1>
+                  <div>
+                     <button type="submit" id="SubmitSearch" name="SubmitSearch" class="btn btn-primary" style="padding: 11px; margin-top: 30px">Rechercher</button>
+                  </div>
+               </form>
+               <h1 style="color:white">Évaluations</h1>
                      <?php echo ratingStarFilter(1);
                            echo ratingStarFilter(2);
                            echo ratingStarFilter(3);
                            echo ratingStarFilter(4);
                            echo ratingStarFilter(5);?>
-                  <div>
-                     <button type="submit" id="SubmitSearch" name="SubmitSearch" class="btn btn-primary" style="padding: 11px; margin-top: 30px">Rechercher</button>
-                  </div>
-               </form>
             </div>
             <div id="boutique">
                <?php
@@ -135,7 +135,7 @@ unset($_SESSION['selectedPlayerAlias']);
                         $ratingAvg = round(getRatingAvg($idItem, $conn));
                         $rating = ratingStar($ratingAvg, $idItem, $conn);
                         if (isset($_SESSION['alias']) && $_SESSION['alias'] != 'admin'){ // Si admin, ne peut ajouter des items au panier
-                           echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
+                           echo('<table><tr class="ratingAvg'.$ratingAvg.'"><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
                            echo <<<HTML
                            <div>
                            <tr class="ratingAvg{$ratingAvg}">
@@ -160,10 +160,10 @@ unset($_SESSION['selectedPlayerAlias']);
                            </tr>
                            HTML;
                         }else{
-                           echo('<table><tr><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th></tr>');
+                           echo('<table><tr class="ratingAvg'.$ratingAvg.'"><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th></tr>');
                            echo <<<HTML
                            <div>
-                           <tr>
+                           <tr class="ratingAvg{$ratingAvg}">
                               <td style="font-size:15px">
                                  {$nomItem}
                                  <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
@@ -175,7 +175,7 @@ unset($_SESSION['selectedPlayerAlias']);
                                  {$prixUnitaire}
                               </td>
                               <td>
-                                 rating : $rating
+                                 $rating
                               </td>
                            </tr>
                            HTML;
