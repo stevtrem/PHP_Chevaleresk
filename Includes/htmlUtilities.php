@@ -100,29 +100,19 @@ function strLengthOk($str){
     return (strlen($input) >= 3);
 }
 
-//Construct the rating stars based on the rating (starnumber)
-//If null (has no reviews from db) return an error string
-function ratingStar($starNumber, $idItem, $conn) {
+function ratingStarFilter($starNumber) {
     $stars = "";
     
-    if($starNumber == null) return "<span class=\"noRatingText\">Cet objet n'a pas d'évaluation pour le moment </span>";
-
     for($i = 0; $i < 5; $i++) {
         if($starNumber > 0) {
-            $stars .= "<span class=\"glyphicon glyphicon-star\"></span>";
+            $stars .= "<span class=\"glyphicon glyphicon-star\" style='color:white'></span>";
             $starNumber--;
         } 
         else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
     }
-    return "Évaluation:<div>".$stars. getRatingCount($idItem, $conn) . "</div>";
+    return "<div>".$stars."</div>";
 }
 
-
-function GetItemType($id){
-    return "SELECT typeItem
-                FROM   Items 
-                WHERE  idItem = $id";
-}
 function getRatingAvg($itemId, $conn) {
 
     $params = array($itemId);
@@ -146,6 +136,30 @@ function getRatingCount($itemId, $conn) {
 
     return "<span>(" . $row['count'] . ")</span>";
 }
+//Construct the rating stars based on the rating (starnumber)
+//If null (has no reviews from db) return an error string
+function ratingStar($starNumber, $idItem, $conn) {
+    $stars = "";
+
+    if($starNumber == null) return "<span class=\"noRatingText\">Cet objet n'a pas d'évaluation pour le moment </span>";
+
+    for($i = 0; $i < 5; $i++) {
+        if($starNumber > 0) {
+            $stars .= "<span class=\"glyphicon glyphicon-star\"></span>";
+            $starNumber--;
+        } 
+        else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
+    }
+    return "Évaluation:<div>".$stars. getRatingCount($idItem, $conn) . "</div>";
+}
+
+
+function GetItemType($id){
+    return "SELECT typeItem
+                FROM   Items 
+                WHERE  idItem = $id";
+}
+
 function GetInfoPotion($id){
     return "SELECT i.nomItem, i.qtStockItem, i.prixUnitaireItem, i.urlImageItem, p.effet, p.duree
                 FROM   Items i 
