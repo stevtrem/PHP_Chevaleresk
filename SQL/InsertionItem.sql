@@ -9,29 +9,29 @@ select * from Items;
 select * from Armes;
 
 --insertion des évaluations
-insert into evaluations values(1, 1, 3);
-insert into evaluations values(1, 3, 3);
-insert into evaluations values(1, 4, 3);
-insert into evaluations values(1, 13, 4);
-insert into evaluations values(1, 14, 4);
-insert into evaluations values(1, 15, 4);
-insert into evaluations values(1, 16, 1);
-insert into evaluations values(1, 19, 5);
+insert into evaluations values(1, 1, 3, "L'item est tres utile");
+insert into evaluations values(1, 3, 3, "L'objet m'a servi dans des moments precis");
+insert into evaluations values(1, 4, 3, "Item d'une valeur moyenne");
+insert into evaluations values(1, 13, 4, "J'ai adorer cet objet");
+insert into evaluations values(1, 14, 4, "Vraiment pratique!");
+insert into evaluations values(1, 15, 4, "Vraiment un super item");
+insert into evaluations values(1, 16, 1, "L'objet est extremement mediocre");
+insert into evaluations values(1, 19, 5, "Cet objet a une puissance quasi illimitee");
 
-insert into evaluations values(2, 6, 4);
-insert into evaluations values(2, 13, 2);
-insert into evaluations values(2, 14, 5);
-insert into evaluations values(2, 15, 4);
-insert into evaluations values(2, 16, 4);
-insert into evaluations values(2, 22, 3);
+insert into evaluations values(2, 6, 4, "Puissance d'attaque incomparable");
+insert into evaluations values(2, 13, 2, "Je suis mort plusieurs fois en utilisant cet objet");
+insert into evaluations values(2, 14, 5, "Objet legendaire!");
+insert into evaluations values(2, 15, 4, "Tres pratique, m'a sauver la peau plus d''une fois");
+insert into evaluations values(2, 16, 4, "Excellent item");
+insert into evaluations values(2, 22, 3, "Parfois utile, parfois inutile");
 
-insert into evaluations values(3, 1, 4);
+insert into evaluations values(3, 1, 4, "J'ai fendu plusieurs crane avec cet item");
 
-insert into evaluations values(6, 13, 3);
-insert into evaluations values(6, 14, 5);
-insert into evaluations values(6, 16, 4);
+insert into evaluations values(6, 13, 3, "Cet objet est pratique jusqu'a un certain niveau");
+insert into evaluations values(6, 14, 5, "Cet objet m'accompagne dans toutes mes aventures");
+insert into evaluations values(6, 16, 4, "Je n'ai pas d'autres mots sur cet objet a part qu'il est excellent!");
 
-insert into evaluations values(11, 20, 5);
+insert into evaluations values(11, 20, 5, "Une fois plus, je me retrouve a utiliser cet objet qui est selon moi le meilleur de sa categorie");
 
 --insertion des Armes
 insert into Items(nomItem,qtStockItem,typeItem,prixUnitaireItem,urlImageItem) values('Arc celeste',100,'WPN',500,'arcCeleste.png', 'O');
