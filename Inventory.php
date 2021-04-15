@@ -94,6 +94,7 @@ $params = array($_SESSION['Id']);
                      $url = $row['urlImageItem'];
                      $qtItem = $row['qtItem'];
                      $nomItem = $row['nomItem']; 
+                     $idItem = $row['idItem'];
                      echo <<<HTML
                         <tr>
                            <td>
@@ -102,7 +103,10 @@ $params = array($_SESSION['Id']);
                            </td>
                            <td>
                               {$qtItem}
-                           </td>                           
+                           </td>
+                           <td>
+                              <a id="linkEval" href='EditItem.php?item={$idItem}'>Évaluer?</a>
+                           </td>                          
                         </tr>
                      HTML;
                   }

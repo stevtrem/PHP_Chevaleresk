@@ -61,7 +61,7 @@ function getInventaireJoueur(){
         return $_SESSION["sql"];
     }else{
         $id = $_SESSION['Id'];
-        return "SELECT i.urlImageItem, j.qtItem, i.nomItem
+        return "SELECT i.urlImageItem, j.qtItem, i.nomItem, i.idItem
                 FROM   inventaireJoueur j INNER JOIN
                        Items i ON j.idItem = i.idItem
                 WHERE  idJoueur = $id";

@@ -11,8 +11,9 @@ countRating();
 $("#starFilter1").click(function() {
     currentFilter = currentFilter == 1 ? 0 : 1
 
+    $(".ratingFilterError").remove();
+    
     if(count2 < 1 && currentFilter == 1) {
-        $(".ratingFilterError").remove();
         $("#boutique").append("<div class=\"ratingFilterError\">Il n'y aucun item avec l'évaluation selectionner pour le moment");
     }
     if(currentFilter == 1) {
@@ -26,8 +27,8 @@ $("#starFilter1").click(function() {
 $("#starFilter2").click(function() {
     currentFilter = currentFilter == 2 ? 0 : 2
 
+    $(".ratingFilterError").remove();
     if(count2 < 1 && currentFilter == 2) {
-        $(".ratingFilterError").remove();
         $("#boutique").append("<div class=\"ratingFilterError\">Il n'y aucun item avec l'évaluation selectionner pour le moment");
     }
     if(currentFilter == 2) {
@@ -40,8 +41,9 @@ $("#starFilter2").click(function() {
 $("#starFilter3").click(function() {
     currentFilter = currentFilter == 3 ? 0 : 3
 
+    $(".ratingFilterError").remove();
+
     if(count3 < 1 && currentFilter == 3) {
-        $(".ratingFilterError").remove();
         $("#boutique").append("<div class=\"ratingFilterError\">Il n'y aucun item avec l'évaluation selectionner pour le moment");
     }
     if(currentFilter == 3) {
@@ -54,8 +56,9 @@ $("#starFilter3").click(function() {
 $("#starFilter4").click(function() {
     currentFilter = currentFilter == 4 ? 0 : 4
 
+    $(".ratingFilterError").remove();
+
     if(count4 < 1 && currentFilter == 4) {
-        $(".ratingFilterError").remove();
         $("#boutique").append("<div class=\"ratingFilterError\">Il n'y aucun item avec l'évaluation selectionner pour le moment");
     }
     if(currentFilter == 4) {
@@ -68,8 +71,9 @@ $("#starFilter4").click(function() {
 $("#starFilter5").click(function() {
     currentFilter = currentFilter == 5 ? 0 : 5
 
+    $(".ratingFilterError").remove();
+
     if(count5 < 1 && currentFilter == 5) {
-        $(".ratingFilterError").remove();
         $("#boutique").append("<div class=\"ratingFilterError\">Il n'y aucun item avec l'évaluation selectionner pour le moment");
     }
     if(currentFilter == 5) {
