@@ -130,7 +130,7 @@ require_once 'Includes/dbh.php';
                        
                        $nomArme = $Arme['nomItem'];
                        $qtStockArme = $Arme['qtStockItem'];
-                       $prix = floor($Arme['prixUnitaireItem']);
+                       $prixUnitaire = floor($Arme['prixUnitaireItem']);
                        $url = $Arme['urlImageItem'];
                        $efficacite = $Arme['efficacite'];
                        $genre = $Arme['genre'];
@@ -156,7 +156,7 @@ require_once 'Includes/dbh.php';
                                        <hr>
                                        Quantité en Stock: $qtStockArme
                                        <br>
-                                       Prix unitaire:  $prix Écues
+                                       Prix unitaire:  $prixUnitaire Écues
                                     </div>
                               </div>
                            </div>
@@ -172,7 +172,7 @@ require_once 'Includes/dbh.php';
 
                        $nomArmure = $Armure['nomItem'];
                        $qtStock = $Armure['qtStockItem'];
-                       $prix = $Armure['prixUnitaireItem'];
+                       $prixUnitaire = floor($Armure['prixUnitaireItem']);
                        $url = $Armure['urlImageItem'];
                        $matiere = $Armure['matiere'];
                        $poid = $Armure['poids'];
@@ -200,7 +200,7 @@ require_once 'Includes/dbh.php';
                                        <hr>
                                        Quantité en Stock: $qtStock
                                        <br>
-                                       Prix unitaire:  $prix Écues
+                                       Prix unitaire:  $prixUnitaire Écues
                                     </div>
                               </div>
                            </div>
@@ -216,7 +216,7 @@ require_once 'Includes/dbh.php';
 
                        $nomRessource = $Ressource['nomItem'];
                        $qtStockRes = $Ressource['qtStockItem'];
-                       $prix = $Ressource['prixUnitaireItem'];
+                       $prixUnitaire = floor($Ressource['prixUnitaireItem']);
                        $url = $Ressource['urlImageItem'];
                        $description = $Ressource['description'];
 
@@ -236,7 +236,7 @@ require_once 'Includes/dbh.php';
                                        <hr>
                                        Quantité en Stock: $qtStockRes
                                        <br>
-                                       Prix unitaire:  $prix Écues
+                                       Prix unitaire:  $prixUnitaire Écues
                                     </div>
                               </div>
                            </div>
