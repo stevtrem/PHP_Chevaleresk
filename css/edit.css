@@ -20,10 +20,12 @@
 #containerLeft{
     flex: 60%;
     display: flex;
+    flex-direction: column;
 }
 
 #containerRight{
     flex: 40%;
+    overflow:auto;
 }
 
 #imageContainer{
@@ -34,5 +36,22 @@
     flex: 100%;
 }
 #titre{
+    margin-left: 25%;
+    margin-top: 2%;
+}
+#imageItem{
+    height:200px;
+    width:200px; 
+    margin-left: 20%;
+}
+#Effet{
+    flex: 100%;
+    font-weight: bold;
+    margin-top: 4%;
     margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+}
+#info{
+    flex: 100%;
 }

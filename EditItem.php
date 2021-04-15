@@ -94,7 +94,7 @@ require_once 'Includes/dbh.php';
 
                         $nomPotion = $potion['nomItem'];
                         $qtStock = $potion['qtStockItem'];
-                        $prixUnitaire = $potion['prixUnitaireItem'];
+                        $prixUnitaire = floor($potion['prixUnitaireItem']);
                         $url = $potion['urlImageItem'];
                         $effet = $potion['effet'];
                         $duree = $potion['duree'];
@@ -104,11 +104,22 @@ require_once 'Includes/dbh.php';
                               <div id="imageContainer">
                                  <div id="titre">Item:   $nomPotion</div>
                                  <hr>                                 
-                                 <img src="images/imagesItem/{$url}" height="150px" width="150px" margin-top="10px">
+                                 <div id="imageItem"><img src="images/imagesItem/{$url}"></div>
+                                 <hr>
+                              </div>
+                              <div id="Effet">
+                                    <div id="info">Effet:   $effet</div>
+                                    <div id="info"><hr>Duré des effets:  $duree secondes</div>  
+                                    <div id="info">
+                                       <hr>
+                                       Quantité en Stock: $qtStock
+                                       <br>
+                                       Prix unitaire:  $prixUnitaire Écues
+                                    </div>
                               </div>
                            </div>
                            <div id="containerRight">
-                              droite
+                              évaluation 
                            </div>
                         HTML;
                     }
@@ -119,11 +130,40 @@ require_once 'Includes/dbh.php';
                        
                        $nomArme = $Arme['nomItem'];
                        $qtStockArme = $Arme['qtStockItem'];
-                       $prix = $Arme['prixUnitaireItem'];
+                       $prix = floor($Arme['prixUnitaireItem']);
                        $url = $Arme['urlImageItem'];
                        $efficacite = $Arme['efficacite'];
                        $genre = $Arme['genre'];
                        $description = $Arme['descriptionArme'];
+
+
+                       echo <<<HTML
+                           <div id="containerLeft">
+                              <div id="imageContainer">
+                                 <div id="titre">Item:   $nomArme</div>
+                                 <hr>                                 
+                                 <div id="imageItem"><img src="images/imagesItem/{$url}"></div>
+                                 <hr>
+                              </div>
+                              <div id="Effet">
+                                    <div id="info">
+                                       Description: $description
+                                       <br>
+                                       Efficacité:   $efficacite
+                                    </div>
+                                    <div id="info"><hr>Type d'arme: $genre</div>  
+                                    <div id="info">
+                                       <hr>
+                                       Quantité en Stock: $qtStockArme
+                                       <br>
+                                       Prix unitaire:  $prix Écues
+                                    </div>
+                              </div>
+                           </div>
+                           <div id="containerRight">
+                              évaluation 
+                           </div>
+                        HTML;
                     }
                     else if($row['typeItem'] == 'ARM'){
                        $infoSql = GetInfoArmure($_GET['item']);
@@ -137,6 +177,37 @@ require_once 'Includes/dbh.php';
                        $matiere = $Armure['matiere'];
                        $poid = $Armure['poids'];
                        $taille = $Armure['taille'];
+
+                       echo <<<HTML
+                           <div id="containerLeft">
+                              <div id="imageContainer">
+                                 <div id="titre">Item:   $nomArmure</div>
+                                 <hr>                                 
+                                 <div id="imageItem"><img src="images/imagesItem/{$url}"></div>
+                                 <hr>
+                              </div>
+                              <div id="Effet">
+                                    <div id="info">
+                                       Matière de l'armure: $matiere
+                                    </div>
+                                    <div id="info">
+                                       <hr>
+                                       Poids de l'armure:  $poid
+                                       <br>
+                                       Taille de l'armure:  $taille
+                                    </div>  
+                                    <div id="info">
+                                       <hr>
+                                       Quantité en Stock: $qtStock
+                                       <br>
+                                       Prix unitaire:  $prix Écues
+                                    </div>
+                              </div>
+                           </div>
+                           <div id="containerRight">
+                              évaluation 
+                           </div>
+                        HTML;
                     }
                     else if($row['typeItem'] == 'RES'){
                        $infoSql = GetInfoRessource($_GET['item']);
@@ -148,6 +219,31 @@ require_once 'Includes/dbh.php';
                        $prix = $Ressource['prixUnitaireItem'];
                        $url = $Ressource['urlImageItem'];
                        $description = $Ressource['description'];
+
+                       echo <<<HTML
+                           <div id="containerLeft">
+                              <div id="imageContainer">
+                                 <div id="titre">Ressource:   $nomRessource</div>
+                                 <hr>                                 
+                                 <div id="imageItem"><img src="images/imagesItem/{$url}"></div>
+                                 <hr>
+                              </div>
+                              <div id="Effet">
+                                    <div id="info">
+                                       Description:  $description
+                                    </div>
+                                    <div id="info">
+                                       <hr>
+                                       Quantité en Stock: $qtStockRes
+                                       <br>
+                                       Prix unitaire:  $prix Écues
+                                    </div>
+                              </div>
+                           </div>
+                           <div id="containerRight">
+                              évaluation 
+                           </div>
+                        HTML;
                     }
                   }
 
