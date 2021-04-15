@@ -23,6 +23,7 @@ create table evaluations(
 idJoueur int not null,
 idItem int not null,
 evaluation int not null,
+commentaire varchar(256) null,
 constraint FK_idJoueurRating foreign key (idJoueur)
 references Joueurs(idJoueur),
 constraint FK_idItemRating foreign key (idItem)
