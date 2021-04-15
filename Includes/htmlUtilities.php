@@ -200,5 +200,17 @@ function HasItem($conn, $idJoueur, $idItem) {
 
     return false;
 }
+function getRatingCountForSelected($conn, $idItem){
+    $sql = "SELECT count(evaluation) AS total
+            FROM evaluations e INNER JOIN
+                 items i ON e.idItem = i.idItem
+            WHERE e.idItem = $idItem AND i.disponible = 'O'";
 
+    $stmt = sqlsrv_query($conn, $sql);
+
+    $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+
+    $ratingCount = $row['total'];
+    return "<span>(".$ratingCount.")</span>";
+}
 ?>

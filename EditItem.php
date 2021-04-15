@@ -13,7 +13,7 @@ require_once 'Includes/dbh.php';
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Chevaleresk - Boutique</title>
+      <title>Chevaleresk - Évaluations</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -99,6 +99,8 @@ require_once 'Includes/dbh.php';
                         $effet = $potion['effet'];
                         $duree = $potion['duree'];
 
+                        $ratingCount = getRatingCountForSelected($conn, $_GET['item']);
+
                         echo <<<HTML
                            <div id="containerLeft">
                               <div id="imageContainer">
@@ -119,7 +121,7 @@ require_once 'Includes/dbh.php';
                               </div>
                            </div>
                            <div id="containerRight">
-                              évaluation 
+                              évaluation $ratingCount
                            </div>
                         HTML;
                     }
@@ -136,6 +138,7 @@ require_once 'Includes/dbh.php';
                        $genre = $Arme['genre'];
                        $description = $Arme['descriptionArme'];
 
+                       $ratingCount = getRatingCountForSelected($conn, $_GET['item']);
 
                        echo <<<HTML
                            <div id="containerLeft">
@@ -161,7 +164,7 @@ require_once 'Includes/dbh.php';
                               </div>
                            </div>
                            <div id="containerRight">
-                              évaluation 
+                              évaluation $ratingCount
                            </div>
                         HTML;
                     }
@@ -177,6 +180,8 @@ require_once 'Includes/dbh.php';
                        $matiere = $Armure['matiere'];
                        $poid = $Armure['poids'];
                        $taille = $Armure['taille'];
+
+                       $ratingCount = getRatingCountForSelected($conn, $_GET['item']);
 
                        echo <<<HTML
                            <div id="containerLeft">
@@ -205,7 +210,7 @@ require_once 'Includes/dbh.php';
                               </div>
                            </div>
                            <div id="containerRight">
-                              évaluation 
+                              évaluation $ratingCount
                            </div>
                         HTML;
                     }
@@ -219,6 +224,8 @@ require_once 'Includes/dbh.php';
                        $prixUnitaire = floor($Ressource['prixUnitaireItem']);
                        $url = $Ressource['urlImageItem'];
                        $description = $Ressource['description'];
+
+                       $ratingCount = getRatingCountForSelected($conn, $_GET['item']);
 
                        echo <<<HTML
                            <div id="containerLeft">
@@ -241,7 +248,7 @@ require_once 'Includes/dbh.php';
                               </div>
                            </div>
                            <div id="containerRight">
-                              évaluation 
+                              évaluation $ratingCount
                            </div>
                         HTML;
                     }
