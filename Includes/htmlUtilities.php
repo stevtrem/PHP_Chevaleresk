@@ -187,4 +187,18 @@ function GetInfoRessource($id){
         INNER JOIN Ressource r ON i.idItem = r.idItem
         WHERE i.idItem = $id";
 }
+function HasItem($conn, $idJoueur, $idItem) {
+    $params = array($idItem, $idJoueur);
+
+    $sql = "select count(idItem) as count from inventaireJoueur where idItem = ? and idJoueur = ?";
+
+    $stmt = sqlsrv_query($conn, $sql, $params);
+
+    $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+
+    if($row['count'] > 0) return true;
+
+    return false;
+}
+
 ?>
