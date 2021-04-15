@@ -15,16 +15,17 @@
     border-radius: 20px;
     border: 2px solid #465464;
     display: flex;
+    flex-direction: row;
 }
 
 #containerLeft{
-    flex: 60%;
+    flex: 50%;
     display: flex;
     flex-direction: column;
 }
 
 #containerRight{
-    flex: 40%;
+    flex: 50%;
     overflow:auto;
 }
 
