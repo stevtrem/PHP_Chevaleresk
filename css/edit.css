@@ -55,3 +55,6 @@
 #info{
     flex: 100%;
 }
+img {
+    max-width: 100px;
+}
