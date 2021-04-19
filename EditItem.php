@@ -263,9 +263,9 @@ require_once 'Includes/dbh.php';
                         $idJoueur = $row['idJoueur'];
                         $idItem = $_GET['item'];
                         
-                        $sql = getJoueurAlias($idJoueur);
-                        $stmt = sqlsrv_query($conn, $sql);
-                        $result = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+                        $sql2 = getJoueurAlias($idJoueur);
+                        $stmt2 = sqlsrv_query($conn, $sql2);
+                        $result = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC);
                         $alias = $result['alias'];
 
                         $rating = ratingStarForComment($evaluation);
