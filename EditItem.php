@@ -248,23 +248,13 @@ require_once 'Includes/dbh.php';
 
                      }
                   }
-                     echo "<div id='containerRight'>";
-                     $sql = "SELECT * FROM evaluations WHERE idItem = ".$_GET['item'];
-                     $stmt = sqlsrv_query($conn, $sql);
-                     $ratingAvg = round(getRatingAvg($_GET["item"], $conn));
-                     $ratingMoyenne = ratingStar($ratingAvg, $_GET["item"], $conn);
-                     echo $ratingMoyenne."<hr>";
-
-                     while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
-                        $evaluation = $row['evaluation'];
-                        $commentaire = $row['commentaire'];
-                        $idJoueur = $row['idJoueur'];
-                        $idItem = $_GET['item'];
-                        
-                        $sql2 = getJoueurAlias($idJoueur);
-                        $stmt2 = sqlsrv_query($conn, $sql2);
-                        $result = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC);
-                        $alias = $result['alias'];
+                  
+                  echo "<div id='containerRight'>";
+                  $sql = "SELECT * FROM evaluations WHERE idItem = ".$_GET['item'];
+                  $stmt = sqlsrv_query($conn, $sql);
+                  $ratingAvg = round(getRatingAvg($_GET["item"], $conn));
+                  $ratingMoyenne = ratingStar($ratingAvg, $_GET["item"], $conn);
+                  echo $ratingMoyenne."<hr>";
 
                   while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
                      $evaluation = $row['evaluation'];

@@ -1,4 +1,4 @@
-
+-- Procédures pour ajouter et effacer des items
 
 create or alter procedure ajoutItem
 (@nomItem varchar(32),
@@ -64,3 +64,48 @@ EXEC ajoutItem
 @url ='test',
 @effet ='ahah',
 @duree = 99;
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER   procedure [dbo].[DeleteItemCascade]
+(@idItem int)
+as
+begin
+declare
+@type char(3);
+select @type = typeItem from Items where idItem = @idItem;
+
+	if exists(select * from inventaireJoueur where idItem = @idItem)
+	begin
+		update Items set disponible = 'N' where idItem = @idItem;
+	end
+	else
+	begin
+	if exists(select * from Panier where idItem = @idItem)
+	begin
+		delete from Panier where idItem = @idItem;
+	end
+		if(@type = 'WPN')
+		begin
+			delete from Armes where idItem = @idItem;
+			delete from Items where idItem = @idItem;
+		end
+		else if(@type = 'ARM')
+		begin
+			delete from Armures where idItem = @idItem;
+			delete from Items where idItem = @idItem;
+		end
+		else if(@type = 'POT')
+		begin
+			delete from Potions where idItem = @idItem;
+			delete from Items where idItem = @idItem;
+		end
+		else if(@type = 'RES')
+		begin
+			delete from Ressource where idItem = @idItem;
+			delete from Items where idItem = @idItem;
+		end
+	end
+end;
