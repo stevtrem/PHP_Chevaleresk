@@ -178,8 +178,7 @@ require_once 'Includes/dbh.php';
                        $poid = $Armure['poids'];
                        $taille = $Armure['taille'];
 
-                       $ratingAvg = round(getRatingAvg($_GET["item"], $conn));
-                       $rating = ratingStar($ratingAvg, $_GET["item"], $conn);
+                       
 
                        echo <<<HTML
                            <div id="containerLeft">
@@ -249,40 +248,16 @@ require_once 'Includes/dbh.php';
                         echo "<div id='containerRight'>";
    
                         echo "</div>";
-                     }else{
-                        echo "<div id='containerRight'>";
-                     $sql = "SELECT * FROM evaluations 
-                     WHERE idItem = ". $_GET['item'];
-                     $stmt = sqlsrv_query($conn, $sql);
-                     while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
-                        $evaluation = $row['evaluation'];
-                        $commentaire = $row['commentaire'];
-                        $idJoueur = $row['idJoueur'];
-                        $idItem = $_GET['item'];
-
-                        $sql = getJoueurAlias($idJoueur);
-                        $stmt = sqlsrv_query($conn, $sql);
-                        $result = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
-                        $alias = $result['alias'];
-
-                        $rating = ratingStar($evaluation, $idItem, $conn);
-                        echo <<<HTML
-                           <div id="commentaireContainer">
-                              <div id="alias">$alias</div>
-                              <div id="rate">$rating</div>
-                              $commentaire
-                           </div>
-                           <hr>
-                        HTML;
-                     }
-                     echo "</div>";
                      }
                   }
-                  else{
                      echo "<div id='containerRight'>";
                      $sql = "SELECT * FROM evaluations 
                      WHERE idItem = ". $_GET['item'];
                      $stmt = sqlsrv_query($conn, $sql);
+                     $ratingAvg = round(getRatingAvg($_GET["item"], $conn));
+                     $ratingMoyenne = ratingStar($ratingAvg, $_GET["item"], $conn);
+                     echo $ratingMoyenne;
+
                      while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
                         $evaluation = $row['evaluation'];
                         $commentaire = $row['commentaire'];
@@ -303,7 +278,7 @@ require_once 'Includes/dbh.php';
                            </div>
                            <hr>
                         HTML;
-                     }
+                     
                      echo "</div>";
                   }
                ?>   
