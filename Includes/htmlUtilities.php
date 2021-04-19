@@ -56,27 +56,18 @@ function getItems(){
 }
 
 function getInventaireJoueur(){
-    
-    if (isset($_SESSION["sql"])){
-        return $_SESSION["sql"];
-    }else{
-        $id = $_SESSION['Id'];
-        return "SELECT i.urlImageItem, j.qtItem, i.nomItem, i.idItem
-                FROM   inventaireJoueur j INNER JOIN
-                       Items i ON j.idItem = i.idItem
-                WHERE  idJoueur = $id";
-    }
+    $id = $_SESSION['Id'];
+    return "SELECT i.urlImageItem, j.qtItem, i.nomItem, i.idItem
+            FROM   inventaireJoueur j INNER JOIN
+                    Items i ON j.idItem = i.idItem
+            WHERE  idJoueur = $id";
 }
 
 function getSoldeJoueur(){
-    if (isset($_SESSION["sql"])){
-        return $_SESSION["sql"];
-    }else{
-        $id = $_SESSION['Id'];
-        return "SELECT montantInitial
-                FROM   Joueurs 
-                WHERE  idJoueur = $id";
-    }
+    $id = $_SESSION['Id'];
+    return "SELECT montantInitial
+            FROM   Joueurs 
+            WHERE  idJoueur = $id";
 }
 
 function getItemsJoueurAdmin(){
@@ -145,12 +136,12 @@ function ratingStar($starNumber, $idItem, $conn) {
 
     for($i = 0; $i < 5; $i++) {
         if($starNumber > 0) {
-            $stars .= "<span class=\"glyphicon glyphicon-star\"></span>";
+            $stars .= "<span class=\"glyphicon glyphicon-star\" style='color:#FFBD03'></span>";
             $starNumber--;
         } 
         else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
     }
-    return "Évaluations:<div>".$stars. getRatingCount($idItem, $conn) . "</div>";
+    return "<span id='alias'>Évaluations:</span><div>".$stars. getRatingCount($idItem, $conn) . "</div>";
 }
 
 function ratingStarForComment($starNumber) {
@@ -160,12 +151,12 @@ function ratingStarForComment($starNumber) {
 
     for($i = 0; $i < 5; $i++) {
         if($starNumber > 0) {
-            $stars .= "<span class=\"glyphicon glyphicon-star\"></span>";
+            $stars .= "<span class=\"glyphicon glyphicon-star\" style='color:#FFBD03'></span>";
             $starNumber--;
         } 
         else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
     }
-    return "Évaluation:<div>".$stars."</div>";
+    return "<div>".$stars."</div>";
 }
 
 
