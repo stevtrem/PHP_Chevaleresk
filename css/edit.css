@@ -59,3 +59,13 @@
 img {
     max-width: 100px;
 }
+#commentaireContainer{
+    display: flex;
+    flex-direction: row;
+}
+#alias{
+    flex: 100%;
+}
+#rate{
+    flex: 100%;
+}

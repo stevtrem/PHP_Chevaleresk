@@ -213,4 +213,9 @@ function getRatingCountForSelected($conn, $idItem){
     $ratingCount = $row['total'];
     return "<span>(".$ratingCount.")</span>";
 }
+
+function getJoueurAlias($id){
+    return "SELECT alias from Joueurs
+            WHERE idJoueur = $id";
+}
 ?>

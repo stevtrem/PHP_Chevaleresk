@@ -19,6 +19,7 @@ require_once 'Includes/dbh.php';
       <meta name="author" content="">
       <!-- bootstrap css -->
       <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
       <!-- style css -->
       <link rel="stylesheet" href="css/style.css">
       <!-- Responsive-->
@@ -99,7 +100,8 @@ require_once 'Includes/dbh.php';
                         $effet = $potion['effet'];
                         $duree = $potion['duree'];
 
-                        $ratingCount = getRatingCountForSelected($conn, $_GET['item']);
+                        $ratingAvg = round(getRatingAvg($_GET["item"], $conn));
+                        $rating = ratingStar($ratingAvg, $_GET["item"], $conn);
 
                         echo <<<HTML
                            <div id="containerLeft">
@@ -120,9 +122,6 @@ require_once 'Includes/dbh.php';
                                     </div>
                               </div>
                            </div>
-                           <div id="containerRight">
-                              évaluation $ratingCount
-                           </div>
                         HTML;
                     }
                     else if($row['typeItem'] == 'WPN'){
@@ -138,7 +137,8 @@ require_once 'Includes/dbh.php';
                        $genre = $Arme['genre'];
                        $description = $Arme['descriptionArme'];
 
-                       $ratingCount = getRatingCountForSelected($conn, $_GET['item']);
+                       $ratingAvg = round(getRatingAvg($_GET["item"], $conn));
+                       $rating = ratingStar($ratingAvg, $_GET["item"], $conn);
 
                        echo <<<HTML
                            <div id="containerLeft">
@@ -163,9 +163,6 @@ require_once 'Includes/dbh.php';
                                     </div>
                               </div>
                            </div>
-                           <div id="containerRight">
-                              évaluation $ratingCount
-                           </div>
                         HTML;
                     }
                     else if($row['typeItem'] == 'ARM'){
@@ -181,7 +178,8 @@ require_once 'Includes/dbh.php';
                        $poid = $Armure['poids'];
                        $taille = $Armure['taille'];
 
-                       $ratingCount = getRatingCountForSelected($conn, $_GET['item']);
+                       $ratingAvg = round(getRatingAvg($_GET["item"], $conn));
+                       $rating = ratingStar($ratingAvg, $_GET["item"], $conn);
 
                        echo <<<HTML
                            <div id="containerLeft">
@@ -209,9 +207,6 @@ require_once 'Includes/dbh.php';
                                     </div>
                               </div>
                            </div>
-                           <div id="containerRight">
-                              évaluation $ratingCount
-                           </div>
                         HTML;
                     }
                     else if($row['typeItem'] == 'RES'){
@@ -224,8 +219,6 @@ require_once 'Includes/dbh.php';
                        $prixUnitaire = floor($Ressource['prixUnitaireItem']);
                        $url = $Ressource['urlImageItem'];
                        $description = $Ressource['description'];
-
-                       $ratingCount = getRatingCountForSelected($conn, $_GET['item']);
 
                        echo <<<HTML
                            <div id="containerLeft">
@@ -247,14 +240,44 @@ require_once 'Includes/dbh.php';
                                     </div>
                               </div>
                            </div>
-                           <div id="containerRight">
-                              évaluation $ratingCount
-                           </div>
                         HTML;
                     }
                   }
+                  
+                  
+                  if(HasItem($conn, $_SESSION["Id"], $_GET["item"])){
+                     echo "<div id='containerRight'>";
+                     echo $rating;
+                     echo "allo";
+                     echo "</div>";
+                  }else{
+                     echo "<div id='containerRight'>";
+                     $sql = "SELECT * FROM evaluations 
+                     WHERE idItem = ". $_GET['item'];
+                     $stmt = sqlsrv_query($conn, $sql);
+                     while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
+                        $evaluation = $row['evaluation'];
+                        $commentaire = $row['commentaire'];
+                        $idJoueur = $row['idJoueur'];
+                        $idItem = $_GET['item'];
 
-
+                        $sql = getJoueurAlias($idJoueur);
+                        $stmt = sqlsrv_query($conn, $sql);
+                        $result = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+                        $alias = $result['alias'];
+                        
+                        $rating = ratingStar($evaluation, $idItem, $conn);
+                        echo <<<HTML
+                           <div id="commentaireContainer">
+                              <div id="alias">$alias</div>
+                              <div id="rate">$rating</div>
+                              $commentaire
+                           </div>
+                           <hr>
+                        HTML;
+                     }
+                     echo "</div>";
+                  }
                ?>   
             </div>
       </section>
