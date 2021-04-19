@@ -244,13 +244,41 @@ require_once 'Includes/dbh.php';
                     }
                   }
                   
-                  
-                  if(HasItem($conn, $_SESSION["Id"], $_GET["item"])){
-                     echo "<div id='containerRight'>";
-                     echo $rating;
-                     echo "allo";
+                  if(isset($_SESSION['Id'])){
+                     if(HasItem($conn, $_SESSION["Id"], $_GET["item"])){
+                        echo "<div id='containerRight'>";
+   
+                        echo "</div>";
+                     }else{
+                        echo "<div id='containerRight'>";
+                     $sql = "SELECT * FROM evaluations 
+                     WHERE idItem = ". $_GET['item'];
+                     $stmt = sqlsrv_query($conn, $sql);
+                     while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
+                        $evaluation = $row['evaluation'];
+                        $commentaire = $row['commentaire'];
+                        $idJoueur = $row['idJoueur'];
+                        $idItem = $_GET['item'];
+
+                        $sql = getJoueurAlias($idJoueur);
+                        $stmt = sqlsrv_query($conn, $sql);
+                        $result = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+                        $alias = $result['alias'];
+
+                        $rating = ratingStar($evaluation, $idItem, $conn);
+                        echo <<<HTML
+                           <div id="commentaireContainer">
+                              <div id="alias">$alias</div>
+                              <div id="rate">$rating</div>
+                              $commentaire
+                           </div>
+                           <hr>
+                        HTML;
+                     }
                      echo "</div>";
-                  }else{
+                     }
+                  }
+                  else{
                      echo "<div id='containerRight'>";
                      $sql = "SELECT * FROM evaluations 
                      WHERE idItem = ". $_GET['item'];
@@ -265,7 +293,7 @@ require_once 'Includes/dbh.php';
                         $stmt = sqlsrv_query($conn, $sql);
                         $result = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
                         $alias = $result['alias'];
-                        
+
                         $rating = ratingStar($evaluation, $idItem, $conn);
                         echo <<<HTML
                            <div id="commentaireContainer">
