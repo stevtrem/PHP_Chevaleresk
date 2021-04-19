@@ -242,7 +242,7 @@ require_once 'Includes/dbh.php';
                         HTML;
                     }
                   }
-                  
+
                   if(isset($_SESSION['Id'])){
                      if(HasItem($conn, $_SESSION["Id"], $_GET["item"])){
                         echo "<div id='containerRight'>";
@@ -251,12 +251,11 @@ require_once 'Includes/dbh.php';
                      }
                   }
                      echo "<div id='containerRight'>";
-                     $sql = "SELECT * FROM evaluations 
-                     WHERE idItem = ". $_GET['item'];
+                     $sql = "SELECT * FROM evaluations WHERE idItem = ".$_GET['item'];
                      $stmt = sqlsrv_query($conn, $sql);
                      $ratingAvg = round(getRatingAvg($_GET["item"], $conn));
                      $ratingMoyenne = ratingStar($ratingAvg, $_GET["item"], $conn);
-                     echo $ratingMoyenne;
+                     echo $ratingMoyenne."<hr>";
 
                      while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
                         $evaluation = $row['evaluation'];
@@ -264,12 +263,12 @@ require_once 'Includes/dbh.php';
                         $idJoueur = $row['idJoueur'];
                         $idItem = $_GET['item'];
 
-                        $sql = getJoueurAlias($idJoueur);
-                        $stmt = sqlsrv_query($conn, $sql);
-                        $result = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+                        $sql2 = getJoueurAlias($idJoueur);
+                        $stmt2 = sqlsrv_query($conn, $sql2);
+                        $result = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC);
                         $alias = $result['alias'];
 
-                        $rating = ratingStar($evaluation, $idItem, $conn);
+                        $rating = ratingStarForComment($evaluation);
                         echo <<<HTML
                            <div id="commentaireContainer">
                               <div id="alias">$alias</div>

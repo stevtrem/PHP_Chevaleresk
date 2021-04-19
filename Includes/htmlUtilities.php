@@ -150,7 +150,22 @@ function ratingStar($starNumber, $idItem, $conn) {
         } 
         else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
     }
-    return "Évaluation:<div>".$stars. getRatingCount($idItem, $conn) . "</div>";
+    return "Évaluations:<div>".$stars. getRatingCount($idItem, $conn) . "</div>";
+}
+
+function ratingStarForComment($starNumber) {
+    $stars = "";
+
+    if($starNumber == null) return "<span class=\"noRatingText\">Cet objet n'a pas d'évaluation pour le moment </span>";
+
+    for($i = 0; $i < 5; $i++) {
+        if($starNumber > 0) {
+            $stars .= "<span class=\"glyphicon glyphicon-star\"></span>";
+            $starNumber--;
+        } 
+        else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
+    }
+    return "Évaluation:<div>".$stars."</div>";
 }
 
 
