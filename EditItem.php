@@ -263,7 +263,7 @@ require_once 'Includes/dbh.php';
                         $commentaire = $row['commentaire'];
                         $idJoueur = $row['idJoueur'];
                         $idItem = $_GET['item'];
-
+                        
                         $sql = getJoueurAlias($idJoueur);
                         $stmt = sqlsrv_query($conn, $sql);
                         $result = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
@@ -279,8 +279,8 @@ require_once 'Includes/dbh.php';
                            <hr>
                         HTML;
                      
-                     echo "</div>";
-                  }
+                     }
+                  echo "</div>";
                ?>   
             </div>
       </section>
