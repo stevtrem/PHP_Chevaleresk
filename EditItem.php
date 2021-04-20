@@ -252,17 +252,17 @@ require_once 'Includes/dbh.php';
                                     <textarea class="textBoxRating" rows="4" cols="50" maxlength="256" placeholder="Rédigez votre évaluation..." id="eval" name="eval"></textarea>
                                  <label for="starCount">Étoiles</label><br>
                                  <div class="rating-css">
-                                    <input type="radio" name="rating1" id="rating1">
+                                    <input type="radio" name="starCount" id="rating1" value="1">
                                     <label for="rating1" class="fa fa-star"></label>
-                                    <input type="radio" name="rating1" id="rating2">
+                                    <input type="radio" name="starCount" id="rating2" value="2">
                                     <label for="rating2" class="fa fa-star"></label>
-                                    <input type="radio" name="rating1" id="rating3">
+                                    <input type="radio" name="starCount" id="rating3" value="3">
                                     <label for="rating3" class="fa fa-star"></label>
-                                    <input type="radio" name="rating1" id="rating4">
+                                    <input type="radio" name="starCount" id="rating4" value="4">
                                     <label for="rating4" class="fa fa-star"></label>
-                                    <input type="radio" name="rating1" id="rating5">
+                                    <input type="radio" name="starCount" id="rating5" value="5">
                                     <label for="rating5" class="fa fa-star"></label>
-                                    <input type="submit">
+                                    <input id="submitRating" type="submit" name="submitEval" value="Soumettre" title="Évaluer"/>
                                  </div>
                               </form>
                            HTML;

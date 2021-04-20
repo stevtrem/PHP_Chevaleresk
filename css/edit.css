@@ -84,6 +84,11 @@ select{
 #addEvalForm{
     background-color: white;
 }
+#submitRating{
+    color: black;
+    float: right;
+    display: inline;
+}
 .rating-css {
     color: #FFBD03;
 }
