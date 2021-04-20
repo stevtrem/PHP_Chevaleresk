@@ -160,6 +160,7 @@ unset($_SESSION['selectedPlayerAlias']);
                                  <a class="addBtnBoutique" href="Includes/addItemPanier.php?item={$idItem}">Ajouter</a>
                               </td>
                            </tr>
+                           <hr>
                            HTML;
                         }else{
                            echo('<table><tr class="ratingAvg'.$ratingAvg.'"><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th></tr>');
@@ -182,6 +183,7 @@ unset($_SESSION['selectedPlayerAlias']);
                                  {$rating}
                               </td>
                            </tr>
+                           <hr>
                            HTML;
                         } 
                      }
