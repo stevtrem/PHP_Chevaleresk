@@ -72,3 +72,14 @@ img {
 #rate{
     flex: 100%;
 }
+select{
+    display: none;
+}
+.textBoxRating{
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.starRating{
+    width: 50px;
+    border-radius: 10px;
+}

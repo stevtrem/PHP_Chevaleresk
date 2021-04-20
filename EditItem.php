@@ -242,14 +242,27 @@ require_once 'Includes/dbh.php';
                         HTML;
                     }
                   }
-
-                  if(isset($_SESSION['Id'])){
-                     if(HasItem($conn, $_SESSION["Id"], $_GET["item"])){
-
-                     }
-                  }
                   
                   echo "<div id='containerRight'>";
+                  if(isset($_SESSION['Id'])){
+                     if(HasItem($conn, $_SESSION["Id"], $_GET["item"])){
+                        echo <<<HTML
+                              <form id="addEvalForm" action="Includes/addEval.php" method="POST" enctype="multipart/form-data">
+                                 <label for="eval">Votre Évaluation</label><br>
+                                    <input class="textBoxRating" rows="4" cols="50" placeholder="Rédigez votre évaluation..." id="eval" type="textarea" name="eval"><br>
+                                 <label for="starCount">Étoiles</label><br>
+                                    <select class="starRating" name="starCount" id="starCount">
+                                       <option value="0">0</option>
+                                       <option value="1">1</option>
+                                       <option value="2">2</option>
+                                       <option value="3">3</option>
+                                       <option value="4">4</option>
+                                       <option value="5">5</option>
+                                    </select>
+                              </form><br>
+                           HTML;
+                     }
+                  }
                   $sql = "SELECT * FROM evaluations WHERE idItem = ".$_GET['item'];
                   $stmt = sqlsrv_query($conn, $sql);
                   $ratingAvg = round(getRatingAvg($_GET["item"], $conn));
