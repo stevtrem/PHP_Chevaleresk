@@ -246,26 +246,25 @@ require_once 'Includes/dbh.php';
                   echo "<div id='containerRight'>";
                   if(isset($_SESSION['Id'])){
                      if(HasItem($conn, $_SESSION["Id"], $_GET["item"])){
-                        echo <<<HTML
-                              <form id="addEvalForm" action="Includes/addEval.php" method="POST" enctype="multipart/form-data">
-                                 <label for="eval">Votre Évaluation</label><br>
-                                    <textarea class="textBoxRating" rows="4" cols="50" maxlength="256" placeholder="Rédigez votre évaluation..." id="eval" name="eval"></textarea>
-                                 <label for="starCount">Étoiles</label><br>
-                                 <div class="rating-css">
-                                    <input type="radio" name="starCount" id="rating1" value="1">
-                                    <label for="rating1" class="fa fa-star"></label>
-                                    <input type="radio" name="starCount" id="rating2" value="2">
-                                    <label for="rating2" class="fa fa-star"></label>
-                                    <input type="radio" name="starCount" id="rating3" value="3">
-                                    <label for="rating3" class="fa fa-star"></label>
-                                    <input type="radio" name="starCount" id="rating4" value="4">
-                                    <label for="rating4" class="fa fa-star"></label>
-                                    <input type="radio" name="starCount" id="rating5" value="5">
-                                    <label for="rating5" class="fa fa-star"></label>
-                                    <input id="submitRating" type="submit" name="submitEval" value="Soumettre" title="Évaluer"/>
+                        echo "<form id='addEvalForm' action='Includes/addEval.php' method='POST' enctype='multipart/form-data'>
+                                 <input type='hidden' name='idItem' value='".$_GET['item']."'>
+                                 <label for='eval'>Votre Évaluation</label><br>
+                                    <textarea class='textBoxRating' rows='4' cols='50' maxlength='256' placeholder='Rédigez votre évaluation...' id='eval' name='eval'></textarea>
+                                 <label for='starCount'>Étoiles</label><br>
+                                 <div class='rating-css'>
+                                    <input type='radio' name='starCount' id='rating1' value='1'>
+                                    <label for='rating1' class='fa fa-star'></label>
+                                    <input type='radio' name='starCount' id='rating2' value='2'>
+                                    <label for='rating2' class='fa fa-star'></label>
+                                    <input type='radio' name='starCount' id='rating3' value='3'>
+                                    <label for='rating3' class='fa fa-star'></label>
+                                    <input type='radio' name='starCount' id='rating4' value='4'>
+                                    <label for='rating4' class='fa fa-star'></label>
+                                    <input type='radio' name='starCount' id='rating5' value='5'>
+                                    <label for='rating5' class='fa fa-star'></label>
+                                    <input id='submitRating' type='submit' name='submitEval' value='Soumettre' title='Évaluer'/>
                                  </div>
-                              </form>
-                           HTML;
+                              </form>";
                      }
                   }
                   $sql = "SELECT * FROM evaluations WHERE idItem = ".$_GET['item'];
@@ -310,5 +309,17 @@ require_once 'Includes/dbh.php';
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
       <script src="js/form.js"></script>
+      <?php 
+         if(isset($_SESSION['addEvalResult'])) {
+            echo <<<HTML
+               <script>
+                  alert("{$_SESSION['addEvalResult']}");
+               </script>
+            HTML;
+         }
+      ?>
    </body>
 </html>
+<?php
+   unset($_SESSION['addEvalResult']);
+?>

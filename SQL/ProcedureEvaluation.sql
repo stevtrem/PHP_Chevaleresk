@@ -5,15 +5,16 @@ USE Cheveleresk;
 GO;
 DROP PROCEDURE evaluerItem;
 GO;
-CREATE OR ALTER PROCEDURE evaluerItem (@evaluation int,
-									   @idJoueur int,
-									   @idItem int) AS
+CREATE OR ALTER PROCEDURE evaluerItem (@idJoueur int,
+									   @idItem int,
+									   @evaluation int,
+									   @commentaire varchar(256)) AS
 BEGIN
 BEGIN TRY
 	IF exists(SELECT * FROM evaluations WHERE idJoueur = @idJoueur AND idItem = @idItem)
-		UPDATE evaluations SET evaluation = @evaluation WHERE idJoueur = @idJoueur AND idItem = @idItem;
+		UPDATE evaluations SET evaluation = @evaluation, commentaire = @commentaire WHERE idJoueur = @idJoueur AND idItem = @idItem;
 	ELSE
-		INSERT INTO evaluations VALUES(@idJoueur, @idItem, @evaluation);
+		INSERT INTO evaluations VALUES(@idJoueur, @idItem, @evaluation, @commentaire);
 END TRY
 BEGIN CATCH
 	IF @@TRANCOUNT > 0 ROLLBACK;
