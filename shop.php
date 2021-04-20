@@ -137,7 +137,7 @@ unset($_SESSION['selectedPlayerAlias']);
                         $ratingAvg = round(getRatingAvg($idItem, $conn));
                         $rating = ratingStar($ratingAvg, $idItem, $conn);
                         if (isset($_SESSION['alias']) && $_SESSION['alias'] != 'admin'){ // Si admin, ne peut ajouter des items au panier
-                           echo('<table><tr class="ratingAvg'.$ratingAvg.'"><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th><th></th></tr>');
+                           echo('<table><tr class="ratingAvg'.$ratingAvg.'"><th>Item</th><th>Stock</th><th>Prix</th><th></th><th></th></tr>');
                            echo <<<HTML
                            <div>
                            <tr class="ratingAvg{$ratingAvg}">
@@ -163,7 +163,7 @@ unset($_SESSION['selectedPlayerAlias']);
                            <hr>
                            HTML;
                         }else{
-                           echo('<table><tr class="ratingAvg'.$ratingAvg.'"><th>Item</th><th>Stock</th><th>Prix</th><th>Nom</th></tr>');
+                           echo('<table><tr class="ratingAvg'.$ratingAvg.'"><th>Item</th><th>Stock</th><th>Prix</th><th></th></tr>');
                            echo <<<HTML
                            <div>
                            <tr class="ratingAvg{$ratingAvg}">
