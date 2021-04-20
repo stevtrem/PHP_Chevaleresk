@@ -249,17 +249,22 @@ require_once 'Includes/dbh.php';
                         echo <<<HTML
                               <form id="addEvalForm" action="Includes/addEval.php" method="POST" enctype="multipart/form-data">
                                  <label for="eval">Votre Évaluation</label><br>
-                                    <input class="textBoxRating" rows="4" cols="50" placeholder="Rédigez votre évaluation..." id="eval" type="textarea" name="eval"><br>
+                                    <textarea class="textBoxRating" rows="4" cols="50" maxlength="256" placeholder="Rédigez votre évaluation..." id="eval" name="eval"></textarea>
                                  <label for="starCount">Étoiles</label><br>
-                                    <select class="starRating" name="starCount" id="starCount">
-                                       <option value="0">0</option>
-                                       <option value="1">1</option>
-                                       <option value="2">2</option>
-                                       <option value="3">3</option>
-                                       <option value="4">4</option>
-                                       <option value="5">5</option>
-                                    </select>
-                              </form><br>
+                                 <div class="rating-css">
+                                    <input type="radio" name="rating1" id="rating1">
+                                    <label for="rating1" class="fa fa-star"></label>
+                                    <input type="radio" name="rating1" id="rating2">
+                                    <label for="rating2" class="fa fa-star"></label>
+                                    <input type="radio" name="rating1" id="rating3">
+                                    <label for="rating3" class="fa fa-star"></label>
+                                    <input type="radio" name="rating1" id="rating4">
+                                    <label for="rating4" class="fa fa-star"></label>
+                                    <input type="radio" name="rating1" id="rating5">
+                                    <label for="rating5" class="fa fa-star"></label>
+                                    <input type="submit">
+                                 </div>
+                              </form>
                            HTML;
                      }
                   }

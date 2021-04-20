@@ -79,7 +79,34 @@ select{
     border: 2px solid black;
     border-radius: 10px;
 }
-.starRating{
-    width: 50px;
-    border-radius: 10px;
+
+
+#addEvalForm{
+    background-color: white;
+}
+.rating-css {
+    color: #FFBD03;
+}
+.rating-css div {
+    color: #ffe400;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0;
+}
+.rating-css input {
+    display: none;
+}
+.rating-css input + label {
+    font-size: 26px;
+    cursor: pointer;
+}
+.rating-css input:checked + label ~ label {
+    color: #838383;
+}
+.rating-css label:active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
 }
