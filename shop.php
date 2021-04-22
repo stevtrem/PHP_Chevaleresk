@@ -145,6 +145,7 @@ unset($_SESSION['selectedPlayerAlias']);
                                  {$nomItem}
                                  <a href="EditItem.php?item={$idItem}" title="Informations sur l'item">
                                     <img src="images/imagesItem/{$urlItem}" height="100px" width="100px">
+                                    <hr><span style='font-weight:bold'>Infos</span>
                                  </a>
                               </td>
                               <td>

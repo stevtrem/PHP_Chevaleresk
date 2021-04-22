@@ -211,5 +211,5 @@ $msgColor = isset($_GET['report']) ? $_GET['report'] : "white";
 unset($_SESSION["UnauthorizedAccess"]);
 unset($_SESSION["addItemError"]);
 unset($_SESSION["fundsMsg"]);
-UNSET($_SESSION['addNewItem']);
+unset($_SESSION['addNewItem']);
 ?>

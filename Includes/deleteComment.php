@@ -6,11 +6,11 @@
 
     if (isset($_GET['item'])){
         $param = array($_GET['item']);
-        $sql = "exec DeleteItemCascade @idItem = ?";
+        $sql = "DELETE FROM evaluations WHERE idJoueur =".$_GET['id']." AND idItem =".$_GET['item'];
         $stmt = sqlsrv_query($conn, $sql, $param);
         sqlsrv_close($conn);
-        $_SESSION['deleteItemResult'] = 'L\'objet a été supprimé avec succès';
-        header('Location:../deleteItem.php');
+        $_SESSION['deleteCommentResult'] = 'L\'évaluation a été enlevé avec succès';
+        header('Location:../EditItem.php?item='.$_GET['item']);
         exit();
     }
 ?>

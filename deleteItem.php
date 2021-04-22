@@ -139,7 +139,17 @@ $accessCheck = isset($_SESSION["UnauthorizedAccess"]) ? $_SESSION["UnauthorizedA
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
       <script src="js/form.js"></script>
+      <?php 
+         if(isset($_SESSION['deleteItemResult'])) {
+            echo <<<HTML
+               <script>
+                  alert("{$_SESSION['deleteItemResult']}");
+               </script>
+            HTML;
+         }
+      ?>
    </body>
 </html>
 <?php
+   unset($_SESSION["deleteItemResult"]);
 ?>

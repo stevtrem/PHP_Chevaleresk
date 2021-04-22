@@ -176,9 +176,13 @@ select{
     background-color: white;
 }
 #submitRating{
-    color: black;
     float: right;
     display: inline;
+    color: white;
+    background-color: #081b30;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
 }
 .rating-css {
     color: #FFBD03;
@@ -205,4 +209,15 @@ select{
 .rating-css label:active {
     transform: scale(0.8);
     transition: 0.3s ease;
+}
+
+.deleteCommentBtn{
+    display: flex;
+    float: right;
+    color: white;
+    background-color: #081b30;    
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-right: 15px;
+    padding: 5px;
 }

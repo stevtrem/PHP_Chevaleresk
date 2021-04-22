@@ -291,11 +291,13 @@ require_once 'Includes/dbh.php';
                      $stmt2 = sqlsrv_query($conn, $sql2);
                      $result = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC);
                      $alias = $result['alias'];
+                     $deleteBtn = commentDeleteBtn($idItem, $idJoueur);
 
                      $rating = ratingStarForComment($evaluation);
                      echo <<<HTML
                         <div id="commentaireContainer">
                            <div id="alias">$alias</div>
+                           $deleteBtn
                            <div id="rate">$rating</div>
                            $commentaire
                         </div>
@@ -325,9 +327,17 @@ require_once 'Includes/dbh.php';
                </script>
             HTML;
          }
+         if(isset($_SESSION['deleteCommentResult'])) {
+            echo <<<HTML
+               <script>
+                  alert("{$_SESSION['deleteCommentResult']}");
+               </script>
+            HTML;
+         }
       ?>
    </body>
 </html>
 <?php
    unset($_SESSION['addEvalResult']);
+   unset($_SESSION['deleteCommentResult']);
 ?>

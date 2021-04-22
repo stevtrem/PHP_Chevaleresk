@@ -246,4 +246,13 @@ function getJoueurAlias($id){
     return "SELECT alias from Joueurs
             WHERE idJoueur = $id";
 }
+
+function commentDeleteBtn($idItem, $idJoueur){
+    if(isset($_SESSION['alias'])){
+        if ($_SESSION['alias'] == 'admin' || $idJoueur == $_SESSION['Id'])
+            return "<button onClick=\"window.location.href='./Includes/deleteComment?item=$idItem&id=$idJoueur'\" class='deleteCommentBtn' title='Effacer le commentaire'>Effacer?</button>";
+    }else{
+        return "";
+    }
+}
 ?>
