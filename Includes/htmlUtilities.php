@@ -104,6 +104,28 @@ function ratingStarFilter($starNumber, $conn) {
     return "<div id=\"starFilter{$initialStarCount}\" style='color:white'>".$stars." <span id=\"ratingCount". $initialStarCount ."\" </span>"."</div>";
 }
 
+function ratingStarCount($starNumber, $conn, $idItem) {
+    $stars = "";
+    $sql = "SELECT count(evaluation) AS total
+            FROM   evaluations e INNER JOIN
+                   items i ON e.idItem = i.idItem
+            WHERE  e.evaluation = $starNumber AND i.disponible = 'O' AND e.idItem = $idItem";
+
+    for($i = 0; $i < 5; $i++) {
+        if($i < $starNumber) {
+            $stars .= "<span class=\"glyphicon glyphicon-star\" style='color:#FFBD03'></span>";
+        } 
+        else $stars .= "<span class=\"glyphicon glyphicon-star-empty\" style='color:grey'></span>";
+    }
+
+    $stmt = sqlsrv_query($conn, $sql);
+
+    $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+
+    $ratingCount = $row['total'];
+    return "<div>$stars(".$ratingCount.")</div>";
+}
+
 function getRatingAvg($itemId, $conn) {
 
     $params = array($itemId);
@@ -141,7 +163,7 @@ function ratingStar($starNumber, $idItem, $conn) {
         } 
         else $stars .= "<span class=\"glyphicon glyphicon-star-empty\"></span>";
     }
-    return "<span id='alias'>Évaluations:</span><div>".$stars. getRatingCount($idItem, $conn) . "</div>";
+    return "<span class='ratings'>Total Évaluations:</span><div>".$stars. getRatingCount($idItem, $conn) . "</div>";
 }
 
 function ratingStarForComment($starNumber) {

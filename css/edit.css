@@ -155,6 +155,11 @@ img {
     font-weight: bold;
     flex: 100%;
 }
+.ratings{
+    font-size: 18px;
+    font-weight: bold;
+    flex: 100%;
+}
 #rate{
     flex: 100%;
 }

@@ -271,7 +271,15 @@ require_once 'Includes/dbh.php';
                   $stmt = sqlsrv_query($conn, $sql);
                   $ratingAvg = round(getRatingAvg($_GET["item"], $conn));
                   $ratingMoyenne = ratingStar($ratingAvg, $_GET["item"], $conn);
-                  echo $ratingMoyenne."<hr>";
+                  echo $ratingMoyenne."<br>";
+                  
+                  echo "<span class='ratings'>Nombre de votes par évaluation:</span>";
+                  echo ratingStarCount(1, $conn, $_GET['item']);
+                  echo ratingStarCount(2, $conn, $_GET['item']);
+                  echo ratingStarCount(3, $conn, $_GET['item']);
+                  echo ratingStarCount(4, $conn, $_GET['item']);
+                  echo ratingStarCount(5, $conn, $_GET['item']);
+                  echo "<hr>";
 
                   while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ){
                      $evaluation = $row['evaluation'];
