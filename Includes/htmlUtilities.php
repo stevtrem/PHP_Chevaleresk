@@ -21,7 +21,7 @@ function LoginBtn(){
        }else{
             return "<li><a href='Inventory.php'>Inventaire</a></li>".
                    "<li><a href='Includes/logout.php' id='btnLogout'>Déconnexion</a></li>".
-                   "<li><a href='Profile.php' style='color:#22a314; font-weight:bold'>$alias</a></li>".
+                   "<li><a href='Profile.php' style='color:#22a314; font-weight:bold'><p style=\"display: inline;color:white\">Profil : </p>$alias</a></li>".
                    "<li><a href='Panier.php' id='LogoPanier'>Panier</a></li>";
        }
        
