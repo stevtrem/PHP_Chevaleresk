@@ -9,7 +9,7 @@ DECLARE @MPencrypte VARBINARY(MAX);
 BEGIN TRY
 	SELECT @MPencrypte = HASHBYTES('SHA2_512',@password);
 	BEGIN TRANSACTION
-    UPDATE joueurs set alias = @alias, nom = @lastName, prenom = @firstName, MotdePasse = @MPencrypte where idJoueur = 5;
+    UPDATE joueurs set alias = @alias, nom = @lastName, prenom = @firstName, MotdePasse = @MPencrypte where idJoueur = @id;
 	COMMIT;
 END TRY
 BEGIN CATCH

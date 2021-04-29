@@ -4,8 +4,8 @@
     require_once './SessionChecker.php';
     require_once './dbh.php';
 
-    if(isset($_POST['SubmitForm']) and isset($_POST['FirstName']) and isset($_POST['lastName']) and isset($_POST['Alias']) and isset($_POST['Password'])) {
-        $params = array($_SESSION['Id'], $_POST['FirstName'], $_POST['lastName'], $_POST['Alias'], $_POST['Password']);
+    if(isset($_POST['SubmitForm']) and isset($_POST['FirstName']) and isset($_POST['LastName']) and isset($_POST['Alias']) and isset($_POST['Password'])) {
+        $params = array($_SESSION['Id'], $_POST['FirstName'], $_POST['LastName'], $_POST['Alias'], $_POST['Password']);
 
         $sql = "EXECUTE updatePlayer @id = ?, @firstName = ? , @lastName = ? ,@alias = ?, @password = ?";
         
@@ -14,6 +14,7 @@
         sqlsrv_close($conn);
 
         $_SESSION['editPlayerSuccess'] = 'La modification du profil à été un succès';
+        $_SESSION['alias'] = $_POST['Alias'];
         header('Location:../Profile.php');
         exit();
     }

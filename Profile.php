@@ -11,11 +11,8 @@ $alias = $info['alias'];
 $nom = $info['nom'];
 $prenom = $info['prenom'];
 
-
-$firstNameError = isset($_SESSION['firstNameError'])? $_SESSION['firstNameError'] : '';
-$lastNameError = isset($_SESSION['lastNameError'])? $_SESSION['lastNameError'] : '';
-$aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
-$passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] : '';
+$success = isset($_SESSION['editPlayerSuccess'])? $_SESSION['editPlayerSuccess'] : '';
+$empty = isset($_SESSION['emptyFields'])? $_SESSION['emptyFields'] : '';
 
 ?>
 <!DOCTYPE html>
@@ -98,23 +95,21 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
                <div id="signupLabel">Modification du Profil</div>
                <div id="signupForm">
                   <hr style="background:white">
-                  <form method="POST" action="Includes/authenticate.php">
+                  <form method="POST" action="Includes/editPlayer.php">
+                  <?php showError($success);?>
                      <div class="form-group">
                         <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName" value='<?php echo $prenom?>'>
-                        <?php showError($firstNameError);?>
                      </div>
                      <div class="form-group">
                         <input  type="text" class="form-control form-control-sm" placeholder="Nom" id="lastName" name="LastName" value='<?php echo $nom?>'>
-                        <?php showError($lastNameError);?>
                      </div>
                      <div class="form-group">
                         <input type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias" value='<?php echo $alias?>'>
-                        <?php showError($aliasError);?>
                      </div>
                      <div class="form-group">
                         <input type="password" class="form-control form-control-sm" placeholder="Mot de passe" id="password" name="Password">
-                        <?php showError($passwordError);?>
                      </div>
+                     <?php showError($empty); ?>
                      <div class="submit_btn">
                         <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary">Modifier</button>
                      </div>
@@ -138,3 +133,9 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
       <script src="js/form.js"></script>
    </body>
 </html>
+
+
+<?php
+unset($_SESSION['editPlayerSuccess']);
+unset($_SESSION['emptyFields']);
+?>
