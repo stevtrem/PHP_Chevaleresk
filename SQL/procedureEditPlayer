@@ -1,0 +1,20 @@
+GO;
+DROP PROCEDURE updatePlayer;
+
+GO;
+CREATE PROCEDURE updatePlayer (@id int, @alias VARCHAR(32),
+									   @password VARCHAR(30), @firstName varchar(32), @lastName varchar(32)) AS
+BEGIN
+DECLARE @MPencrypte VARBINARY(MAX);
+BEGIN TRY
+	SELECT @MPencrypte = HASHBYTES('SHA2_512',@password);
+	BEGIN TRANSACTION
+    UPDATE joueurs set alias = @alias, nom = @lastName, prenom = @firstName, MotdePasse = @MPencrypte where idJoueur = 5;
+	COMMIT;
+END TRY
+BEGIN CATCH
+END CATCH
+END;
+
+
+EXECUTE updatePlayer @id = 1, @alias = 'a', @password = 'a', @firstName = 'a', @lastName = 'a';
