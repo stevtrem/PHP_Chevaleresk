@@ -1,3 +1,19 @@
+<?php
+session_start();
+require_once 'Includes/htmlUtilities.php';
+
+
+$firstName = isset($_SESSION['signupFirstName']) ? $_SESSION['signupFirstName'] : '';
+$lastName = isset($_SESSION['signupLastName']) ? $_SESSION['signupLastName'] : '';
+$alias = isset($_SESSION['signupAlias']) ? $_SESSION['signupAlias'] : '';
+$password = isset($_SESSION['signupPass']) ? $_SESSION['signupPass'] : '';
+
+$firstNameError = isset($_SESSION['firstNameError'])? $_SESSION['firstNameError'] : '';
+$lastNameError = isset($_SESSION['lastNameError'])? $_SESSION['lastNameError'] : '';
+$aliasError = isset($_SESSION['aliasError'])? $_SESSION['aliasError'] : '';
+$passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] : '';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -22,7 +38,7 @@
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <!-- Css Specific to this page-->
-      <link rel="stylesheet" href="css/Panier.css">
+      <link rel="stylesheet" href="css/signupLoginForm.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
@@ -72,6 +88,39 @@
       </header>
       <!-- end header -->
       <section >
+      <div id="signupContainer">
+            <div class="col-md-6" style="margin-bottom:96px">
+               <div id="signupImage"></div>
+               <div id="signupLabel">Modification du Profil</div>
+               <div id="signupForm">
+                  <hr style="background:white">
+                  <form method="POST" action="Includes/authenticate.php">
+                     <div class="form-group">
+                        <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName" value='<?php echo $firstName?>'>
+                        <?php showError($firstNameError);?>
+                     </div>
+                     <div class="form-group">
+                        <input  type="text" class="form-control form-control-sm" placeholder="Nom" id="lastName" name="LastName" value='<?php echo $lastName?>'>
+                        <?php showError($lastNameError);?>
+                     </div>
+                     <div class="form-group">
+                        <input type="text" class="form-control form-control-sm" placeholder="Alias" id="alias" name="Alias" value='<?php echo $alias?>'>
+                        <?php showError($aliasError);?>
+                     </div>
+                     <div class="form-group">
+                        <input type="password" class="form-control form-control-sm" placeholder="Mot de passe" id="password" name="Password" value='<?php echo $password?>'>
+                        <?php showError($passwordError);?>
+                     </div>
+                     <div class="submit_btn">
+                        <button type="submit" id="submitForm" name="SubmitForm" class="btn btn-primary">Modifier</button>
+                     </div>
+                     <div class="submit_btn">
+                        <input onClick="window.location.href='index.php'" type='button' id="cancelForm" name='CancelForm' class="btn btn-primary" value='Annuler'>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
       </section>
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
