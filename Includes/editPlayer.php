@@ -4,7 +4,7 @@
     require_once './SessionChecker.php';
     require_once './dbh.php';
 
-    if(isset($_POST['SubmitForm']) and !empty($_POST['FirstName']) and !empty($_POST['LastName']) and !empty($_POST['Alias']) and !empty($_POST['Password'])) {
+    if(isset($_POST['SubmitForm']) && !empty($_POST['FirstName']) && !empty($_POST['LastName']) && !empty($_POST['Alias']) && !empty($_POST['Password'])) {
         $params = array($_SESSION['Id'], $_POST['FirstName'], $_POST['LastName'], $_POST['Alias'], $_POST['Password']);
 
         $sql = "EXECUTE updatePlayer @id = ?, @firstName = ? , @lastName = ? ,@alias = ?, @password = ?";
