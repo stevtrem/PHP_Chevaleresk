@@ -255,4 +255,10 @@ function commentDeleteBtn($idItem, $idJoueur){
         return "";
     }
 }
+
+function InfoJoueur(){
+    $id=$_SESSION['Id'];
+    return "SELECT alias,nom,prenom from Joueurs
+    WHERE idJoueur = $id";
+}
 ?>
