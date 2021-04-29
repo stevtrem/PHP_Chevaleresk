@@ -1,12 +1,16 @@
 <?php
-session_start();
 require_once 'Includes/htmlUtilities.php';
+require_once 'Includes/dbh.php';
+include_once 'Includes/SessionChecker.php';
 
+$sql = InfoJoueur();
+$stmt = sqlsrv_query($conn, $sql);
+$info = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
 
-$firstName = isset($_SESSION['signupFirstName']) ? $_SESSION['signupFirstName'] : '';
-$lastName = isset($_SESSION['signupLastName']) ? $_SESSION['signupLastName'] : '';
-$alias = isset($_SESSION['signupAlias']) ? $_SESSION['signupAlias'] : '';
-$password = isset($_SESSION['signupPass']) ? $_SESSION['signupPass'] : '';
+$alias = $info['alias'];
+$nom = $info['nom'];
+$prenom = $info['prenom'];
+
 
 $firstNameError = isset($_SESSION['firstNameError'])? $_SESSION['firstNameError'] : '';
 $lastNameError = isset($_SESSION['lastNameError'])? $_SESSION['lastNameError'] : '';
@@ -96,11 +100,11 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
                   <hr style="background:white">
                   <form method="POST" action="Includes/authenticate.php">
                      <div class="form-group">
-                        <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName" value='<?php echo $firstName?>'>
+                        <input type="text" class="form-control form-control-sm" placeholder="Prénom" id="firstName" name="FirstName" value='<?php echo $prenom?>'>
                         <?php showError($firstNameError);?>
                      </div>
                      <div class="form-group">
-                        <input  type="text" class="form-control form-control-sm" placeholder="Nom" id="lastName" name="LastName" value='<?php echo $lastName?>'>
+                        <input  type="text" class="form-control form-control-sm" placeholder="Nom" id="lastName" name="LastName" value='<?php echo $nom?>'>
                         <?php showError($lastNameError);?>
                      </div>
                      <div class="form-group">
@@ -108,7 +112,7 @@ $passwordError = isset($_SESSION['passwordError'])? $_SESSION['passwordError'] :
                         <?php showError($aliasError);?>
                      </div>
                      <div class="form-group">
-                        <input type="password" class="form-control form-control-sm" placeholder="Mot de passe" id="password" name="Password" value='<?php echo $password?>'>
+                        <input type="password" class="form-control form-control-sm" placeholder="Mot de passe" id="password" name="Password">
                         <?php showError($passwordError);?>
                      </div>
                      <div class="submit_btn">
